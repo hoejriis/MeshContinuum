@@ -40,7 +40,7 @@ A management job should include:
 - protocol and schema version;
 - target device identity;
 - stable job identifier;
-- issue and expiry times;
+- issuance and expiry times;
 - replay protection;
 - explicit requested operations;
 - authenticated result states.

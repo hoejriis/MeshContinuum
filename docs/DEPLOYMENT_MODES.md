@@ -6,6 +6,8 @@ MeshContinuum is designed to avoid a mandatory central service. Render or any ot
 
 A hosted Backend, Reader and MQTT broker provide access from anywhere. Heltec V3 gateways connect over the internet while retaining normal local MeshCore behavior.
 
+The MECON cloud service is available at **[mecon.cloud](https://mecon.cloud)** and is deployed on Render. Access is **Invitation Only**; public self-service registration is not offered. This service does not make Render or mecon.cloud a required component of other MECON deployments.
+
 ## Local
 
 A Backend, Reader and broker run at one location. The installation remains useful without internet access and may serve devices and users on that network.

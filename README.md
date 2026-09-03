@@ -4,6 +4,12 @@
 
 > MeshContinuum is in early public development. This repository currently establishes the public architecture and documentation; there is no generally supported release yet.
 
+## Cloud service — Invitation Only
+
+[mecon.cloud](https://mecon.cloud) is the MECON cloud service, deployed on Render. Access is **Invitation Only**; there is no public self-service registration.
+
+The hosted service is one deployment of MeshContinuum, not a mandatory dependency for MeshCore or self-hosted MECON installations. Its availability does not imply a generally supported public software release. Multi-user invitation and magic-link login workflows are planned; do not assume those workflows are already available.
+
 ## Why MECON?
 
 MeshCore's strength is independent RF communication. MECON preserves that model and adds optional assistance:
@@ -59,7 +65,7 @@ No hosting provider is part of the product contract, and backend cooperation mus
 - Product: **MeshContinuum**
 - Shorthand: **MECON**
 - Future primary domain: [MeshContinuum.info](https://meshcontinuum.info)
-- Short domain: [mecon.cloud](https://mecon.cloud)
+- Cloud service: [mecon.cloud](https://mecon.cloud) — **Invitation Only**, hosted on Render
 
 Private deployments may use their own instance names. Those names are configuration, not part of the MECON product or protocol.
 

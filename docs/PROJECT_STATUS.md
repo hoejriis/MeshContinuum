@@ -4,6 +4,12 @@ MeshContinuum is in early public development. This repository currently establis
 
 There is no generally supported MECON release yet.
 
+## Cloud service — Invitation Only
+
+**[mecon.cloud](https://mecon.cloud)** is the Render-deployed MECON cloud instance. Access is **Invitation Only**; there is no open registration.
+
+The running cloud instance is distinct from a generally supported public MECON release. Administrator-managed email invitations, magic-link login for additional users and isolated user workspaces are planned work, not a claim of currently available functionality.
+
 ## Initial product scope
 
 The first public baseline is:
@@ -42,6 +48,6 @@ The following do not block the initial baseline:
 - Public name: **MeshContinuum**
 - Shorthand: **MECON**
 - Planned primary domain: **MeshContinuum.info**
-- Short domain: **mecon.cloud**
+- Cloud service: **[mecon.cloud](https://mecon.cloud)** — **Invitation Only**, hosted on Render
 
 Private installations should use their own instance names and configuration outside the public source tree.

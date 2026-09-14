@@ -1,68 +1,50 @@
 # Components
 
-MeshContinuum has four primary components.
+MeshContinuum has three application components and one independent sister firmware project.
 
 | Component | Responsibility |
 |---|---|
-| Backend | Ingests observations, reconciles packets and messages, performs authorized decryption, coordinates jobs and exposes application APIs |
-| Reader | Provides the web experience for reading, diagnostics, enrollment, configuration and device actions |
-| MQTT broker | Carries observations, gateway status and explicitly authorized management traffic between devices and backends |
-| Firmware | Adds MECON connectivity and management to supported MeshCore devices while preserving their native role |
+| Backend | Ingests observations, reconciles packets/messages, performs authorized decryption, coordinates jobs and exposes APIs |
+| Reader | Web reading, diagnostics, enrollment, configuration and direct device access |
+| MQTT broker | Transport between devices, sources and backends |
+| mecon-firmware | Independent MeshCore firmware project implementing the open MECON device contract |
 
 ## Backend
 
-The Backend owns the canonical application model. It distinguishes:
+The Backend owns the application model: packets, observations, decrypted logical messages, device state, delivery jobs and synchronization. External MQTT feeds and compatible devices enter through validated ingestion adapters.
 
-- a MeshCore packet;
-- one or more receptions of that packet;
-- a decrypted logical message;
-- local delivery assistance;
-- an optional outage-sync copy.
-
-External packet feeds are Backend ingestion capabilities, not separate MECON components. These may include:
-
-- any compatible Repeater/Observer source publishing a supported envelope;
-- a permitted third-party MQTT broker or aggregator;
-- another MECON backend exchanging versioned domain events.
-
-Adapters must validate and normalize external envelopes before they enter the canonical packet pipeline.
+The Backend consumes the public device contract from [mecon-firmware](https://github.com/hoejriis/mecon-firmware). MeshContinuum must not maintain a competing private firmware protocol.
 
 ## Reader
 
-The Reader is a browser application for:
+The Reader provides:
 
-- inbox and channel reading;
+- inbox/channels and message history;
 - packet, route and reception diagnostics;
-- Companion and Repeater enrollment;
-- USB flashing and local device actions where supported;
-- configuration templates and per-device overrides;
+- device enrollment and flashing;
+- configuration and health;
+- managed firmware updates;
 - Wi-Fi and MQTT profile management;
-- gateway status and configuration capability display;
-- deployment and source administration.
+- direct Companion access over USB or BLE in desktop Chrome/Edge;
+- direct Repeater USB management/observation;
+- standalone direct operation when no Backend is reachable, with later synchronization.
 
-The Reader must clearly distinguish settings that can be changed remotely from those requiring a direct USB connection.
+Capabilities come from the device contract. The Reader must not infer an operation merely from role or firmware version.
 
 ## MQTT broker
 
-MECON uses MQTT as transport, not as the system of record.
+MQTT is transport, not the system of record. A device may connect to up to two broker profiles, each with independent credentials, namespace and authority. Observation access does not imply message-send or device-management authority.
 
-A deployment may use:
+MeshContinuum may deploy its own broker or use a compatible MQTT service. `mecon.cloud` is one hosted deployment, not part of the protocol.
 
-- a broker alongside a hosted backend;
-- a broker on a local network;
-- several brokers for separate locales;
-- an external broker as an inbound observation source.
+## mecon-firmware
 
-Observation publication, integration traffic and device management are separate capabilities and should not implicitly share authority.
+The public firmware target supports Heltec V3 and V4 Companion/Repeater builds. It preserves native MeshCore operation while adding up to three Wi-Fi profiles, up to two MQTT brokers, remote management/observations, signed managed OTA and direct local access.
 
-## Firmware
+Companion builds enable USB and BLE and use a 64-contact resource profile. Repeaters preserve their native MeshCore role and expose direct USB management/observations; Repeater BLE is not required for the initial target.
 
-The initial first-party target is the **Heltec V3**.
-
-Supported firmware roles are expected to report their actual MeshCore role and capabilities. Companion-only actions must not be shown for Repeaters, and Repeater telemetry or ping actions must not be presented as Companion messaging controls.
-
-The Raspberry Pi Agent, BLE support, Heltec V4 and managed OTA are backlog work and are not part of the initial default path.
+Firmware contracts are canonical in the sister repository so other projects can build compatible backends and Readers without MeshContinuum.
 
 ## Third-party compatibility
 
-MECON may ingest packets produced by third-party repeaters and brokers when an adapter exists for their documented format. Ingestion compatibility does not grant remote-management authority over those devices.
+MeshContinuum may ingest third-party packet sources when adapters exist. Ingestion compatibility never grants remote-management authority. Conversely, a third-party backend may manage mecon-firmware devices if it implements the public firmware contract and is explicitly provisioned with the required authority.

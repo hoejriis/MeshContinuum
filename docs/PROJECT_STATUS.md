@@ -1,53 +1,65 @@
-# Project status
+# Project status and public release target
 
-MeshContinuum is in early public development. This repository currently establishes the public name, product boundary and instance-neutral documentation while implementation is prepared for migration from the existing development repositories.
+MeshContinuum and its sister project [mecon-firmware](https://github.com/hoejriis/mecon-firmware) are being prepared for a coordinated public release. These public repositories describe the **supported release target**, not the incidental limitations of the current private development deployments.
 
-There is no generally supported MECON release yet.
+There is not yet a generally supported public release.
 
-## Cloud service — Invitation Only
+## Release boundary
 
-**[mecon.cloud](https://mecon.cloud)** is the Render-deployed MECON cloud instance. Access is **Invitation Only**; there is no open registration.
+The public product is intentionally split:
 
-The running cloud instance is distinct from a generally supported public MECON release. Administrator-managed email invitations, magic-link login for additional users and isolated user workspaces are planned work, not a claim of currently available functionality.
+- **MeshContinuum** — Backend, web Reader and broker/deployment integration.
+- **mecon-firmware** — independent open firmware plus canonical device-facing contracts.
 
-## Initial product scope
+MeshContinuum is the reference implementation of the firmware contract, not its owner. Other projects may integrate with mecon-firmware directly.
 
-The first public baseline is:
+## Firmware baseline for release
 
-- Backend;
-- web Reader;
+The coordinated release target includes:
+
+- Heltec V3 and V4 Companion/Repeater targets after hardware gates;
+- native/offline MeshCore operation;
+- 64-contact Companion profile;
+- Wi-Fi, USB and Companion BLE enabled in the normal build;
+- up to three Wi-Fi profiles;
+- up to two independently authorized MQTT brokers;
+- remote observations, messaging and management according to capabilities;
+- signed managed OTA;
+- direct desktop Chrome/Edge Companion access over USB/BLE;
+- direct Repeater USB management/observation;
+- backend-neutral versioned firmware contracts.
+
+## MeshContinuum baseline for release
+
+The application target includes:
+
+- Backend and web Reader;
 - MQTT broker integration;
-- Heltec V3 firmware as the default first-party gateway path;
-- ingestion from compatible Repeater/Observer sources;
-- adapters for permitted third-party MQTT observation feeds.
+- packet/observation history and diagnostics;
+- authorized Companion identity/channel decryption;
+- messaging and device management through the public firmware contract;
+- firmware flashing/configuration and managed OTA;
+- direct Reader operation and browser-agent bridge;
+- standalone direct operation with later synchronization;
+- hosted and self-hosted deployment paths.
 
-## Active preparation
+## Cloud service
 
-Before a supported release, the project needs:
+[mecon.cloud](https://mecon.cloud) is an Invitation Only hosted deployment. It is not a firmware dependency or a condition for self-hosting.
 
-- reviewed instance-neutral source migration;
-- stable public configuration and protocol namespaces using MECON;
-- reproducible packaging and deployment;
-- security and privacy review;
-- migration compatibility for existing installations;
-- automated and hardware-backed acceptance tests;
-- release, upgrade and rollback documentation.
+## Release preparation gates
 
-## Backlog
+Before declaring the coordinated release generally supported:
 
-The following do not block the initial baseline:
+- migrate reviewed source into the public repositories;
+- make MECON naming and device contracts canonical and instance-neutral;
+- resolve the adjustments documented in `mecon-firmware/docs/CONTRACT_MIGRATION_NOTES.md`;
+- run cross-repository contract tests;
+- pass hardware gates for every advertised firmware target;
+- complete security/privacy review;
+- verify install, upgrade, OTA rollback/recovery and direct-connect paths;
+- publish reproducible artifacts and release documentation.
 
-- BLE Companion access;
-- Heltec V4 support;
-- managed OTA;
-- Raspberry Pi deployments and Pi Agent;
-- additional hardware targets.
+## Future work not required for the first release
 
-## Domains and naming
-
-- Public name: **MeshContinuum**
-- Shorthand: **MECON**
-- Planned primary domain: **MeshContinuum.info**
-- Cloud service: **[mecon.cloud](https://mecon.cloud)** — **Invitation Only**, hosted on Render
-
-Private installations should use their own instance names and configuration outside the public source tree.
+Additional hardware beyond Heltec V3/V4, Repeater BLE, mobile-browser direct connectivity where browser platforms do not expose the required APIs, and broader ecosystem integrations may follow later.

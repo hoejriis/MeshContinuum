@@ -1,10 +1,8 @@
 # MeshContinuum documentation
 
-MeshContinuum (**MECON**) is an independent overlay for MeshCore. It adds an online Reader, packet aggregation and remote management while preserving normal standards-compatible MeshCore operation when MECON is unavailable.
+MeshContinuum (**MECON**) is an independent companion platform for MeshCore: Backend, web Reader and broker integration. Its sister project [mecon-firmware](https://github.com/hoejriis/mecon-firmware) provides the open device firmware and canonical device-facing contracts.
 
-## Cloud service
-
-[mecon.cloud](https://mecon.cloud) is the Render-deployed MECON cloud service. Access is **Invitation Only**, with no public self-service registration. It is separate from the planned project site at MeshContinuum.info. See [Project status](PROJECT_STATUS.md) for the distinction between the running service and planned invitation/login functionality.
+These documents describe the **public release target**, not temporary private-development limitations.
 
 ## Start here
 
@@ -12,19 +10,26 @@ MeshContinuum (**MECON**) is an independent overlay for MeshCore. It adds an onl
 - [Components](COMPONENTS.md)
 - [Deployment modes](DEPLOYMENT_MODES.md)
 - [Architecture](ARCHITECTURE.md)
-- [Project status](PROJECT_STATUS.md)
+- [Project status and release target](PROJECT_STATUS.md)
+
+For firmware architecture, hardware support, direct USB/BLE behavior, MQTT/device settings contracts and firmware security, use the documentation in [mecon-firmware](https://github.com/hoejriis/mecon-firmware).
+
+## Cloud service
+
+[mecon.cloud](https://mecon.cloud) is an Invitation Only hosted MeshContinuum deployment. It is not required by the firmware or by self-hosted MeshContinuum installations.
 
 ## Exploratory proposals
 
-These documents discuss possible upstream MeshCore changes. They are not MECON features or commitments.
+These discuss possible upstream MeshCore changes and are not MECON release commitments:
 
 - [Geographical flood scopes and dynamic Repeater load adaptation](GEOGRAPHICAL_FLOOD_SCOPES_PROPOSAL.md)
 
 ## Naming
 
-- **MeshContinuum** is the public product and project name.
-- **MECON** is the short technical name used for identifiers, configuration prefixes and compact references.
-- **MeshContinuum.info** is the planned primary project site.
-- **[mecon.cloud](https://mecon.cloud)** is the cloud service — **Invitation Only**.
+- **MeshContinuum** — application project/product.
+- **MECON** — shared technical shorthand.
+- **mecon-firmware** — independent firmware sister project.
+- **MeshContinuum.info** — project domain.
+- **mecon.cloud** — hosted MeshContinuum service.
 
-Private installations may use their own instance names. An instance name is not part of the MECON protocol or product identity.
+Private installation names are configuration and never protocol/product identity.

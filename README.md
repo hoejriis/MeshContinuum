@@ -42,15 +42,9 @@ If MeshContinuum, MQTT or the Internet is unavailable, normal MeshCore radio and
 
 The recommended first self-hosted deployment is deliberately simple: **one Docker host running Backend + Reader + a local MQTT broker**. A Raspberry Pi, NAS, small home server or ordinary Linux computer can be used.
 
-The target installation experience is:
+The public release target is a normal Docker Compose quick start: clone this repository, start the supplied Compose profile, then open the local Reader. Exact commands and image tags will be published with the implementation; the current documentation does not ask users to assemble broker configuration manually.
 
-```bash
-git clone <MeshContinuum repository>
-cd MeshContinuum
-docker compose up -d
-```
-
-Then open the local Reader, create the Deployment administrator and add the first Companion. MQTT credentials, local broker configuration and Deployment identity should be provisioned by MECON rather than requiring a new user to edit broker configuration manually.
+The first-run Reader creates the Deployment administrator and guides adding the first Companion. MQTT credentials, local broker configuration and Deployment identity are provisioned by MECON rather than requiring a new user to edit broker configuration manually.
 
 A local-only installation is a complete supported MECON deployment. Cloud infrastructure is optional.
 

@@ -4,7 +4,7 @@
 
 MeshContinuum is local-first and self-hostable. A small local installation is a complete product; cloud services add reachability and resilience rather than becoming prerequisites for MeshCore operation.
 
-One MECON **Deployment** represents one administrator/trust domain. A self-hosting administrator owns the Deployment's infrastructure and credentials. MECON does not require a shared public MQTT hub.
+One MECON **Deployment** represents one administrator/trust domain and has a human-readable name, for example `DeimosMesh`, plus a permanent cryptographic Deployment identity. The Deployment name is also the default name of its private offline sync channel. A self-hosting administrator owns the Deployment's infrastructure and credentials. MECON does not require a shared public MQTT hub.
 
 ## Logical flow
 
@@ -22,10 +22,8 @@ flowchart TD
     FW -->|"1. local preference"| LOCAL
     FW -->|"2. cloud fallback"| PRIMARY
     FW -->|"3. secondary fallback"| SECONDARY
-
     LOCAL <-->|"replicated MECON MQTT namespace"| PRIMARY
     PRIMARY <-->|"replicated MECON MQTT namespace"| SECONDARY
-
     BE <-->|"local site, when present"| LOCAL
     BE <-->|"concurrent cloud connection"| PRIMARY
     BE <-->|"concurrent cloud connection"| SECONDARY
@@ -34,150 +32,131 @@ flowchart TD
     BE <-->|"versioned federation events"| BE
 ```
 
-The exact broker bridge topology may vary as long as the defined replicated namespace converges without loops or duplicate execution. A local-to-cloud fabric plus primary/secondary cloud bridge is preferred over an unnecessary full mesh where it satisfies the contract.
+The exact broker bridge topology may vary as long as the defined replicated namespace converges without loops or duplicate execution.
 
-The device-facing contract is canonical in [mecon-firmware](https://github.com/hoejriis/mecon-firmware), not in the MeshContinuum implementation. This lets other projects implement compatible Backends/Readers.
+## Deployment identity and keys
+
+MECON deliberately separates credentials by purpose rather than using one universal master key.
+
+- **Deployment trust root / identity:** establishes continuity of one Deployment and authorizes Backend membership. Backend instances have their own instance identities rather than sharing one ordinary operational private key.
+- **Backend instance identity:** identifies and authenticates one trusted Backend to its peers.
+- **Offline sync-channel key:** shared with enrolled Companions and trusted Backends for the Deployment's private MeshCore sync channel. Because Companions possess this shared secret, loss/revocation of a Companion triggers sync-key rotation and redistribution to remaining authorized devices.
+- **Per-device MQTT identity/credential:** identifies one Companion to the Deployment's local/primary/secondary brokers and can be revoked individually. Possession of the offline sync key is not sufficient to mint an MQTT identity.
+- **Recovery material:** optional disaster-recovery authority stored only on explicitly designated Recovery Companions and protected by a user passphrase.
+
+MQTT transport identity and MECON cryptographic identity remain separate. Broker replacement/failover does not change device or Backend identity.
+
+## Offline sync channel
+
+Every Deployment has a private offline sync channel whose default name is the Deployment name. Enrolled Companions receive its current private key/generation so that authorized devices can participate in offline MECON coordination and can assist with enrollment flows when Backend connectivity is unavailable.
+
+The shared channel is intentionally not the Deployment trust root. A device possessing the sync key cannot unilaterally become a Backend, mint arbitrary broker credentials or impersonate the Deployment root.
+
+When a Companion is lost or revoked:
+
+1. revoke that device's individual MQTT/broker authority;
+2. increment the offline sync-key generation;
+3. create a new sync-channel private key;
+4. distribute the new generation to remaining authorized devices/Backends through available trusted paths;
+5. retain only the historical material required to interpret retained data, according to policy.
+
+## Cold recovery
+
+An administrator may designate one or more enrolled Companions as **Recovery Companions**. Each Recovery Companion independently holds an encrypted, versioned Recovery Package. Recovery v1 is not quorum-based: any current Recovery Companion plus its user-chosen passphrase can recover the Deployment.
+
+MECON does not impose passphrase complexity. The UI should explain the consequences of a weak passphrase and may provide strength guidance, but the administrator chooses the passphrase.
+
+### Two-part recovery authority
+
+A Recovery Companion does not store a directly usable plaintext master key. It stores an encrypted recovery package protected by a key derived from the user's passphrase with a documented password KDF and per-package salt/parameters.
+
+Therefore neither possession of the Companion nor knowledge of the passphrase alone is sufficient.
+
+### USB-only recovery
+
+Cold recovery is intentionally physical and narrow:
+
+1. start a fresh MECON Backend/Reader;
+2. choose **Recover existing Deployment**;
+3. physically connect a Recovery Companion over USB to the browser running the fresh Reader;
+4. Reader/WebSerial reads the opaque Recovery Package;
+5. user enters the passphrase;
+6. recovery material is decrypted in the browser where practical and used to establish continuity of the recovered Deployment;
+7. fresh Backend instance and broker operational credentials are generated;
+8. the offline sync key is rotated as part of recovery before normal operation resumes.
+
+Recovery is not exposed over RF, MQTT or BLE. Firmware should not remotely advertise a Recovery Companion as a high-value target; the recovery package is accessible only through the explicit USB recovery operation.
+
+### Recovery Package v1
+
+The package contains only high-value information that cannot safely/reliably be reconstructed from surviving devices or re-entered by the administrator. Expected contents are:
+
+- package format/version and recovery generation;
+- permanent Deployment ID and Deployment name;
+- cryptographic material required to prove/re-establish Deployment trust-root continuity;
+- trust-root/key generation metadata required to interpret that material;
+- current offline sync-channel identity, private key and generation;
+- cryptographic/KDF metadata required to authenticate/decrypt the package.
+
+It deliberately does **not** become a configuration backup. Do not store ordinary Wi-Fi presets, broker endpoints/passwords, retention settings, UI preferences, observations/history, routine device configuration, templates or similar reconstructable settings. Users, favourites and other state already represented on surviving Companions should be reconstructed/synchronized from those devices where the contracts provide sufficient evidence rather than duplicated into the Recovery Package.
+
+### Recovery generations
+
+Recovery Packages have a monotonic generation. Fundamental recovery/trust changes create a new generation and update designated Recovery Companions. A recovered Backend can identify an older package as stale. Removing/revoking a Recovery Companion must advance the relevant recovery authority so its old package cannot be treated as current indefinitely.
+
+Cold recovery proves Deployment continuity; it does not blindly resume all old operational credentials. New Backend/broker credentials are generated and the offline sync key is rotated during recovery.
 
 ## Deployment components
 
-A Deployment may contain:
-
-- one permanent Deployment identity;
-- 1..n Backend instances;
-- 0..n Reader deployments;
-- one primary cloud MQTT broker when Internet reachability is desired;
-- one secondary cloud MQTT broker when independent fallback is desired;
-- 0..n local MQTT brokers, normally one for each site requiring offline operation;
-- enrolled MECON/MeshCore devices.
-
-Neither cloud broker is required for a local-only installation.
+A Deployment may contain one permanent Deployment identity, 1..n Backend instances, 0..n Readers, one primary cloud broker, one secondary cloud broker, 0..n local brokers and enrolled devices. Neither cloud broker is required locally.
 
 ## Recommended deployment progression
 
 ### Small local deployment
 
-The recommended starting point is one Docker host containing:
-
-- Backend;
-- Reader;
-- local MQTT broker;
-- persistent Backend/database and broker state.
-
-The installation should provision its Deployment identity, local broker credentials and ACLs through a guided first-run flow rather than requiring manual MQTT administration.
+Start with one Docker host containing Backend, Reader, local MQTT broker and persistent application/broker state. First-run setup provisions Deployment identity, broker credentials and ACLs without manual MQTT administration.
 
 ### Hybrid deployment
 
-Add a primary cloud broker while leaving Backend/Reader/database local. The Backend makes outbound broker connections, so application services do not need public Internet ingress merely to support remotely connected devices.
+Add a primary cloud broker while leaving Backend/Reader/database local. Backend connections are outbound; public application ingress is optional.
 
 ### Resilient deployment
 
-Add an independently hosted secondary cloud broker. A recommended pattern is:
-
-- primary: ordinary VPS or equivalent, typically secure MQTT/TCP and/or WSS;
-- secondary: lightweight PaaS broker-only deployment, for example a Render-style Web Service using MQTT over secure WebSocket behind managed HTTPS/TLS ingress.
-
-The PaaS service needs no Backend, Reader or application database. It is a transport node with the broker persistence/queueing required by the MQTT replication contract.
-
-This deliberately allows the primary and secondary to have different hosting/network failure modes.
+Add an independently hosted secondary broker. A recommended pattern is primary on an ordinary VPS and secondary as a lightweight PaaS broker-only service using secure MQTT over WebSocket behind managed TLS. The PaaS node needs no Backend, Reader or application database.
 
 ## MQTT transport model
 
-MQTT is a logical transport contract, not a mandated socket type.
+MQTT over TLS/TCP and MQTT over secure WebSocket are equivalent MECON transports. Topics, authentication, ACL semantics, event identity and application behaviour are independent of socket transport.
 
-Supported secure public transports include:
-
-- MQTT over TLS/TCP, commonly exposed directly by VPS/broker hosts;
-- MQTT over secure WebSocket (WSS), suitable for PaaS platforms exposing HTTP(S)/WebSocket ingress.
-
-Topics, authentication, ACL semantics, event identity and application behaviour are independent of the chosen transport.
-
-## Device broker selection
-
-IP-capable MECON devices maintain one active MQTT session at a time and use this preference order:
-
-1. authenticated compatible local broker;
-2. primary cloud broker;
-3. secondary cloud broker.
-
-Discovery may locate a local candidate but never establishes trust. Devices use backoff/anti-flapping before moving back to a recovered higher-priority broker.
-
-Device MECON identity is independent of the broker carrying the session.
-
-## Backend broker connectivity
-
-A Backend connects concurrently to both configured cloud brokers. A Backend at a local site additionally connects to that site's local broker.
-
-Because the same MQTT event may therefore arrive through several paths, stable event/operation IDs and idempotent ingestion are mandatory.
-
-Loss of a broker is transport degradation; it does not change Backend identity or authoritative database state.
+IP-capable devices maintain one active session in priority order: authenticated local broker, primary cloud broker, secondary cloud broker. Backends connect concurrently to both configured cloud brokers and additionally to their local broker when applicable.
 
 ## Broker replication boundary
 
-The brokers replicate the **defined MECON MQTT namespace needed to make operation independent of the currently connected broker**.
+Brokers replicate the defined MECON MQTT namespace needed to make operation independent of the currently connected broker. Topic classes include local-only, ephemeral, replicated transient, replicated retained, durable-until-acknowledged commands/jobs, acknowledgements/results and presence/status with expiry. Stable IDs and idempotency prevent replay/multipath delivery from executing actions twice.
 
-The namespace must explicitly classify topics/material such as:
-
-- local-only / never bridged;
-- ephemeral;
-- replicated transient events;
-- replicated retained state;
-- durable-until-acknowledged jobs/commands;
-- acknowledgements/results;
-- presence/status with expiry semantics.
-
-Broker bridges must prevent uncontrolled loops. Reconnect, retained-message replay or multi-path delivery must not execute one logical action more than once.
-
-Brokers are not MECON databases. Long-term observations, users, device/application records and authoritative history belong to Backends.
+Brokers are not MECON databases. Long-term observations, users, application records and authoritative history belong to Backends.
 
 ## Backend federation boundary
 
-Multiple trusted Backends in the same Deployment synchronize versioned, authenticated, idempotent domain events and can recover through verified snapshots. They are equal peers; there is no privileged cloud database primary.
-
-Backend federation and broker replication solve different problems:
-
-- **broker replication** keeps operational MQTT transport available across local/primary/secondary paths;
-- **Backend federation** converges authoritative application/database state between Backend instances.
-
-A Backend need not expose public HTTPS merely to participate in a Deployment if it has another trusted federation path. Local/LAN or private-overlay paths may be used between trusted Backend instances.
-
-Federation is not a backup mechanism.
+Trusted Backends synchronize versioned, authenticated, idempotent domain events and recover through verified snapshots. They are equal peers; there is no privileged cloud database primary. Broker replication keeps operational MQTT transport available; Backend federation converges authoritative application/database state. Federation is not backup.
 
 ## Offline/direct operation
 
-MeshContinuum does not sit in the RF critical path. A mecon-firmware device retains its native MeshCore role without a Backend, broker, Wi-Fi or Internet connection.
-
-A local Backend/Reader/broker site remains useful during Internet failure. Devices connected to its local broker remain locally manageable according to their capabilities.
-
-A desktop Chrome/Edge Reader may also attach directly to a Companion over USB/BLE (or a Repeater over USB). In standalone mode it can operate against local browser state and synchronize observations/messages later. In bridge mode it can expose the attached device to a reachable Backend without inventing a second firmware contract.
+MeshContinuum does not sit in the RF critical path. A mecon-firmware device retains native MeshCore operation without Backend, broker, Wi-Fi or Internet. Local Backend/Reader/broker sites remain useful during Internet failure. Desktop Reader may also attach directly over USB/BLE according to device capability.
 
 ## Canonical application data model
 
-One user-visible message can have several transport records:
-
-- **Packet:** one logical MeshCore RF packet.
-- **Observation:** one receiver reporting that packet.
-- **Message:** decrypted user-visible content.
-- **Delivery:** transport-specific evidence for an outbound/inbound logical message.
-
-Stable identifiers prevent MQTT duplication, multiple observers, browser synchronization or Backend federation from creating duplicate logical messages or duplicate RF sends.
+One user-visible message can have several transport records: Packet, Observation, Message and Delivery. Stable identifiers prevent MQTT duplication, multiple observers, browser synchronization or Backend federation from creating duplicate logical messages or RF sends.
 
 ## Management boundary
 
-Management is capability/profile based and allowlisted. Observation, configuration read, messaging, administration and OTA are distinct authorities.
+Management is capability/profile based and allowlisted. Observation, configuration read, messaging, administration, recovery and OTA are distinct authorities. Recovery authority is never implied by ordinary enrollment or MQTT access.
 
-MeshContinuum presents the device's advertised schema/capabilities; it does not derive management behavior from board/role/version tables where the contract can answer directly.
+## Security boundary
 
-## Identity and security boundary
+Brokers need enough credential/ACL state to authorize transport but do not require MeshCore private identities, channel/message decryption keys, Deployment recovery material or the authoritative MECON trust graph simply to transport MQTT material.
 
-Transport identity and MECON identity are deliberately separate.
-
-An MQTT broker needs enough credential/ACL state to decide whether a client or bridge may connect and which Deployment namespace it may access. It does not require MeshCore private identities, channel/message decryption keys or the authoritative MECON trust graph simply to transport MQTT material.
-
-Backend and device cryptographic identity therefore survives broker failover or replacement.
-
-Private identities, Wi-Fi credentials, broker credentials and other secrets are never ordinary status data. Firmware managed updates use approved mechanisms/manifests rather than arbitrary image URLs.
-
-MeshContinuum application authorization and firmware device authority remain separate layers. A user may request an action only if both application authorization and the target device/broker grant permit it.
+Private identities, Wi-Fi credentials, broker credentials and recovery material are never ordinary status data. MeshContinuum application authorization and firmware device authority remain separate layers.
 
 ## Relationship to MeshCore
 

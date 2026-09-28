@@ -2,17 +2,17 @@
 
 **MeshContinuum (MECON)** is a hosted or self-hosted companion platform for [MeshCore](https://github.com/meshcore-dev/MeshCore). It adds a web Reader, packet aggregation, history, authorized decryption and remote device management while preserving independent MeshCore operation.
 
-> This repository describes the **public release target**. Implementation is being prepared for migration from the private development repositories; documentation describes the intended supported release rather than temporary development limitations.
+> This repository describes the **public target architecture and capabilities**. Documentation is a pre-1.0 target contract; individual capabilities may arrive incrementally.
 
 ## Sister firmware project
 
-[mecon-firmware](https://github.com/hoejriis/mecon-firmware) is the open firmware sister project. It is deliberately usable without MeshContinuum. MeshContinuum is its reference backend/Reader, while the canonical device-facing contracts live in `mecon-firmware` and may be implemented by other projects.
+[mecon-firmware](https://github.com/hoejriis/mecon-firmware) documents the open target firmware contract. It is deliberately usable without MeshContinuum. MeshContinuum is its reference Backend/Reader architecture, while device-facing contracts remain independently implementable.
 
-The release target starts with Heltec V3/V4 Companion and Repeater roles and a capability-based management model. Devices retain normal MeshCore operation when MECON infrastructure is unavailable.
+Devices retain normal MeshCore operation when MECON infrastructure is unavailable.
 
 ## Cloud service
 
-[mecon.cloud](https://mecon.cloud) is a hosted MeshContinuum service. Access is **Invitation Only**. It is one deployment of MeshContinuum, not a mandatory dependency and not part of the firmware trust model.
+[mecon.cloud](https://mecon.cloud) is a hosted MeshContinuum service. Access is **Invitation Only**. It is one Deployment of MeshContinuum, not a mandatory dependency and not part of the firmware trust model.
 
 ## Why MECON?
 
@@ -24,72 +24,91 @@ MeshCore's strength is independent RF communication. MeshContinuum preserves tha
 - inspect RF paths, receivers, RSSI and SNR;
 - enroll Companion identities for authorized online decryption;
 - configure, monitor and update supported devices;
-- connect directly to a Companion over USB/BLE when infrastructure is unavailable;
+- connect directly to supported devices where their security posture permits;
 - start with one small local installation and add Internet resilience or additional sites later.
 
-If MeshContinuum, MQTT or the Internet is unavailable, normal MeshCore radio and local-client operation continues.
+If MeshContinuum, MQTT or the Internet is unavailable, normal MeshCore radio operation continues.
 
 ## Components
 
 | Component | Purpose |
 |---|---|
-| Backend | Packet ingestion, reconciliation, authorized decryption, jobs and APIs |
-| Reader | Web inbox, channels, diagnostics, enrollment and management; direct USB/BLE operation |
-| MQTT broker | Transport between devices, sources and Backends |
-| mecon-firmware | Independent sister project implementing the open device contract |
+| Backend | Packet ingestion, reconciliation, authorized decryption, federation, jobs and APIs |
+| Reader | Web inbox, channels, diagnostics, enrollment and management; supported direct-device operation |
+| MQTT broker | Operational transport between devices, sources and Backends |
+| mecon-firmware | Independent sister project documenting the open target device contract |
 
 ## Start small
 
-The recommended first self-hosted deployment is deliberately simple: **one Docker host running Backend + Reader + a local MQTT broker**. A Raspberry Pi, NAS, small home server or ordinary Linux computer can be used.
+The recommended self-hosted starting point is deliberately simple: **one Docker host running Backend + Reader + a local MQTT broker**. A Raspberry Pi, NAS, small home server or ordinary Linux computer can be used.
 
-The public release target is a normal Docker Compose quick start: clone this repository, start the supplied Compose profile, then open the local Reader. Exact commands and image tags will be published with the implementation; the current documentation does not ask users to assemble broker configuration manually.
+First-run setup creates the Deployment administrator and guides adding the first device. MQTT credentials, local broker configuration and Deployment identity are provisioned by MECON rather than requiring manual broker administration.
 
-The first-run Reader creates the Deployment administrator and guides adding the first Companion. MQTT credentials, local broker configuration and Deployment identity are provisioned by MECON rather than requiring a new user to edit broker configuration manually.
-
-A local-only installation is a complete supported MECON deployment. Cloud infrastructure is optional.
+A local-only installation is a complete MECON Deployment. Cloud infrastructure is optional.
 
 ## Grow when you need resilience
 
-A MECON **Deployment** belongs to one administrator/trust domain. It can grow without replacing the original local installation:
+A MECON **Deployment** is one administrator/trust domain with a permanent cryptographic identity. It can grow without replacing the original local installation:
 
 1. **Local** — Backend + Reader + local broker. No Internet dependency.
 2. **Primary cloud broker** — adds an Internet rendezvous point for devices and local Backends.
 3. **Secondary cloud broker** — adds an independent fallback transport.
-4. **Additional Backends/sites** — add local sites and federated Backend instances as required.
+4. **Additional Backends/sites** — trusted peer Backend instances synchronize Deployment state.
 
-Devices use one MQTT connection at a time and prefer **local broker → primary cloud broker → secondary cloud broker**. Backends can connect to both cloud brokers and, when deployed locally, their local broker.
+Broker transport and Backend federation are separate layers. Devices normally use one broker connection at a time according to priority/failover policy, while Backends may connect concurrently to the brokers appropriate to their site.
 
-The brokers replicate the defined operational MECON MQTT namespace so switching transport does not change device or Backend identity. Authoritative history and application state remain Backend/database responsibilities and synchronize separately between trusted Backend instances.
+Brokers replicate only the operational MECON MQTT namespace needed for transport continuity. Authoritative application state converges separately between trusted Backend instances.
 
-## Recommended resilient deployment
+## Deployment authority
 
-For a resilient self-hosted installation we recommend deliberately different failure domains:
+A Deployment has a long-lived trust root and each Backend has its own instance identity. Devices trust a versioned set of Backend authorities authenticated by the Deployment rather than treating broker reachability or TLS credentials as administrative authority.
 
-- **Local site:** your Pi/NAS/server runs Backend + Reader + local broker.
-- **Primary broker:** a VPS or other independently operated Internet host, normally offering secure MQTT/TCP and/or secure MQTT over WebSocket.
-- **Secondary broker:** a lightweight Platform-as-a-Service deployment such as Render, using MQTT over secure WebSocket (WSS) behind the platform's managed HTTPS/TLS ingress.
+This separates:
 
-The secondary broker does **not** need a Backend, Reader or database. It can be a small broker-only service. This makes it practical to add independent transport resilience without administering a second full VPS.
+- Deployment/Backend authority;
+- MQTT transport credentials;
+- Backend federation;
+- application user authorization;
+- device security posture;
+- continuity/recovery authority.
 
-MQTT over TLS/TCP and MQTT over secure WebSocket are equivalent MECON transports. WSS is therefore a first-class option, not a browser-only feature.
+Compromise or replacement of one layer therefore does not automatically grant the others.
 
-A future supported deployment flow should make adding a secondary broker a guided operation from Reader/Admin, including a simple broker-only PaaS template where supported.
+## Backend federation
+
+Backend instances are peers; there is no privileged cloud database primary. They converge Deployment state using versioned application-level events with stable origin/sequence identity, deterministic conflict handling and tombstones for deletions.
+
+Federation replicates authoritative state and ingestion inputs rather than blindly copying every derived database row. Derived packet/observation/plaintext views can be regenerated locally. Operational jobs are not federated as executable work.
+
+New or far-behind Backends may bootstrap from a verified snapshot and then continue incremental synchronization. Snapshot cursors represent logical reconciliation, not proof that every historic raw record is physically present on the receiver.
+
+Accepted users/roles are Deployment state. Authentication sessions, magic links and API/agent tokens remain local to each Backend.
+
+## MQTT transport model
+
+MQTT over TLS/TCP and MQTT over secure WebSocket are equivalent MECON transports. Topics, authentication, ACL semantics, event identity and application behaviour are independent of socket transport.
+
+Brokers are transport infrastructure, not MECON databases. They do not need MeshCore private identities, message/channel decryption keys or Deployment recovery authority simply to transport MECON MQTT traffic.
+
+## Reader and management
+
+Reader normally uses Backend APIs for inbox, history, enrollment, diagnostics and management. Where supported, it can also operate against a directly attached device according to that device's security posture.
+
+MeshContinuum treats native MeshCore CLI/configuration semantics as canonical for native settings. MECON adds authorization, correlation, idempotency, auditing and transport adaptation rather than defining unrelated settings models for each transport.
+
+## Continuity and recovery
+
+Backend federation, backup and Deployment continuity are different concerns. The target architecture permits protected continuity material on eligible devices so a fresh Backend/Reader can re-establish an existing Deployment when ordinary infrastructure is unavailable.
+
+Continuity material is deliberately narrow: it restores Deployment authority/rendezvous continuity, not a complete application/database backup. Recovery establishes continuity and then creates fresh operational credentials where appropriate.
 
 ## Privacy and ownership
 
 MeshContinuum does not require a shared public MQTT hub. Each self-hosting administrator owns their Deployment infrastructure and credentials.
 
-MQTT brokers hold only the transport credentials/ACL information and retained/queued MQTT material required for their role. MeshCore private keys, channel/message decryption keys and the authoritative MECON trust graph are not broker requirements.
+A Backend or Reader does not have to be publicly exposed. A hybrid installation may expose only its Internet MQTT rendezvous while application services and databases remain local/private.
 
-A Backend or Reader does not have to be publicly exposed. A valid hybrid installation may expose only its primary and secondary MQTT brokers while all application services and databases remain local/private.
-
-## Deployment model
-
-Readers normally use a Backend, but a desktop Chrome/Edge Reader can also operate a directly attached Companion without a reachable Backend and synchronize later.
-
-No hosting provider is part of the protocol contract. Render-style WSS hosting is a recommended convenient secondary-broker option, not a product dependency. Generic VPS, local Docker and other compatible MQTT hosting remain valid.
-
-Backend cooperation uses versioned application-level contracts rather than direct database replication. Broker replication and Backend federation are deliberately separate layers.
+No hosting provider is part of the protocol contract.
 
 ## Documentation
 
@@ -98,6 +117,7 @@ Backend cooperation uses versioned application-level contracts rather than direc
 - [Components](docs/COMPONENTS.md)
 - [Deployment modes](docs/DEPLOYMENT_MODES.md)
 - [Architecture](docs/ARCHITECTURE.md)
+- [Backend target contract 0.9](docs/BACKEND_TARGET_CONTRACT_0.9.md)
 - [Project status / release target](docs/PROJECT_STATUS.md)
 - [Contributing](CONTRIBUTING.md)
 - [Security policy](SECURITY.md)
@@ -110,4 +130,4 @@ Backend cooperation uses versioned application-level contracts rather than direc
 - Project domain: **MeshContinuum.info**
 - Hosted service: **mecon.cloud**
 
-Private deployments may use their own instance names. Instance names are configuration, not protocol identity.
+Private Deployment names are configuration, not protocol identity.

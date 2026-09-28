@@ -10,7 +10,7 @@ One MECON **Deployment** represents one administrator/trust domain and has a hum
 
 ```mermaid
 flowchart TD
-    RF["MeshCore RF network"]
+    RF["MeshCore RF network / remote CLI"]
     FW["mecon-firmware\nCompanion / Repeater"]
     LOCAL["Local MQTT broker"]
     PRIMARY["Primary cloud MQTT broker"]
@@ -18,7 +18,7 @@ flowchart TD
     BE["MeshContinuum Backend(s)"]
     READER["MeshContinuum Reader"]
 
-    FW <-->|"native MeshCore"| RF
+    FW <-->|"native MeshCore + CLI"| RF
     FW -->|"1. local preference"| LOCAL
     FW -->|"2. cloud fallback"| PRIMARY
     FW -->|"3. secondary fallback"| SECONDARY
@@ -29,10 +29,39 @@ flowchart TD
     BE <-->|"concurrent cloud connection"| SECONDARY
     BE <-->|"application API"| READER
     READER <-->|"USB/BLE direct contract"| FW
+    BE -->|"versioned command jobs"| FW
     BE <-->|"versioned federation events"| BE
 ```
 
 The exact broker bridge topology may vary as long as the defined replicated namespace converges without loops or duplicate execution.
+
+## Device management architecture
+
+MeshContinuum treats the firmware's **MeshCore CLI/configuration plane as the canonical management semantics for native MeshCore behaviour**. MECON extends that plane for MECON-owned behaviour rather than defining independent configuration models for USB, BLE, MQTT and LoRa.
+
+The backend and Reader therefore operate in terms of logical allowlisted operations with request/job identity, arguments, authority and correlated results. The transport adapter may carry those operations over MQTT, USB, BLE or, through a Companion, MeshCore RF/LoRa. Transport choice does not change the meaning, validation or persistence of a setting.
+
+For native settings/operations, released MeshCore 1.18 remains authoritative. MECON firmware must not mirror native radio/name/location/routing/GPS/etc. into a second authoritative settings database. Structured schema/get/apply APIs remain useful to MeshContinuum for UI generation and atomic multi-field changes, but they orchestrate the canonical CLI/configuration operations rather than replace them.
+
+Remote nodes should be managed using released MeshCore authenticated CLI/command mechanisms where available. Conceptually:
+
+```text
+MeshContinuum Backend / Reader
+          │
+     command envelope
+          │
+   MQTT / USB / BLE
+          │
+  local MECON Companion
+          │
+     MeshCore RF/LoRa
+          │
+ remote target CLI/config
+```
+
+MECON adds correlation, authorization policy, replay/idempotency, auditing and compact transport encoding where needed. It does not introduce a proprietary RF settings protocol when upstream CLI can express the operation.
+
+The detailed firmware contract lives in `hoejriis/mecon-firmware/docs/contract/`; the consolidated pre-1.0 architecture is `TARGET_FIRMWARE_CONTRACT_0.9.md`. Exact mappings are frozen after released MeshCore 1.18 is pinned.
 
 ## Deployment identity and keys
 
@@ -150,7 +179,7 @@ One user-visible message can have several transport records: Packet, Observation
 
 ## Management boundary
 
-Management is capability/profile based and allowlisted. Observation, configuration read, messaging, administration, recovery and OTA are distinct authorities. Recovery authority is never implied by ordinary enrollment or MQTT access.
+Management is capability/profile based and allowlisted. Observation, configuration read, configuration write/administration, messaging, recovery and OTA are distinct authorities. Recovery authority is never implied by ordinary enrollment or MQTT access. Canonical CLI semantics do not imply arbitrary shell access.
 
 ## Security boundary
 
@@ -160,4 +189,4 @@ Private identities, Wi-Fi credentials, broker credentials and recovery material 
 
 ## Relationship to MeshCore
 
-MeshCore remains the RF protocol and source of native Companion/Repeater behavior. MeshContinuum and mecon-firmware add optional management/connectivity around it; neither requires changing the MeshCore RF protocol.
+MeshCore remains the RF protocol, source of native Companion/Repeater behavior **and source of native CLI/configuration semantics**. MeshContinuum and mecon-firmware add optional management/connectivity around it; neither requires changing the MeshCore RF protocol.

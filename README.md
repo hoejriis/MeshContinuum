@@ -16,11 +16,25 @@ At home, on the move or with several Companions: read traffic captured by the so
 
 Enroll an identity or channel you are authorized to use to read its captured traffic. An enrolled Companion can be switched off while another configured observer hears a message for it. MECON cannot recover a packet that none of its sources received.
 
+![The Packets view for one channel message: its route through two repeater hops, the decrypted text, and three receptions by different gateways with their offsets, RSSI and SNR.](docs/images/reader-reception-desktop.png)
+
+<img src="docs/images/reader-reception-phone.png" alt="A channel conversation on a phone, with how many observers heard each message." width="260" />
+
+One message, kept once, with every reception that heard it, on a desktop or a phone.
+*Private beta, captured 9 October 2026 on MECON v0.194.0 with synthetic demo data: the devices, names, places and messages are made up.*
+
 ## Manage devices remotely
 
 Check health and connectivity, inspect reception, and configure supported Companions and Repeaters. Send through an authorized Companion gateway. Firmware, board, role and advertised capabilities determine which actions are available; a Repeater is not a Companion sending identity.
 
 These workflows exist in the private beta. Hardware acceptance and supported combinations are release-specific.
+
+![The Devices list: two Companions and a Repeater, each with its connection, firmware version, battery, uptime, when it was last heard and how many packets it reported.](docs/images/devices-desktop.png)
+
+![A Companion's Configure page: name and location, and its radio settings matched to the EU/UK (Narrow) community preset, each field marked with the transport that writes it.](docs/images/device-configure-desktop.png)
+
+Connection and health for every device in one list, and a supported device's settings read from it and written back over its connection. The actions available depend on the device, its role and its firmware.
+*Private beta, captured 9 October 2026 on MECON v0.194.0 with synthetic demo data: the devices, names, places and messages are made up.*
 
 ## Your infrastructure, your control
 

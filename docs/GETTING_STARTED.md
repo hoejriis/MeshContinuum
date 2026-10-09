@@ -19,6 +19,10 @@ Enrolling an identity/channel for decryption and adding a managed device are sep
 
 A managed radio workflow additionally needs an accepted board/revision, the matching firmware role and a compatible direct-connect environment. Exact instructions will accompany the accepted beta; no placeholder flash commands or unpublished container names are provided here.
 
+## What you will see
+
+Once signed in, the Reader shows the channels and identities you enrolled, with each message kept once and every reception that heard it. If you manage devices, the Devices list shows each one's connection and health. The screenshots in the [README](../README.md#one-reader-more-reception) are from the private beta, captured on MECON v0.194.0 with synthetic demo data. An empty Reader before your sources hear anything is normal: it means no packet has been received yet, not that something failed.
+
 ## Browser versus radio access
 
 Reading through a reachable hosted Backend and directly attaching a radio are different workflows. The beta's documented direct setup path uses desktop Chrome/Edge for USB/BLE where the device supports it. Do not assume an iPhone or iPad browser can flash or directly attach a radio just because it can display the Reader. Accepted browser/OS combinations must be documented with the beta.

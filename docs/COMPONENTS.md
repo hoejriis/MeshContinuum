@@ -1,5 +1,7 @@
 # Components
 
+> **Target documentation:** this public repository has no installable release yet. See the [shared capability matrix](CAPABILITIES.md) for current availability and acceptance; specifications do not certify hardware or release readiness.
+
 MeshContinuum has three application components and one independent sister firmware project.
 
 | Component | Responsibility |

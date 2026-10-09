@@ -1,38 +1,33 @@
 # MeshContinuum documentation
 
-MeshContinuum (**MECON**) is an independent companion platform for MeshCore: Backend, web Reader and broker integration. Its sister project [mecon-firmware](https://github.com/hoejriis/mecon-firmware) provides the open device firmware and canonical device-facing contracts.
-
-These documents describe the **public target architecture and capabilities**. They should be read as the intended pre-1.0 contract rather than as a statement that every capability is already implemented in this repository.
-
-## Start here
+## For users and prospective testers
 
 - [Why MeshContinuum](WHY_MESHCONTINUUM.md)
-- [Components](COMPONENTS.md)
+- [Get started / beta expectations](GETTING_STARTED.md)
+- [Current capabilities](CAPABILITIES.md) — shared maturity reference
+- [Roadmap](ROADMAP.md)
+- [Trust and privacy](TRUST_AND_PRIVACY.md)
 - [Deployment modes](DEPLOYMENT_MODES.md)
+
+## For contributors and implementers
+
+- [Contributing](../CONTRIBUTING.md)
+- [Project status](PROJECT_STATUS.md)
+- [Components](COMPONENTS.md)
+- [Detailed product target](PRODUCT_TARGET.md)
 - [Architecture](ARCHITECTURE.md)
 - [Backend target contract 0.9](BACKEND_TARGET_CONTRACT_0.9.md)
-- [Project status and release target](PROJECT_STATUS.md)
+- [Shared product message / front-page brief](PRODUCT_MESSAGING.md)
+- [Security reporting](../SECURITY.md)
 
-The Backend target contract consolidates the intended Deployment-authority, Backend-federation, MQTT-transport, Reader, management and continuity boundaries.
+Architecture and contract documents describe the target. They do not override the capability matrix or prove that a public release exists.
 
-For firmware architecture, hardware support, direct USB/BLE behavior, MQTT/device settings contracts and firmware security, use the documentation in [mecon-firmware](https://github.com/hoejriis/mecon-firmware).
-
-## Cloud service
-
-[mecon.cloud](https://mecon.cloud) is an Invitation Only hosted MeshContinuum deployment. It is not required by the firmware or by self-hosted MeshContinuum installations.
+The sister [mecon-firmware](https://github.com/hoejriis/mecon-firmware) project owns the backend-neutral device contract.
 
 ## Exploratory proposals
 
-These discuss possible upstream MeshCore changes and are not MECON release commitments:
-
-- [Geographical flood scopes and dynamic Repeater load adaptation](GEOGRAPHICAL_FLOOD_SCOPES_PROPOSAL.md)
+[Geographical flood scopes and dynamic Repeater load adaptation](GEOGRAPHICAL_FLOOD_SCOPES_PROPOSAL.md) discusses possible upstream changes. It is not a release commitment.
 
 ## Naming
 
-- **MeshContinuum** — application project/product.
-- **MECON** — shared technical shorthand.
-- **mecon-firmware** — independent firmware sister project.
-- **MeshContinuum.info** — project domain.
-- **mecon.cloud** — hosted MeshContinuum service.
-
-Private installation names are configuration and never protocol/product identity.
+**MeshContinuum** is the product; **MECON** the shorthand; **mecon-firmware** the firmware project; **MeshContinuum.info** the project domain; **mecon.cloud** the hosted service. Private installation names are configuration, not product/protocol identity.

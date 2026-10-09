@@ -1,5 +1,7 @@
 # Architecture
 
+> **Target documentation:** this public repository has no installable release yet. See the [shared capability matrix](CAPABILITIES.md) for current availability and acceptance; specifications do not certify hardware or release readiness.
+
 ## Design principles
 
 MeshContinuum is local-first and self-hostable. A small local installation is a complete product; cloud services add reachability and resilience rather than becoming prerequisites for MeshCore operation.

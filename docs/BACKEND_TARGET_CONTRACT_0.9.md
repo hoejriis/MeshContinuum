@@ -1,5 +1,7 @@
 # MeshContinuum Backend Target Contract 0.9
 
+> **Target documentation:** this public repository has no installable release yet. See the [shared capability matrix](CAPABILITIES.md) for current availability and acceptance; specifications do not certify hardware or release readiness.
+
 Status: **public pre-1.0 target architecture**.
 
 This document describes the intended Backend behaviour of MeshContinuum. It is a target capability contract, not a claim that every item is implemented in the current public repository.

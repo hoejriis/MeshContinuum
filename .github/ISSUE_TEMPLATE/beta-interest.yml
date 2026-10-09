@@ -1,0 +1,33 @@
+name: Express beta interest
+description: Describe how you would like to test MECON; no access or date is promised.
+title: "[Beta interest] "
+body:
+  - type: markdown
+    attributes:
+      value: "First external tests are expected on invitation-only mecon.cloud. Timing is unannounced. This public issue does not create an account, invitation or guaranteed waiting-list place. Do not post email addresses, private keys or credentials."
+  - type: textarea
+    id: use_case
+    attributes:
+      label: What would you like MECON to help you do?
+      description: "For example: one Reader across Companions, reception history, or managing a remote node."
+    validations:
+      required: true
+  - type: textarea
+    id: setup
+    attributes:
+      label: Your setup
+      description: "Board model/revision and role if any; browser/OS. Exact locations and private identifiers are unnecessary."
+  - type: dropdown
+    id: interest
+    attributes:
+      label: Preferred starting point
+      options:
+        - Hosted beta on mecon.cloud
+        - Future self-hosting
+        - Documentation or contract review
+    validations:
+      required: true
+  - type: textarea
+    id: feedback
+    attributes:
+      label: What could you help test or explain?

@@ -1,28 +1,25 @@
 # Contributing to MeshContinuum
 
-MeshContinuum is in early public development. Design discussion and focused issue reports are welcome.
+Documentation, use cases and contract review are welcome now. This repository does not yet contain application source; please do not assume a code contribution or local build path exists.
 
-## Before proposing code
+## Choose a useful first contribution
 
-Please preserve these boundaries:
+- Clarify an unfamiliar term or a step a new operator cannot follow.
+- [Report a problem or ask a question](https://github.com/hoejriis/MeshContinuum/issues/new?template=feedback.yml).
+- [Describe a use case](https://github.com/hoejriis/MeshContinuum/issues/new?template=use-case.yml).
+- [Express beta interest](https://github.com/hoejriis/MeshContinuum/issues/new?template=beta-interest.yml). Access remains invitation only, with no announced date.
+- Review the public device contract in [mecon-firmware](https://github.com/hoejriis/mecon-firmware).
 
-- standard MeshCore operation must remain useful without MECON;
-- public code must be instance neutral;
-- the initial first-party hardware target is Heltec V3;
-- external repeaters and brokers integrate through Backend ingestion adapters;
-- management operations are explicit and allowlisted;
-- backend federation uses versioned domain events rather than database replication.
+Use Issues for public conversation while Discussions is not enabled. Search existing issues first. Never include secrets or private traffic; use [SECURITY.md](SECURITY.md) for vulnerabilities.
 
-Open an issue before making a change that affects wire protocols, persisted configuration, cryptographic trust, device management or backend federation.
+## Documentation pull requests
 
-## Pull requests
+State the reader's problem, your change and which links or claims you checked. Keep capability claims consistent with [the shared matrix](docs/CAPABILITIES.md). Label target behavior as target behavior. Screenshots must use sanitized or synthetic data and identify their version/date.
 
-A pull request should include:
+## Design boundaries
 
-- the problem and intended behavior;
-- tests appropriate to the change;
-- compatibility and migration impact;
-- documentation updates;
-- hardware evidence when device behavior changes.
+Preserve ordinary offline MeshCore operation, instance-neutral product configuration and backend-neutral firmware contracts. V3/V4 Companion/Repeater are intended hardware targets subject to individual acceptance. Device actions are explicit, authorized and capability-aware. Federation uses versioned application events.
 
-Do not commit credentials, private keys, real device identifiers, private domains or operator-specific deployment configuration.
+Discuss changes to wire protocols, persisted data, trust or device management before implementation. Later code PRs will need proportionate tests, compatibility/migration notes and real hardware evidence where applicable.
+
+Contributions to this repository use its [Apache-2.0 licence](LICENSE). Firmware is licensed separately.

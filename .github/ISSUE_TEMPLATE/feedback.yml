@@ -1,0 +1,30 @@
+name: Problem, question or documentation feedback
+description: Explain a confusing step, beta problem or contract question.
+title: "[Feedback] "
+body:
+  - type: markdown
+    attributes:
+      value: "Public issue: never include keys, credentials, private messages or vulnerability details. For security reports read SECURITY.md."
+  - type: textarea
+    id: goal
+    attributes:
+      label: What were you trying to do?
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: What happened, and what did you expect?
+      description: Include reproduction steps or the document link and unclear wording.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Relevant environment
+      description: "Beta version, browser/OS, board revision and role, transport; omit private identifiers."
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized evidence
+      description: "Screenshots or minimal logs if useful; review them before posting."

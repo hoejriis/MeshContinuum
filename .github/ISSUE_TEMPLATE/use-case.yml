@@ -1,0 +1,21 @@
+name: Use case or feature idea
+description: Explain a real MeshCore problem and the outcome you need.
+title: "[Use case] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem do you have?
+      description: "Describe the situation and current workaround, without private data."
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: What would a useful result look like?
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Hardware, connectivity or other constraints

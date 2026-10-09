@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Current capabilities and maturity
+    url: https://github.com/hoejriis/MeshContinuum/blob/main/docs/CAPABILITIES.md
+    about: See what is available, in beta, planned or experimental.
+  - name: Security reporting
+    url: https://github.com/hoejriis/MeshContinuum/blob/main/SECURITY.md
+    about: Read the private reporting instructions before sharing security details.

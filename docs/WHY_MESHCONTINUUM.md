@@ -1,5 +1,7 @@
 # Why MeshContinuum?
 
+> **Target documentation:** this public repository has no installable release yet. See the [shared capability matrix](CAPABILITIES.md) for current availability and acceptance; specifications do not certify hardware or release readiness.
+
 MeshCore is useful because it works without cloud infrastructure. MeshContinuum extends that experience without changing that foundation.
 
 ## User benefits

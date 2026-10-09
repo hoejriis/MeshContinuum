@@ -18,11 +18,10 @@ Enroll an identity or channel you are authorized to use to read its captured tra
 
 ![The Packets view for one channel message: its route through two repeater hops, the decrypted text, and three receptions by different gateways with their offsets, RSSI and SNR.](docs/images/reader-reception-desktop.png)
 
-<img src="docs/images/reader-reception-phone.png" alt="A channel conversation on a phone, with how many observers heard each message." width="260" align="right" />
+<img src="docs/images/reader-reception-phone.png" alt="A channel conversation on a phone, with how many observers heard each message." width="260" />
 
 One message, kept once, with every reception that heard it, on a desktop or a phone.
 *Private beta, captured 9 October 2026 on MECON v0.194.0 with synthetic demo data: the devices, names, places and messages are made up.*
-<br clear="right" />
 
 ## Manage devices remotely
 

@@ -10,7 +10,7 @@ Documentation, use cases and contract review are welcome now. This repository do
 - [Express beta interest](https://github.com/hoejriis/MeshContinuum/issues/new?template=beta-interest.yml). Access remains invitation only, with no announced date.
 - Review the public device contract in [mecon-firmware](https://github.com/hoejriis/mecon-firmware).
 
-Use Issues for public conversation while Discussions is not enabled. Search existing issues first. Never include secrets or private traffic; use [SECURITY.md](SECURITY.md) for vulnerabilities.
+**Issues or Discussions?** Use [Discussions](https://github.com/hoejriis/MeshContinuum/discussions) for questions (Q&A), ideas and general conversation, and Issues for a specific documentation problem, use case or the beta-interest form above. Firmware-specific technical discussion belongs in [mecon-firmware's Discussions](https://github.com/hoejriis/mecon-firmware/discussions). Search first. Never include secrets or private traffic; use [SECURITY.md](SECURITY.md) for vulnerabilities.
 
 ## Documentation pull requests
 

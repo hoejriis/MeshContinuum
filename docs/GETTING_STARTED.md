@@ -15,9 +15,9 @@ First external testing is expected on mecon.cloud. Self-hosting remains a produc
 
 The maintainer will provide the supported beta version, access instructions and the applicable onboarding path. A first session should reach one understandable result: captured traffic in the Reader, followed by reception details explaining where it came from.
 
-Enrolling an identity/channel for decryption and adding a managed device are separate actions. Never put a private key or channel secret in an issue. Review the hosted Backend's access to enrolled keys before importing them.
+Enrolling an identity/channel for decryption and adding a managed device are separate actions. Never put a private key or channel secret in an issue. Review the hosted Backend's access to enrolled keys before importing them: for mecon.cloud, see [what is stored and who can read it](HOSTED_BETA_DATA.md). If something goes wrong, see [beta support](BETA_SUPPORT.md).
 
-A managed radio workflow additionally needs an accepted board/revision, the matching firmware role and a compatible direct-connect environment. Exact instructions will accompany the accepted beta; no placeholder flash commands or unpublished container names are provided here.
+A managed radio workflow additionally needs an accepted board/revision, the matching firmware role and a compatible direct-connect environment. The boards offered for the beta are on [mecon-firmware's beta board list](https://github.com/hoejriis/mecon-firmware/blob/main/docs/BETA_BOARDS.md). Exact instructions will accompany the accepted beta; no placeholder flash commands or unpublished container names are provided here.
 
 ## What you will see
 

@@ -6,7 +6,7 @@ MECON preserves independent MeshCore radio operation while adding optional conne
 
 When you enroll a Companion private key or a channel key, the Backend can use it to decrypt captured traffic. **This is not an operator-blind, end-to-end-encrypted web service.** Application permissions can separate users and administrator APIs; they do not remove the hosting operator's control over the running server and its storage.
 
-Before a hosted beta invitation is used, the operator must explain key storage, access boundaries, retention, removal and backup behavior for that deployment. Do not infer these from an architectural target or a promise that normal MeshCore RF remains independent.
+Before a hosted beta invitation is used, the operator must explain key storage, access boundaries, retention, removal and backup behavior for that deployment. Do not infer these from an architectural target or a promise that normal MeshCore RF remains independent. For the mecon.cloud beta, see [what is stored and who can read it](HOSTED_BETA_DATA.md).
 
 ## Separate permissions
 

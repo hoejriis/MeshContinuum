@@ -21,7 +21,7 @@ Enroll an identity or channel you are authorized to use to read its captured tra
 <img src="docs/images/reader-reception-phone.png" alt="A channel conversation on a phone, with how many observers heard each message." width="260" />
 
 One message, kept once, with every reception that heard it, on a desktop or a phone.
-*Private beta, captured 9 October 2026 on MECON v0.194.0 with synthetic demo data: the devices, names, places and messages are made up.*
+*Private beta, captured 9 October 2026 on MECON v0.194.0 with synthetic demo data: the devices, names, places and messages are made up. Signed in to mecon.cloud you see real, live traffic instead, and the Reader's footer shows the version it runs.*
 
 ## Manage devices remotely
 
@@ -34,7 +34,7 @@ These workflows exist in the private beta. Hardware acceptance and supported com
 ![A Companion's Configure page: name and location, and its radio settings matched to the EU/UK (Narrow) community preset, each field marked with the transport that writes it.](docs/images/device-configure-desktop.png)
 
 Connection and health for every device in one list, and a supported device's settings read from it and written back over its connection. The actions available depend on the device, its role and its firmware.
-*Private beta, captured 9 October 2026 on MECON v0.194.0 with synthetic demo data: the devices, names, places and messages are made up.*
+*Private beta, captured 9 October 2026 on MECON v0.194.0 with synthetic demo data: the devices, names, places and messages are made up. Signed in to mecon.cloud you see real, live traffic instead, and the Reader's footer shows the version it runs.*
 
 ## Your infrastructure, your control
 

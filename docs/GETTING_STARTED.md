@@ -15,13 +15,13 @@ First external testing is expected on mecon.cloud. Self-hosting remains a produc
 
 The maintainer will provide the supported beta version, access instructions and the applicable onboarding path. A first session should reach one understandable result: captured traffic in the Reader, followed by reception details explaining where it came from.
 
-Enrolling an identity/channel for decryption and adding a managed device are separate actions. Never put a private key or channel secret in an issue. Review the hosted Backend's access to enrolled keys before importing them: for mecon.cloud, see [what is stored and who can read it](HOSTED_BETA_DATA.md). If something goes wrong, see [beta support](BETA_SUPPORT.md).
+Enrolling an identity for decryption and adding a managed device are separate actions. In the Reader, **Devices → Add → Add Standalone Companion** enrols a Companion's private key for decryption only, and **Devices → Add → Configure** sets up and enrols a supported device over USB. Channels are added by whoever runs the installation. Never put a private key or channel secret in an issue. Review the hosted Backend's access to enrolled keys before importing them: for mecon.cloud, see [what is stored and who can read it](HOSTED_BETA_DATA.md). If something goes wrong, see [beta support](BETA_SUPPORT.md).
 
 A managed radio workflow additionally needs an accepted board/revision, the matching firmware role and a compatible direct-connect environment. The boards offered for the beta are on [mecon-firmware's beta board list](https://github.com/hoejriis/mecon-firmware/blob/main/docs/BETA_BOARDS.md). Exact instructions will accompany the accepted beta; no placeholder flash commands or unpublished container names are provided here.
 
 ## What you will see
 
-Once signed in, the Reader shows the channels and identities you enrolled, with each message kept once and every reception that heard it. If you manage devices, the Devices list shows each one's connection and health. The screenshots in the [README](../README.md#one-reader-more-reception) are from the private beta, captured on MECON v0.194.0 with synthetic demo data. An empty Reader before your sources hear anything is normal: it means no packet has been received yet, not that something failed.
+Once signed in, the Reader shows the channels the installation reads and the direct messages of the Companions you enrolled, with each message kept once and every reception that heard it. Much of what you see is heard by public observer feeds the installation subscribes to, not only by your own radio; a message's reception details say which observers heard it. If you manage devices, the Devices list shows each one's connection and health. The screenshots in the [README](../README.md#one-reader-more-reception) are from the private beta, captured on MECON v0.194.0 with synthetic demo data; your own Reader shows live traffic and, in its footer, the version it runs. An empty Reader before your sources hear anything is normal: it means no packet has been received yet, not that something failed.
 
 ## Browser versus radio access
 

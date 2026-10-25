@@ -7,22 +7,38 @@ MECON is free and intended for open-source release. Progress is expressed as evi
 | Track | Next outcome | Completion evidence |
 |---|---|---|
 | Hosted external testing | A small, invitation-only mecon.cloud beta | Truthful front page, accepted beta configuration, private security-report route, clear onboarding and a new tester's first useful result |
-| Public software release | Independently usable source, artifacts and documentation | Staged firmware migration, clean Backend publication, licensing/provenance, hardware and security acceptance, reproducible packaging and independent setup |
+| Public software release | Independently usable source, artifacts and documentation | Generic firmware capabilities verified on the four boards, clean Backend publication, licensing/provenance, security acceptance, reproducible packaging and independent setup |
 
 Hosted testing may precede public source publication. It is not blocked on finishing every long-term deployment mode. Its date and admitted tester group remain undecided.
 
-## Public implementation sequence
+## Public firmware programme
 
-The existing staged programme is preserved:
+*Plans, not shipped features. What exists today is in the [capability matrix](CAPABILITIES.md).*
 
-1. **Released MeshCore 1.18 baseline:** pin the released upstream revision and prove stock behavior on the target hardware. A moving development branch does not satisfy the gate.
-2. **MECON 0.8.1 milestone:** first refounded firmware, tested on test boards against the current Backend.
-3. **Compatibility bridge:** make the current Backend work with both legacy and new device contracts; prove a mixed fleet.
-4. **MECON 0.9.1 milestone:** migrate the fleet board by board after acceptance. Remove dependence on legacy-only behavior.
-5. **Public Backend:** populate MeshContinuum with the reviewed, instance-neutral implementation and clean history after the device migration.
-6. **MECON 1.0.1 milestone:** validate firmware end to end against the new public Backend and publish the accepted compatibility matrix.
+The public firmware builds reusable, generic managed-device capabilities first. Any conforming manager can use them; none needs this Backend, a particular broker or a domain. MECON-specific behaviour then builds on them.
 
-The 0.8.1 / 0.9.1 / 1.0.1 names are existing **programme milestone names**. They are not downloads, dates, or a numeric upgrade instruction from today's independently numbered private beta. Release tags and upgrade ordering must be made unambiguous before artifacts are published.
+**Generic capabilities, first:**
+
+| Capability | Firmware issue |
+|---|---|
+| Device identity, management authority, replay protection and recovery | [#95](https://github.com/hoejriis/mecon-firmware/issues/95) |
+| Full telemetry and subscriptions over MQTT, USB and BLE | [#96](https://github.com/hoejriis/mecon-firmware/issues/96) |
+| Managed operations and configuration with safe recovery | [#109](https://github.com/hoejriis/mecon-firmware/issues/109) |
+| Signed firmware updates over IP, USB and BLE | [#110](https://github.com/hoejriis/mecon-firmware/issues/110) |
+| Private management channel | [#114](https://github.com/hoejriis/mecon-firmware/issues/114) |
+| Authenticated management over direct and channel LoRa | [#115](https://github.com/hoejriis/mecon-firmware/issues/115) |
+| Compact telemetry over LoRa | [#116](https://github.com/hoejriis/mecon-firmware/issues/116) |
+| Conformance on Heltec V3, Heltec V4, Wio Tracker L1 and SenseCAP T1000-E | [#117](https://github.com/hoejriis/mecon-firmware/issues/117), [#1](https://github.com/hoejriis/mecon-firmware/issues/1) |
+
+**MECON-specific, later:** Deployment mapping, connected messaging, backfill, outage and sync-channel behaviour, the RF health policy, and firmware-image delivery over LoRa ([#118](https://github.com/hoejriis/mecon-firmware/issues/118) to [#123](https://github.com/hoejriis/mecon-firmware/issues/123)).
+
+Boundaries:
+- A private management channel is generic. Membership of the channel and its encryption grant no command authority.
+- Compact RF telemetry is a smaller, less frequent selection of the same telemetry catalogue, not a second one.
+- Screen write-back is diagnostic telemetry from the device to its manager. It never writes to the display.
+- The existing Reader needs a Backend and bridges USB and BLE. A fully offline Reader is later, undesigned work. Independent managers may implement the public contracts.
+
+Release timing, migrating the production fleet, and publishing the Backend are separate decisions, with no date. The private Backend keeps improving for beta users and is adapted to the public firmware as it lands.
 
 ## Before inviting external testers
 

@@ -6,7 +6,7 @@
 
 MeshContinuum (MECON) brings messages captured by your Companions and configured observer sources into one web Reader, with persistent history, reception details and management of supported devices. Standard [MeshCore](https://github.com/meshcore-dev/MeshCore) radio operation remains independent of MECON and the Internet.
 
-> **Status — 9 October 2026:** working private beta; this public repository currently contains documentation and target contracts, with no application source or installable release. First external testing is expected to use **[mecon.cloud](https://mecon.cloud)**, which is invitation only. No opening date is announced. [What works, what is planned →](docs/CAPABILITIES.md)
+> **Status — 25 October 2026:** working private beta. This repository contains documentation and target contracts, with no application source or installable release. The sister [mecon-firmware](https://github.com/hoejriis/mecon-firmware) repository publishes its firmware source and source-only pre-releases, with no binaries. First external testing is expected to use **[mecon.cloud](https://mecon.cloud)**, which is invitation only. No opening date is announced. [What works, what is planned →](docs/CAPABILITIES.md)
 
 [Follow development](https://github.com/hoejriis/MeshContinuum) · [Express beta interest](https://github.com/hoejriis/MeshContinuum/issues/new?template=beta-interest.yml) · [Read the roadmap](docs/ROADMAP.md)
 
@@ -47,7 +47,7 @@ Normal MeshCore RF operation continues when MECON is unavailable. The hosted Rea
 | Project | Responsibility | Public state today |
 |---|---|---|
 | **MeshContinuum** (this repo) | Backend, web Reader and broker/deployment integration | Documentation and target contracts |
-| **[mecon-firmware](https://github.com/hoejriis/mecon-firmware)** | Optional MeshCore-derived firmware, device management and open device contracts | Documentation and target contracts |
+| **[mecon-firmware](https://github.com/hoejriis/mecon-firmware)** | Optional MeshCore-derived firmware, device management and open device contracts | Firmware source (MIT), source-only pre-releases, contracts; no binaries or supported release |
 
 MECON firmware is not required for ordinary MeshCore use or for reading captured traffic with authorized keys. Managed device features need compatible firmware or a supported bridge. The firmware contracts are backend-neutral: mecon.cloud is one deployment, not a required service.
 
@@ -74,6 +74,6 @@ Public issues are public. Do not post email addresses, private keys, private mes
 
 ## License and upstream
 
-MeshContinuum documentation is licensed under [Apache-2.0](LICENSE), continuing the application's established licence. Public application source has not yet been published. [mecon-firmware](https://github.com/hoejriis/mecon-firmware) uses MIT separately.
+MeshContinuum documentation is licensed under [Apache-2.0](LICENSE), continuing the application's established licence. Public application source has not yet been published. [mecon-firmware](https://github.com/hoejriis/mecon-firmware) publishes its source under MIT.
 
 MECON is an independent project built around MeshCore, not an official MeshCore service.

@@ -37,7 +37,7 @@ Until approved images exist, ship the text and links without empty image frames 
 
 First external testing is expected on mecon.cloud. Access remains invitation only and timing is not announced. Expressing interest does not create an account or guarantee an invitation.
 
-The public repositories currently contain documentation and target contracts. Application and firmware source publication follows the staged roadmap. Documentation feedback and contract review are welcome now.
+MeshContinuum contains documentation and target contracts; application source publication is a later, separate decision. mecon-firmware publishes its firmware source and source-only pre-releases. Documentation feedback and contract review are welcome now.
 
 ## Footer links
 

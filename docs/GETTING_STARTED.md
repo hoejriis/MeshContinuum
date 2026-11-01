@@ -17,7 +17,7 @@ The maintainer will provide the supported beta version, access instructions and 
 
 Enrolling an identity for decryption and adding a managed device are separate actions. In the Reader, **Devices → Add → Add Standalone Companion** enrols a Companion's private key for decryption only, and **Devices → Add → Configure** sets up and enrols a supported device over USB. Channels are added by whoever runs the installation. Never put a private key or channel secret in an issue. Review the hosted Backend's access to enrolled keys before importing them: for mecon.cloud, see [what is stored and who can read it](HOSTED_BETA_DATA.md). If something goes wrong, see [beta support](BETA_SUPPORT.md).
 
-A managed radio workflow additionally needs an accepted board/revision, the matching firmware role and a compatible direct-connect environment. The boards offered for the beta are on [mecon-firmware's beta board list](https://github.com/hoejriis/mecon-firmware/blob/main/docs/BETA_BOARDS.md). Exact instructions will accompany the accepted beta; no placeholder flash commands or unpublished container names are provided here.
+A managed radio workflow additionally needs an accepted board/revision, the matching firmware role and a compatible direct-connect environment. The boards offered for the beta are on [beta board list](BETA_BOARDS.md). Exact instructions will accompany the accepted beta; no placeholder flash commands or unpublished container names are provided here.
 
 ## What you will see
 

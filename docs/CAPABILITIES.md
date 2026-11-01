@@ -52,6 +52,6 @@ This snapshot was checked against the private Backend/Reader beta release v0.236
 
 For each promoted capability, publish a public evidence summary with version, board/role, transport, date, result and remaining limits. Summaries must omit private identities, infrastructure and messages. If evidence conflicts or is incomplete, retain the lower maturity classification.
 
-Keep this matrix canonical. The two READMEs, firmware hardware guide and mecon.cloud should link here rather than maintain independent feature promises.
+Keep this matrix canonical for MeshContinuum and mecon.cloud: they link here rather than maintain independent feature promises. mecon-firmware describes its finished product in its own documentation, and states what each firmware release contains in that release's notes.
 
 See [roadmap](ROADMAP.md), [getting started](GETTING_STARTED.md) and [firmware hardware target](https://github.com/hoejriis/mecon-firmware/blob/main/docs/SUPPORTED_HARDWARE.md).

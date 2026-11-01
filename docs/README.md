@@ -3,7 +3,7 @@
 ## For users and prospective testers
 
 - [Why MeshContinuum](WHY_MESHCONTINUUM.md)
-- [Get started / beta expectations](GETTING_STARTED.md)
+- [Get started / beta expectations](GETTING_STARTED.md) and [beta boards](BETA_BOARDS.md)
 - [Current capabilities](CAPABILITIES.md) — shared maturity reference
 - [Roadmap](ROADMAP.md)
 - [Trust and privacy](TRUST_AND_PRIVACY.md)

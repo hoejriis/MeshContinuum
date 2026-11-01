@@ -47,9 +47,9 @@ Normal MeshCore RF operation continues when MECON is unavailable. The hosted Rea
 | Project | Responsibility | Public state today |
 |---|---|---|
 | **MeshContinuum** (this repo) | Backend, web Reader and broker/deployment integration | Documentation and target contracts |
-| **[mecon-firmware](https://github.com/hoejriis/mecon-firmware)** | Optional MeshCore-derived firmware, device management and open device contracts | Firmware source (MIT), source-only pre-releases, contracts; no binaries or supported release |
+| **[mecon-firmware](https://github.com/hoejriis/mecon-firmware)** | Optional MeshCore firmware with secure management, diagnostics and signed updates, and the open device contracts | Firmware source (MIT) and contracts; no signed public release yet |
 
-MECON firmware is not required for ordinary MeshCore use or for reading captured traffic with authorized keys. Managed device features need compatible firmware or a supported bridge. The firmware contracts are backend-neutral: mecon.cloud is one deployment, not a required service.
+MECON firmware is not required for ordinary MeshCore use or for reading captured traffic with authorized keys. Managed device features need compatible firmware or a supported bridge. The firmware contracts are backend-neutral: mecon.cloud is one deployment, not a required service. The MeshContinuum Reader needs its Backend, and bridges USB and BLE to it. A manager that implements the firmware contracts itself needs neither. What the firmware does is described in its own [documentation](https://github.com/hoejriis/mecon-firmware#readme).
 
 ## Get involved now
 

@@ -6,7 +6,7 @@
 
 MeshContinuum (MECON) brings messages captured by your Companions and configured observer sources into one web Reader, with persistent history, reception details and management of supported devices. Standard [MeshCore](https://github.com/meshcore-dev/MeshCore) radio operation remains independent of MECON and the Internet.
 
-> **Status — 25 October 2026:** working private beta. This repository contains documentation and target contracts, with no application source or installable release. The sister [mecon-firmware](https://github.com/hoejriis/mecon-firmware) repository publishes its firmware source and source-only pre-releases, with no binaries. First external testing is expected to use **[mecon.cloud](https://mecon.cloud)**, which is invitation only. No opening date is announced. [What works, what is planned →](docs/CAPABILITIES.md)
+> **Status — 6 November 2026:** working private beta. This repository contains documentation and target contracts, with no application source or installable release. The sister [mecon-firmware](https://github.com/hoejriis/mecon-firmware) repository publishes its firmware source and source-only pre-releases, with no binaries. First external testing is expected to use **[mecon.cloud](https://mecon.cloud)**, which is invitation only. No opening date is announced. [What works, what is planned →](docs/CAPABILITIES.md)
 
 [Follow development](https://github.com/hoejriis/MeshContinuum) · [Express beta interest](https://github.com/hoejriis/MeshContinuum/issues/new?template=beta-interest.yml) · [Read the roadmap](docs/ROADMAP.md)
 
@@ -27,7 +27,7 @@ One message, kept once, with every reception that heard it, on a desktop or a ph
 
 Check health and connectivity, inspect reception, and configure supported Companions and Repeaters. Send through an authorized Companion gateway. Firmware, board, role and advertised capabilities determine which actions are available; a Repeater is not a Companion sending identity.
 
-These workflows exist in the private beta. Hardware acceptance and supported combinations are release-specific.
+These workflows exist in the private beta, on private firmware. They are not evidence for the public firmware. Hardware acceptance and supported combinations are release-specific.
 
 ![The Devices list: two Companions and a Repeater, each with its connection, firmware version, battery, uptime, when it was last heard and how many packets it reported.](docs/images/devices-desktop.png)
 
@@ -50,6 +50,8 @@ Normal MeshCore RF operation continues when MECON is unavailable. The hosted Rea
 | **[mecon-firmware](https://github.com/hoejriis/mecon-firmware)** | Optional MeshCore firmware with secure management, diagnostics and signed updates, and the open device contracts | Firmware source (MIT) and contracts; no signed public release yet |
 
 MECON firmware is not required for ordinary MeshCore use or for reading captured traffic with authorized keys. Managed device features need compatible firmware or a supported bridge. The firmware contracts are backend-neutral: mecon.cloud is one deployment, not a required service. The MeshContinuum Reader needs its Backend, and bridges USB and BLE to it. A manager that implements the firmware contracts itself needs neither. What the firmware does is described in its own [documentation](https://github.com/hoejriis/mecon-firmware#readme).
+
+The firmware offers generic capabilities a manager asks for, such as sending a message and reporting what became of it. Which gateway to use, which history to catch up on and how to run a Deployment are the Backend's ([who does what](docs/PROJECT_STATUS.md#who-does-what)).
 
 ## Get involved now
 

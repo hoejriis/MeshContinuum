@@ -41,9 +41,9 @@ MeshContinuum may deploy its own broker or use a compatible MQTT service. `mecon
 
 ## mecon-firmware
 
-The public firmware target supports Heltec V3 and V4 Companion/Repeater builds. It preserves native MeshCore operation while adding up to three Wi-Fi profiles, up to two MQTT brokers, remote management/observations, signed managed OTA and direct local access.
+The public firmware's hardware test targets are the Heltec V3, Heltec V4, Seeed Wio Tracker L1 and SenseCAP T1000-E, each for the roles and transports it supports. Other boards get software verification only. It preserves native MeshCore operation while adding structured management and telemetry, signed updates, and on the Heltec boards up to 10 Wi-Fi profiles and 6 MQTT broker profiles. It also offers generic capabilities a manager asks for, such as sending messages with correlated outcomes and collecting received ones.
 
-Companion builds enable USB and BLE and use a 64-contact resource profile. Repeaters preserve their native MeshCore role and expose direct USB management/observations; Repeater BLE is not required for the initial target.
+Contact capacity, BLE and update paths vary by board and role, and a device reports its own capabilities. See the firmware's [supported hardware](https://github.com/hoejriis/mecon-firmware/blob/main/docs/SUPPORTED_HARDWARE.md). Repeaters and Room servers have no BLE, by decision: their local management is the USB console.
 
 Firmware contracts are canonical in the sister repository so other projects can build compatible backends and Readers without MeshContinuum.
 

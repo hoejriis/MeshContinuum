@@ -25,16 +25,22 @@ The public firmware builds reusable, generic managed-device capabilities first. 
 | Full telemetry and subscriptions over MQTT, USB and BLE | [#96](https://github.com/hoejriis/mecon-firmware/issues/96) |
 | Managed operations and configuration with safe recovery | [#109](https://github.com/hoejriis/mecon-firmware/issues/109) |
 | Signed firmware updates over IP, USB and BLE | [#110](https://github.com/hoejriis/mecon-firmware/issues/110) |
-| Private management channel | [#114](https://github.com/hoejriis/mecon-firmware/issues/114) |
+| Native send with correlated outcomes, direct and channel | [#260](https://github.com/hoejriis/mecon-firmware/issues/260) |
+| Collecting received messages | [#262](https://github.com/hoejriis/mecon-firmware/issues/262) |
+| Native contact administration | [#264](https://github.com/hoejriis/mecon-firmware/issues/264) |
+| Supplying a message to the local app, with no RF retransmission | [#265](https://github.com/hoejriis/mecon-firmware/issues/265) |
+| Bounded standing instructions and periodic reports | [#266](https://github.com/hoejriis/mecon-firmware/issues/266) |
+| Private management channel and channel administration | [#114](https://github.com/hoejriis/mecon-firmware/issues/114), [#151](https://github.com/hoejriis/mecon-firmware/issues/151) |
 | Authenticated management over direct and channel LoRa | [#115](https://github.com/hoejriis/mecon-firmware/issues/115) |
 | Compact telemetry over LoRa | [#116](https://github.com/hoejriis/mecon-firmware/issues/116) |
 | Conformance on Heltec V3, Heltec V4, Wio Tracker L1 and SenseCAP T1000-E | [#117](https://github.com/hoejriis/mecon-firmware/issues/117), [#1](https://github.com/hoejriis/mecon-firmware/issues/1) |
 
-**MECON-specific, later:** Deployment mapping, connected messaging, backfill, outage and sync-channel behaviour, the RF health policy, and firmware-image delivery over LoRa ([#118](https://github.com/hoejriis/mecon-firmware/issues/118) to [#123](https://github.com/hoejriis/mecon-firmware/issues/123)).
+**MECON-specific, later:** Deployment mapping, connected messaging, backfill, outage and sync-channel behaviour, the RF health policy, and firmware-image delivery over LoRa ([#118](https://github.com/hoejriis/mecon-firmware/issues/118) to [#123](https://github.com/hoejriis/mecon-firmware/issues/123)). Most of this is Backend orchestration over the generic capabilities. Autonomous outage forwarding is a distinct firmware process.
 
 Boundaries:
 - A private management channel is generic. Membership of the channel and its encryption grant no command authority.
-- Compact RF telemetry is a smaller, less frequent selection of the same telemetry catalogue, not a second one.
+- Compact RF telemetry is a smaller, less frequent selection of the same telemetry catalogue, not a second one. RF health monitoring uses it with standing instructions, and adds no telemetry mechanism of its own.
+- Firmware sends, collects and reports what a manager asks for. Choosing a gateway, deciding what to catch up on and carrying favourite channels between devices stay with the Backend. The firmware keeps no favourites database and no routing policy.
 - Screen write-back is diagnostic telemetry from the device to its manager. It never writes to the display.
 - The existing Reader needs a Backend and bridges USB and BLE. A fully offline Reader is later, undesigned work. Independent managers may implement the public contracts.
 

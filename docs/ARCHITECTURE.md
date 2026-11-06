@@ -63,7 +63,7 @@ MeshContinuum Backend / Reader
 
 MECON adds correlation, authorization policy, replay/idempotency, auditing and compact transport encoding where needed. It does not introduce a proprietary RF settings protocol when upstream CLI can express the operation.
 
-The detailed firmware contract lives in `hoejriis/mecon-firmware/docs/contract/`; the consolidated pre-1.0 architecture is `TARGET_FIRMWARE_CONTRACT_0.9.md`. Exact mappings are frozen after released MeshCore 1.18 is pinned.
+The detailed firmware contract lives in [`hoejriis/mecon-firmware/docs/contract/`](https://github.com/hoejriis/mecon-firmware/blob/main/docs/contract/README.md), built on released MeshCore 1.18.0.
 
 ## Deployment identity and keys
 

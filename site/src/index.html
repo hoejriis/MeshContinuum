@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="MeshContinuum (MECON): MeshCore, without the boundaries of a single device. Your mesh stays independent; MECON makes it more useful when connected."
+    />
+    <meta name="generator" content="meshcontinuum-site {{VERSION}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MeshContinuum" />
+    <meta property="og:title" content="MeshCore, without the boundaries of a single device" />
+    <meta property="og:description" content="Your mesh stays independent. MECON makes it more useful when connected." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="MeshCore, without the boundaries of a single device" />
+    <meta name="twitter:description" content="Your mesh stays independent. MECON makes it more useful when connected." />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ASSET}}/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ASSET}}/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ASSET}}/apple-touch-icon.png" />
+    <link rel="stylesheet" href="{{ASSET}}/style.css" />
+    <title>MeshContinuum — MeshCore, without the boundaries of a single device</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div id="app">
+      <header class="topbar">
+        <span class="wordmark">MeshContinuum <span class="wordmark-short" data-instance-name>(MECON)</span></span>
+        <nav class="topbar-actions" aria-label="Account">
+          <a class="sign-in-link" id="sign-in" href="/sign-in">Sign in</a>
+        </nav>
+      </header>
+
+      <main class="content" id="main">
+        <section class="hero" aria-labelledby="hero-heading">
+          <h1 id="hero-heading">MeshCore, without the boundaries of a single device.</h1>
+          <p class="support-line">Your mesh stays independent. MECON makes it more useful when connected.</p>
+          <p class="lede">
+            Bring messages captured by your Companions and configured observer sources into one web
+            Reader. Keep history, understand reception and manage supported devices while normal
+            MeshCore radio operation remains independent of the Internet.
+          </p>
+          <p class="status-line" data-testid="availability-notice">
+            <strong>Where things stand:</strong> private beta on mecon.cloud, by invitation. The
+            firmware is public as source and signed pre-releases; the Backend is not published yet.
+            <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/CAPABILITIES.md" target="_blank" rel="noopener noreferrer">Availability</a>
+          </p>
+          <div class="cta-row">
+            <a class="cta cta-primary" href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/README.md" target="_blank" rel="noopener noreferrer">Explore the docs</a>
+            <a class="cta cta-secondary" href="https://github.com/hoejriis/mecon-firmware" target="_blank" rel="noopener noreferrer">The firmware</a>
+            <a class="cta cta-secondary" href="https://github.com/hoejriis/MeshContinuum/issues/new?template=beta-interest.yml" target="_blank" rel="noopener noreferrer">Express beta interest</a>
+          </div>
+          <p class="cta-note">
+            Expressing interest opens a public GitHub issue. It does not create an account or
+            guarantee an invitation. Already have access? <a href="/sign-in" data-sign-in>Sign in</a>.
+          </p>
+        </section>
+      </main>
+
+      <section class="wide-section benefits-section" aria-labelledby="benefits-heading">
+        <h2 id="benefits-heading" class="visually-hidden">What MECON adds</h2>
+        <div class="benefit-grid">
+          <article class="benefit-card">
+            <h3>One Reader, more reception</h3>
+            <p>
+              See traffic captured by the sources available to your deployment. Keep one message
+              with its reception evidence, even when several observers hear it.
+            </p>
+          </article>
+          <article class="benefit-card">
+            <h3>Manage devices remotely</h3>
+            <p>
+              Check connectivity and health, configure supported devices and send through an
+              authorised Companion gateway. The actions available depend on the device.
+            </p>
+          </article>
+          <article class="benefit-card">
+            <h3>Your infrastructure, your control</h3>
+            <p>
+              MECON is free and intended for open-source release. Run it hosted, at home, or across
+              several sites. mecon.cloud is one deployment, not a required service.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="wide-section preview-section" aria-labelledby="preview-heading">
+        <h2 id="preview-heading">A look at the Reader</h2>
+        <p class="section-lede">Captured 9 October 2026 in the real application, MECON v0.193.0, with synthetic demo data: the devices, names, places and messages are made up. Signed in, you see live traffic instead.</p>
+        <div class="preview-grid">
+          <figure class="preview-item preview-wide">
+            <img src="{{ASSET}}/preview/reader-reception-desktop.png" alt="The Packets view for one channel message: its route through two repeater hops, the decrypted text, and three receptions by different gateways with their offsets, RSSI and SNR." loading="lazy" width="2880" height="1800" />
+            <figcaption><strong>One Reader, more reception.</strong> One message, kept once, with every reception that heard it.</figcaption>
+          </figure>
+          <figure class="preview-item preview-wide">
+            <img src="{{ASSET}}/preview/devices-desktop.png" alt="The Devices list: two Companions and a Repeater, each with its connection, firmware version, battery, uptime, when it was last heard and how many packets it reported." loading="lazy" width="3360" height="1440" />
+            <figcaption><strong>Manage devices remotely.</strong> Connection and health for every device, from one list.</figcaption>
+          </figure>
+          <figure class="preview-item preview-wide">
+            <img src="{{ASSET}}/preview/device-configure-desktop.png" alt="A Companion's Configure page: name and location, and its radio settings matched to the EU/UK (Narrow) community preset, each field marked with the transport that writes it." loading="lazy" width="2880" height="1800" />
+            <figcaption><strong>Configure a supported device.</strong> Settings read from the device and written back over its connection. The actions available depend on the device and its firmware.</figcaption>
+          </figure>
+          <figure class="preview-item preview-phone">
+            <img src="{{ASSET}}/preview/reader-reception-phone.png" alt="A channel conversation on a phone, with how many observers heard each message." loading="lazy" width="780" height="1688" />
+            <figcaption>The same Reader on a phone.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="wide-section meshcore-section" aria-labelledby="meshcore-heading">
+        <h2 id="meshcore-heading">New to MeshCore?</h2>
+        <p class="section-lede">
+          MeshCore is open-source firmware for small LoRa radios that pass messages to each other
+          over long distances, with no mobile network or server. MECON is built around it.
+        </p>
+        <dl class="term-list">
+          <dt>Companion</dt>
+          <dd>Your personal radio, paired with an app on your phone or computer.</dd>
+          <dt>Repeater</dt>
+          <dd>A radio left on in a good spot, forwarding others' messages to extend the mesh.</dd>
+          <dt>Room server</dt>
+          <dd>A small bulletin board on the mesh that keeps posts for you.</dd>
+          <dt>Observer</dt>
+          <dd>A radio that also reports what it hears to an online service. MECON reads from observers as well as your own radios.</dd>
+        </dl>
+        <p class="section-lede">
+          <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/MESHCORE.md" target="_blank" rel="noopener noreferrer">MeshCore in brief</a>
+          explains the rest, and what you need to begin.
+        </p>
+      </section>
+
+      <section class="wide-section architecture-section" aria-labelledby="architecture-heading">
+        <h2 id="architecture-heading">How it fits together</h2>
+        <p class="section-lede">
+          MECON is an application layer around MeshCore. It does not replace MeshCore's packet
+          formats, radio routing, node identities or normal Companion apps. Everything inside the
+          dashed boundary is optional; the MeshCore radios keep talking to each other without it.
+        </p>
+        <svg
+          class="architecture-diagram"
+          viewBox="0 0 920 300"
+          role="img"
+          aria-labelledby="architecture-diagram-title architecture-diagram-desc"
+        >
+          <title id="architecture-diagram-title">MeshContinuum architecture</title>
+          <desc id="architecture-diagram-desc">
+            MeshCore radios (Companions, Repeaters, the RF network) connect to observers and MQTT
+            brokers, which connect to the MeshContinuum backend, which serves the Reader web app.
+            A dashed boundary encloses the observers, brokers, backend and Reader as optional; the
+            MeshCore radios sit outside it and keep working peer to peer without any of it.
+          </desc>
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="arrow-head" />
+            </marker>
+          </defs>
+
+          <rect x="234" y="24" width="662" height="252" rx="14" class="optional-boundary" />
+          <text x="250" y="46" class="boundary-label">MeshContinuum (optional)</text>
+
+          <rect x="30" y="110" width="170" height="90" rx="10" class="diagram-box diagram-box-core" />
+          <text x="115" y="140" class="box-title" text-anchor="middle">MeshCore</text>
+          <text x="115" y="160" class="box-line" text-anchor="middle">Companions, Repeaters</text>
+          <text x="115" y="176" class="box-line" text-anchor="middle">RF network</text>
+
+          <rect x="260" y="110" width="180" height="90" rx="10" class="diagram-box" />
+          <text x="350" y="135" class="box-title" text-anchor="middle">Observers &amp;</text>
+          <text x="350" y="153" class="box-title" text-anchor="middle">MQTT brokers</text>
+          <text x="350" y="172" class="box-line" text-anchor="middle">own · shared · public</text>
+
+          <rect x="500" y="90" width="200" height="130" rx="10" class="diagram-box diagram-box-accent" />
+          <text x="600" y="118" class="box-title" text-anchor="middle">MeshContinuum</text>
+          <text x="600" y="136" class="box-title" text-anchor="middle">backend</text>
+          <text x="600" y="158" class="box-line" text-anchor="middle">stores · dedupes</text>
+          <text x="600" y="174" class="box-line" text-anchor="middle">decrypts · routes</text>
+          <text x="600" y="200" class="box-line" text-anchor="middle">one durable record</text>
+
+          <rect x="760" y="110" width="130" height="90" rx="10" class="diagram-box" />
+          <text x="825" y="147" class="box-title" text-anchor="middle">Reader</text>
+          <text x="825" y="167" class="box-line" text-anchor="middle">web app</text>
+
+          <line x1="200" y1="155" x2="256" y2="155" class="diagram-arrow" marker-end="url(#arrow)" />
+          <line x1="440" y1="155" x2="496" y2="155" class="diagram-arrow" marker-end="url(#arrow)" />
+          <line x1="700" y1="155" x2="756" y2="155" class="diagram-arrow" marker-end="url(#arrow)" />
+
+          <text x="228" y="145" class="edge-label" text-anchor="middle">RF packets</text>
+          <text x="468" y="145" class="edge-label" text-anchor="middle">MQTT</text>
+          <text x="728" y="145" class="edge-label" text-anchor="middle">API</text>
+
+          <text x="115" y="260" class="works-alone-label" text-anchor="middle">
+            keeps working, offline, on its own
+          </text>
+        </svg>
+      </section>
+
+      <section class="wide-section journeys-section" aria-labelledby="journeys-heading">
+        <h2 id="journeys-heading">Ways to run it</h2>
+        <p class="section-lede">
+          From someone else's server to infrastructure of your own. In every case your radios keep
+          working as ordinary MeshCore radios if MECON goes away.
+          <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/DEPLOYMENT_MODES.md" target="_blank" rel="noopener noreferrer">Deployment choices</a>
+        </p>
+        <div class="journey-grid">
+          <article class="journey-card">
+            <h3>Hosted</h3>
+            <p>A hosted service runs the Backend, Reader and broker. You bring your Companion, and optionally a gateway radio at home.</p>
+          </article>
+          <article class="journey-card">
+            <h3>A home site</h3>
+            <p>One small computer on your network runs the Backend, Reader and a local broker. Nothing has to be reachable from the Internet.</p>
+          </article>
+          <article class="journey-card">
+            <h3>Several sites</h3>
+            <p>Each site runs its own Backend, and they share records as peers, with brokers on the Internet for reach and resilience.</p>
+          </article>
+          <article class="journey-card">
+            <h3>The firmware alone</h3>
+            <p>Run <a href="https://github.com/hoejriis/mecon-firmware" target="_blank" rel="noopener noreferrer">mecon-firmware</a> with a manager of your own, using its open device contracts.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="wide-section involved-section" aria-labelledby="involved-heading">
+        <h2 id="involved-heading">Getting involved</h2>
+        <p>
+          Read the documentation, review the device contracts in mecon-firmware, describe a use
+          case, or express interest in testing. Documentation feedback and contract review are
+          welcome now.
+        </p>
+      </section>
+
+      <footer class="page-footer">
+        <nav aria-label="Project links">
+          <ul class="footer-links">
+            <li><a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/CAPABILITIES.md" target="_blank" rel="noopener noreferrer">Availability</a></li>
+            <li><a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/GETTING_STARTED.md" target="_blank" rel="noopener noreferrer">Get started with the beta</a></li>
+            <li><a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/LIMITATIONS.md" target="_blank" rel="noopener noreferrer">Limitations</a></li>
+            <li><a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/ROADMAP.md" target="_blank" rel="noopener noreferrer">Roadmap</a></li>
+            <li><a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/TRUST_AND_PRIVACY.md" target="_blank" rel="noopener noreferrer">Trust and privacy</a></li>
+            <li><a href="https://github.com/hoejriis/MeshContinuum" target="_blank" rel="noopener noreferrer">MeshContinuum</a></li>
+            <li><a href="https://github.com/hoejriis/mecon-firmware" target="_blank" rel="noopener noreferrer">mecon-firmware</a></li>
+          </ul>
+        </nav>
+        <p>
+          MeshContinuum is an independent project built around the open
+          <a href="https://meshcore.io" target="_blank" rel="noopener noreferrer">MeshCore</a> firmware,
+          not an official MeshCore service. Site {{VERSION}}.
+        </p>
+      </footer>
+    </div>
+    <script type="module" src="{{ASSET}}/site.js"></script>
+  </body>
+</html>

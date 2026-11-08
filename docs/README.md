@@ -38,6 +38,7 @@ For contributors and implementers. These pages describe the target design.
 - [Contributing](../CONTRIBUTING.md)
 - [Security reporting](../SECURITY.md)
 - [Product message: maintainer brief](PRODUCT_MESSAGING.md)
+- [Presentation site](../site/README.md) and its [integration contract](../site/CONTRACT.md)
 
 The device contract belongs to the sister [mecon-firmware](https://github.com/hoejriis/mecon-firmware) project.
 

@@ -1,5 +1,12 @@
 > [!NOTE]
 > This is an exploratory proposal for a possible future change to the upstream MeshCore routing protocol. It is not part of the MeshContinuum/MECON architecture, roadmap, or current implementation. It is included here because MECON work on remotely managed and dynamic device configuration helped motivate the analysis.
+>
+> **Scope and date.** Written on 1 September 2026, when MeshCore's latest release was v1.17.1. Re-read on 8 November 2026 against MeshCore's own documentation and its v1.18.0 releases:
+> - Region Scopes are as section 1.2 describes. They have been in MeshCore since v1.10, and are configured per Repeater ([CLI reference](https://github.com/meshcore-dev/MeshCore/blob/main/docs/cli_commands.md#region-management-v110)).
+> - Section 1.1 needs one qualification. A Repeater operator can already limit unscoped floods to a few hops with `flood.max.unscoped`, or drop them with `region denyf *`. Since v1.18.0, a packet with transport code 0 is treated as unscoped.
+> - That regions need operators to agree on names and boundaries is this proposal's own observation. MeshCore does not describe a coordination process either way.
+>
+> Background on the terms is in [MeshCore in brief](MESHCORE.md#region-scopes).
 
 # Proposal: Geographical Flood Scopes and Dynamic Repeater Load Adaptation
 

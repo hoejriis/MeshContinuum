@@ -1,38 +1,47 @@
-# Get started with MECON
+# Get started with the mecon.cloud beta
 
-## Today: follow development or express beta interest
+This is the practical guide to the [hosted](DEPLOYMENT_MODES.md#hosted-one-companion-on-a-hosted-service) way of using MECON, on the mecon.cloud private beta. For the other ways, see [deployment choices](DEPLOYMENT_MODES.md).
 
-The public repositories contain documentation and contracts. There is no public installation or download to follow yet.
+## Before you are invited
 
-1. Read the [capability matrix](CAPABILITIES.md) and [trust model](TRUST_AND_PRIVACY.md).
-2. Visit [mecon.cloud](https://mecon.cloud). Access is invitation only; there is no announced opening date.
-3. [Express interest in testing](https://github.com/hoejriis/MeshContinuum/issues/new?template=beta-interest.yml), describing the problem you want to solve, your hardware/role and your browser or operating system.
-4. Star or Watch the repository to follow progress. An interest issue is a public conversation, not an account request, guaranteed invitation or promised place in a queue.
+[mecon.cloud](https://mecon.cloud) is invitation only, and no opening date is announced.
 
-First external testing is expected on mecon.cloud. Self-hosting remains a product goal, with public packaging and installation acceptance still pending.
+1. Read [what MECON adds](WHY_MESHCONTINUUM.md) and [trust and privacy](TRUST_AND_PRIVACY.md).
+2. [Express interest in testing](https://github.com/hoejriis/MeshContinuum/issues/new?template=beta-interest.yml). Describe the problem you want to solve, your hardware and role, and your browser or operating system. An interest issue is a public conversation. It does not create an account, guarantee an invitation, or hold a place in a queue.
+3. Watch the repository to follow progress.
 
-## When invited
+## When you are invited
 
-The maintainer will provide the supported beta version, access instructions and the applicable onboarding path. A first session should reach one understandable result: captured traffic in the Reader, followed by reception details explaining where it came from.
+The maintainer gives you access and tells you which beta version and boards apply. A good first session ends with one result you can understand: traffic in the Reader, and its reception details showing where it came from.
 
-Enrolling an identity for decryption and adding a managed device are separate actions. In the Reader, **Devices → Add → Add Standalone Companion** enrols a Companion's private key for decryption only, and **Devices → Add → Configure** sets up and enrols a supported device over USB. Channels are added by whoever runs the installation. Never put a private key or channel secret in an issue. Review the hosted Backend's access to enrolled keys before importing them: for mecon.cloud, see [what is stored and who can read it](HOSTED_BETA_DATA.md). If something goes wrong, see [beta support](BETA_SUPPORT.md).
+## Adding your devices
 
-A managed radio workflow additionally needs an accepted board/revision, the matching firmware role and a compatible direct-connect environment. The boards offered for the beta are on [beta board list](BETA_BOARDS.md). Exact instructions will accompany the accepted beta; no placeholder flash commands or unpublished container names are provided here.
+Reading your messages and managing a radio are separate steps. In the Reader, open **Devices**, then the **Add** menu:
+
+| Item | What it does |
+|---|---|
+| **Add Standalone Companion** | Adds a Companion's private key, so the Reader can decrypt its messages. No USB, and no device management. |
+| **Add Standalone Repeater** | Follows an ordinary MeshCore Repeater heard on air, by its name and public key. Monitoring only. |
+| **Configure** | Connects to a MECON device on USB, configures it and enrols it. |
+| **Set up public-firmware device** | Gives a device running the public [mecon-firmware](https://github.com/hoejriis/mecon-firmware) its Wi-Fi, broker login and enrolment, over USB. |
+| **Flash** | Installs or upgrades MECON firmware on a supported Heltec board, over USB. |
+
+The USB items need desktop Chrome or Edge. Which boards the beta offers is on the [beta board list](BETA_BOARDS.md). Channels are added by the installation's owner.
+
+Before you add a private key, read [what mecon.cloud stores and who can read it](HOSTED_BETA_DATA.md). Never put a private key or channel secret in an issue. If something goes wrong, see [beta support](BETA_SUPPORT.md).
 
 ## What you will see
 
-Once signed in, the Reader shows the channels the installation reads and the direct messages of the Companions you enrolled, with each message kept once and every reception that heard it. Much of what you see is heard by public observer feeds the installation subscribes to, not only by your own radio; a message's reception details say which observers heard it. If you manage devices, the Devices list shows each one's connection and health. The screenshots in the [README](../README.md#one-reader-more-reception) are from the private beta, captured on MECON v0.194.0 with synthetic demo data; your own Reader shows live traffic and, in its footer, the version it runs. An empty Reader before your sources hear anything is normal: it means no packet has been received yet, not that something failed.
+Once signed in, the Reader shows the channels the installation reads, and the direct messages of the Companions you enrolled. Each message is kept once, with every reception that heard it. Much of what you see is heard by public observer feeds the installation subscribes to, not only by your own radio. A message's reception details say which observers heard it. If you manage devices, the Devices list shows each one's connection and health.
 
-## Browser versus radio access
+The [screenshots](../README.md#one-reader-more-reception) show what this looks like, with made-up data. Your own Reader shows live traffic, and its sidebar shows the version it runs.
 
-Reading through a reachable hosted Backend and directly attaching a radio are different workflows. The beta's documented direct setup path uses desktop Chrome/Edge for USB/BLE where the device supports it. Do not assume an iPhone or iPad browser can flash or directly attach a radio just because it can display the Reader. Accepted browser/OS combinations must be documented with the beta.
+An empty Reader before your sources have heard anything is normal. It means no packet has been received yet, not that something failed.
 
-## What makes useful feedback?
+## Browser and radio
 
-Describe your goal, the point where you became stuck, what you expected, and what happened. Include versions and sanitized screenshots where relevant. Empty traffic can mean no configured source heard a packet; it must not be presented as successful reception.
+Reading through mecon.cloud works in any modern browser, on a phone or a desktop, and the Reader can be installed on a phone's home screen. Attaching a radio directly over USB or Bluetooth needs desktop Chrome or Edge, where the board supports it. An iPhone or iPad browser can show the Reader but cannot flash or attach a radio.
 
-## Later: self-hosting
+## Useful feedback
 
-A public quick start will name the released artifacts, prerequisites, supported architectures, first-admin flow, source/device setup, success checks, upgrade and recovery path. It will be tested by an independent operator before being advertised as ready.
-
-Until then, [deployment modes](DEPLOYMENT_MODES.md) describes the architecture, not an executable install guide.
+Say what you were trying to do, where you got stuck, what you expected, and what happened. Include the Reader's version, and sanitised screenshots where they help.

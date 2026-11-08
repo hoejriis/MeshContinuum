@@ -1,6 +1,6 @@
-# Product message and mecon.cloud copy
+# Product message: maintainer brief
 
-This is the shared editorial brief for the public repositories and the hosted front page. Capability claims must follow [CAPABILITIES.md](CAPABILITIES.md).
+This is the editorial brief for maintainers. It sets the product message that the README, these docs and the presentation site share. It is not a product page. Readers should start at the [README](../README.md). It keeps no status of its own: what is available is on [availability](CAPABILITIES.md) only.
 
 ## Hero
 
@@ -8,48 +8,41 @@ This is the shared editorial brief for the public repositories and the hosted fr
 
 Your mesh stays independent. MECON makes it more useful when connected.
 
-Bring messages captured by your Companions and configured observer sources into one web Reader. Keep history, understand reception and manage supported devices while normal MeshCore radio operation remains independent of the Internet.
+Bring messages captured by your Companions and configured observer sources into one web Reader. Keep history, understand reception and manage supported devices, while normal MeshCore radio operation stays independent of the Internet.
 
-**Status:** Private beta · Invitation only · No opening date announced.
-
-Primary action: **Explore the project** → https://github.com/hoejriis/MeshContinuum  
-Secondary action: **Express beta interest** → https://github.com/hoejriis/MeshContinuum/issues/new?template=beta-interest.yml  
-Existing users: **Sign in** → preserve the application's existing working login route.
+Actions:
+- **Explore the project** → https://github.com/hoejriis/MeshContinuum
+- **Express beta interest** → https://github.com/hoejriis/MeshContinuum/issues/new?template=beta-interest.yml
+- **Sign in**, for existing users → the deployment's own sign-in route. The site links to it and holds no sign-in logic.
 
 ## Benefit cards
 
-**One Reader, more reception**  
-See traffic captured by the sources available to your deployment. Keep one message with its reception evidence, even when several observers hear it.
+**One Reader, more reception.** See traffic captured by the sources available to your deployment. Keep one message with its reception evidence, even when several observers hear it.
 
-**Manage devices remotely**  
-Check connectivity and health, configure supported devices and send through an authorized Companion gateway. Available actions depend on the device and accepted beta version.
+**Manage devices remotely.** Check connectivity and health, configure supported devices and send through an authorised Companion gateway. The actions available depend on the device.
 
-**Your infrastructure, your control**  
-MECON is free and intended for open-source release, with hosted, local and hybrid deployment goals. mecon.cloud is one deployment, not a required service. Public self-hosting packages are still to come.
+**Your infrastructure, your control.** MECON is free and intended for open-source release. Run it hosted, at home, or across several sites. mecon.cloud is one deployment, not a required service.
 
-## Honest preview
+## The availability notice
 
-Use real screenshots or a short capture of the accepted beta, with synthetic identities and messages. Suggested views: Reader with reception details, Devices with health/status, and one successful setup step. Caption every visual with version/date and beta status. Do not publish mockups as product evidence.
+Product copy describes the experience as designed. One short notice, and only one, says where things stand, and links to [availability](CAPABILITIES.md). It never promises a date, open registration, a supported release or an installable Backend. When availability changes, the notice and that page change together, and nothing else carries status.
 
-Until approved images exist, ship the text and links without empty image frames or fabricated product screenshots.
+## Screenshots
 
-## Status / getting involved
+Use real screenshots from the application, with synthetic identities, places and messages. Caption every one with the version shown in the Reader at capture, the date, and that the data is made up. Do not publish mockups as product evidence.
 
-First external testing is expected on mecon.cloud. Access remains invitation only and timing is not announced. Expressing interest does not create an account or guarantee an invitation.
-
-MeshContinuum contains documentation and target contracts; application source publication is a later, separate decision. mecon-firmware publishes its firmware source and pre-releases, the latest with signed images. Documentation feedback and contract review are welcome now.
-
-## Footer links
-
-- [Current capabilities](CAPABILITIES.md)
-- [Get started / beta expectations](GETTING_STARTED.md)
-- [Roadmap](ROADMAP.md)
-- [Trust and privacy](TRUST_AND_PRIVACY.md)
-- [MeshContinuum](https://github.com/hoejriis/MeshContinuum)
-- [mecon-firmware](https://github.com/hoejriis/mecon-firmware)
+The current set was captured on 9 October 2026, on a build whose Reader showed **v0.193.0**, with synthetic demo data. That build already carried the Reader wording first released in v0.194.0. Captions say v0.193.0, because that is the version the images show.
 
 ## Editorial boundaries
 
-Do not imply open registration, a launch date, downloads that do not exist, guaranteed reception, universal board/browser support, backend-free Reader operation or operator-blind hosted decryption. Describe self-hosting as a product direction until public packages pass acceptance. “Free and open source” is the release intent; public source is not yet available.
+Do not imply:
+- open registration or a launch date;
+- downloads that do not exist;
+- guaranteed reception or delivery;
+- support for every board or browser;
+- a Reader that works without a Backend;
+- operator-blind hosted decryption.
 
-The front page must remain usable on phones and iPads, and its existing sign-in flow must continue to work.
+"Free and open source" is the release intent. The firmware's source is public. The Backend's is not yet.
+
+The site and the docs must stay usable on phones and iPads.

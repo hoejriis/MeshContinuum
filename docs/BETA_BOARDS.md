@@ -20,7 +20,7 @@ Which of these the beta currently offers, and the firmware version each runs, ar
 - Every message a gateway publishes is signed.
 - A gateway that fell back to a cloud broker returns to the site broker once that session has been up for 30 seconds and the site broker is reachable.
 - A gateway limits its own radio airtime to the legal duty cycle of its channel.
-- Connectivity mode is `mqtt` or `ble`. `both` is not available on the V3, for memory reasons.
+- Connectivity mode is `mqtt`, `ble` or, on the V4, `both`. The V3 refuses `both`, for memory reasons.
 
 ## Limits
 

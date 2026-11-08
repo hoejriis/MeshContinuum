@@ -1,12 +1,12 @@
 # Project status and public release target
 
-**Updated: 7 November 2026.**
+**Updated: 8 November 2026.**
 
 - [Capability matrix](CAPABILITIES.md) is the shared authority for what is available, in beta, planned or experimental.
 - [Roadmap](ROADMAP.md) records the hosted-test gates and the public firmware programme.
 - [Getting started](GETTING_STARTED.md) explains how to follow or express interest today.
 
-**MeshContinuum** (this repository) contains documentation and target contracts. It publishes no application source or installable release. **[mecon-firmware](https://github.com/hoejriis/mecon-firmware)** publishes its firmware source under MIT, with pre-releases. The latest, [v0.2.0](https://github.com/hoejriis/mecon-firmware/releases/tag/v0.2.0), is the first with signed images. It offers no supported release. The private beta is working. First external tests are expected on invitation-only [mecon.cloud](https://mecon.cloud), with no date announced.
+**MeshContinuum** (this repository) contains documentation and target contracts. It publishes no application source or installable release. **[mecon-firmware](https://github.com/hoejriis/mecon-firmware)** publishes its firmware source under MIT, with pre-releases. The latest, [v0.2.1](https://github.com/hoejriis/mecon-firmware/releases/tag/v0.2.1), has signed images. It offers no supported release. The private beta is working. First external tests are expected on invitation-only [mecon.cloud](https://mecon.cloud), with no date announced.
 
 ## Release boundary
 

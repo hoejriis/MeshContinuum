@@ -3,23 +3,16 @@
 MECON has three parts that you run, or that a hosted service runs for you, plus optional firmware for your radios.
 
 ```mermaid
-flowchart LR
-  subgraph RF["MeshCore mesh (works on its own)"]
-    C["Your Companion"]
-    G["Gateway Companion"]
-    R["Repeaters"]
+flowchart TB
+  subgraph RF["MeshCore mesh: works on its own"]
+    direction LR
+    C["Your Companion"] <-. RF .-> R["Repeaters"] <-. RF .-> G["Gateway Companion"]
   end
-  O["Community observers<br/>(MQTT feeds)"]
-  B["MQTT broker"]
-  BE["Backend"]
-  RD["Reader<br/>(browser or phone)"]
-  G -- "what it hears,<br/>its health" --> B
-  O --> BE
-  B <--> BE
-  BE <--> RD
-  RD -. "USB or Bluetooth,<br/>desktop browser" .-> C
-  C <-. RF .-> R
-  G <-. RF .-> R
+  G -- "what it hears, its health" --> B["MQTT broker"]
+  O["Community observers"] --> BE
+  B <--> BE["Backend"]
+  BE <--> RD["Reader, in a browser or on a phone"]
+  RD -. "USB or Bluetooth, desktop browser" .-> C
 ```
 
 | Part | What it does |

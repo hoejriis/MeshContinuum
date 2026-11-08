@@ -1,8 +1,8 @@
 # mecon.cloud beta: what is stored and who can read it
 
-*Private beta, 10 October 2026. This page describes the hosted beta at mecon.cloud; another deployment's operator sets their own rules.*
+*Private beta. Checked against the service's code on 8 November 2026. This page describes the hosted beta at mecon.cloud; another deployment's operator sets their own rules.*
 
-**MECON is not an operator-blind service.** When you enrol a Companion private key or a channel key, mecon.cloud uses it to decrypt traffic that its sources captured. The operator of mecon.cloud can technically read whatever the service can decrypt. Application permissions keep users apart: a Fleet Owner sees their own devices and messages, a Device User sees the Companion assigned to them. They do not hide data from the operator.
+**MECON is not an operator-blind service.** When you enrol a Companion private key or a channel key, mecon.cloud uses it to decrypt traffic that its sources captured. The operator of mecon.cloud can technically read whatever the service can decrypt. Application permissions keep users apart: the Instance Owner runs the installation, a Fleet Owner sees their own devices and messages, a Device User sees the Companion assigned to them. They do not hide data from the operator.
 
 ## Keys
 
@@ -19,7 +19,7 @@
 
 ## Backups
 
-The database is backed up daily. The newest 7 copies are kept on the server, and every daily copy is kept off-site indefinitely. **Removing your data does not reach the off-site backups.**
+The database is backed up daily. The newest 7 copies are kept on the server, and the daily database copies are kept off-site indefinitely. Daily exports of raw captures are kept off-site for 7 days. **Removing your data does not reach the off-site backups.**
 
 ## Leaving the beta
 

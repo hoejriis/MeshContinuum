@@ -1,52 +1,74 @@
-# Components
+# How MECON works
 
-> **Target documentation:** this public repository has no installable release yet. See the [shared capability matrix](CAPABILITIES.md) for current availability and acceptance; specifications do not certify hardware or release readiness.
+MECON has three parts that you run, or that a hosted service runs for you, plus optional firmware for your radios.
 
-MeshContinuum has three application components and one independent sister firmware project.
+```mermaid
+flowchart LR
+  subgraph RF["MeshCore mesh (works on its own)"]
+    C["Your Companion"]
+    G["Gateway Companion"]
+    R["Repeaters"]
+  end
+  O["Community observers<br/>(MQTT feeds)"]
+  B["MQTT broker"]
+  BE["Backend"]
+  RD["Reader<br/>(browser or phone)"]
+  G -- "what it hears,<br/>its health" --> B
+  O --> BE
+  B <--> BE
+  BE <--> RD
+  RD -. "USB or Bluetooth,<br/>desktop browser" .-> C
+  C <-. RF .-> R
+  G <-. RF .-> R
+```
 
-| Component | Responsibility |
+| Part | What it does |
 |---|---|
-| Backend | Ingests observations, reconciles packets/messages, performs authorized decryption, coordinates jobs and exposes APIs |
-| Reader | Web reading, diagnostics, enrollment, configuration and direct device access |
-| MQTT broker | Transport between devices, sources and backends |
-| mecon-firmware | Independent MeshCore firmware project implementing the open MECON device contract |
+| **Backend** | Takes in what every source heard, recognises one message heard many times, decrypts the traffic you are authorised to read, keeps history, and runs device jobs such as configuration and updates. |
+| **Reader** | The web app you use, in a browser or installed on a phone: messages, channels, reception details, devices and their settings. From a desktop browser it can also attach a radio directly over USB or Bluetooth, and pass it through to the Backend. |
+| **MQTT broker** | The transport between devices, observers and Backends. It carries messages. It is not where anything is kept. |
+| **[mecon-firmware](https://github.com/hoejriis/mecon-firmware)** (optional) | MeshCore firmware with secure management, telemetry and signed updates added. It is a separate open-source project, and any manager that implements its contracts can use it, not only MECON. |
 
 ## Backend
 
-The Backend owns the application model: packets, observations, decrypted logical messages, device state, delivery jobs and synchronization. External MQTT feeds and compatible devices enter through validated ingestion adapters.
+The Backend owns the application's records: packets, each observation of them, decrypted messages, device state, delivery jobs, and synchronisation with other Backends. Observer feeds and compatible devices come in through ingestion adapters that check what they receive.
 
-The Backend consumes the public device contract from [mecon-firmware](https://github.com/hoejriis/mecon-firmware). MeshContinuum must not maintain a competing private firmware protocol.
+It manages devices through the public device contract in mecon-firmware. MeshContinuum keeps no competing private protocol of its own.
 
 ## Reader
 
-The Reader provides:
+In the Reader you:
 
-- inbox/channels and message history;
-- packet, route and reception diagnostics;
-- device enrollment and flashing;
-- configuration and health;
-- managed firmware updates;
-- Wi-Fi and MQTT profile management;
-- direct Companion access over USB or BLE in desktop Chrome/Edge;
-- direct Repeater USB management/observation;
-- standalone direct operation when no Backend is reachable, with later synchronization.
+- read your inbox, channels and history;
+- see each message's reception: which observers heard it, along which path, how strongly;
+- add devices, flash and configure supported boards, and update their firmware;
+- set a gateway's Wi-Fi and broker profiles;
+- check health and connectivity, and get alerts.
 
-Capabilities come from the device contract. The Reader must not infer an operation merely from role or firmware version.
+The Reader always works through its Backend. Attaching a radio over USB or Bluetooth needs desktop Chrome or Edge, where the board supports it. What the Reader offers for a device comes from what that device reports it can do, not from its role or firmware version alone.
 
 ## MQTT broker
 
-MQTT is transport, not the system of record. A device may connect to up to two broker profiles, each with independent credentials, namespace and authority. Observation access does not imply message-send or device-management authority.
+MQTT is transport, not the record. A device keeps one broker session at a time and fails over between its broker profiles in priority order. The public firmware holds up to six profiles (see its [MQTT page](https://github.com/hoejriis/mecon-firmware/blob/main/docs/MQTT.md)). Each profile has its own credentials, so being allowed to publish observations does not mean being allowed to send messages or manage devices.
 
-MeshContinuum may deploy its own broker or use a compatible MQTT service. `mecon.cloud` is one hosted deployment, not part of the protocol.
+An installation can run its own broker or use any compatible MQTT service. mecon.cloud is one hosted deployment, not part of the protocol.
 
 ## mecon-firmware
 
-The public firmware's hardware test targets are the Heltec V3, Heltec V4, Seeed Wio Tracker L1 and SenseCAP T1000-E, each for the roles and transports it supports. Other boards get software verification only. It preserves native MeshCore operation while adding structured management and telemetry, signed updates, and on the Heltec boards up to 10 Wi-Fi profiles and 6 MQTT broker profiles. It also offers generic capabilities a manager asks for, such as sending messages with correlated outcomes and collecting received ones.
+The public firmware keeps native MeshCore working and adds structured management, telemetry and signed updates. On the Heltec boards it also adds Wi-Fi and MQTT. It is verified on real hardware on four boards: Heltec V3, Heltec V4, Seeed Wio Tracker L1 and SenseCAP T1000-E. Other boards get software verification only. What each board and role can do is in the firmware's [supported hardware](https://github.com/hoejriis/mecon-firmware/blob/main/docs/SUPPORTED_HARDWARE.md). Repeaters and Room servers have no Bluetooth, by design: they are managed over USB locally.
 
-Contact capacity, BLE and update paths vary by board and role, and a device reports its own capabilities. See the firmware's [supported hardware](https://github.com/hoejriis/mecon-firmware/blob/main/docs/SUPPORTED_HARDWARE.md). Repeaters and Room servers have no BLE, by decision: their local management is the USB console.
+The firmware's contracts live in its own repository, so other projects can build compatible managers without MeshContinuum.
 
-Firmware contracts are canonical in the sister repository so other projects can build compatible backends and Readers without MeshContinuum.
+## Who does what
 
-## Third-party compatibility
+| Layer | Examples | Where it lives |
+|---|---|---|
+| Generic capability | Native send with correlated outcomes, collecting received messages, contact and channel administration, supplying a missed message to the local app, bounded standing instructions, compact telemetry | The firmware, for any conforming manager |
+| Autonomous firmware process | Outage forwarding, where the device acts by itself under stated criteria | The firmware, as separate later work |
+| Backend orchestration | Which gateway sends a message, which history to catch up on, Deployment journeys, RF health policy, carrying favourite channels between devices | The Backend |
 
-MeshContinuum may ingest third-party packet sources when adapters exist. Ingestion compatibility never grants remote-management authority. Conversely, a third-party backend may manage mecon-firmware devices if it implements the public firmware contract and is explicitly provisioned with the required authority.
+## Other sources and managers
+
+MeshContinuum can read third-party packet sources where an adapter exists. Reading a source never grants authority to manage it. The other way round, a third-party Backend can manage mecon-firmware devices if it implements the public contract and is given that authority explicitly.
+
+For the full design, see the [architecture](ARCHITECTURE.md).

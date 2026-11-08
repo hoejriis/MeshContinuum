@@ -1,6 +1,19 @@
-# Capability and maturity matrix
+# Availability
 
-**Firmware rows reviewed 7 November 2026. Private beta rows last reviewed 25 October 2026.** This is the status reference for MeshContinuum and mecon.cloud. Architecture and protocol specifications describe the target; this page describes availability. The firmware keeps its own [availability page](https://github.com/hoejriis/mecon-firmware/blob/main/docs/AVAILABILITY.md). mecon-firmware publishes its source and pre-releases, the latest with signed images. Neither repository publishes a supported release.
+This is the one page that says what is available now. The other pages describe the product as it is meant to work. Firmware rows were reviewed on 8 November 2026, and private beta rows on 25 October 2026.
+
+## Where things stand
+
+| | Today |
+|---|---|
+| **Hosted beta** | [mecon.cloud](https://mecon.cloud) runs MECON as a private beta, by invitation only. First external testers are expected there. No opening date is announced. |
+| **Public firmware** | [mecon-firmware](https://github.com/hoejriis/mecon-firmware) publishes its source under MIT, with pre-releases. The latest, [v0.2.1](https://github.com/hoejriis/mecon-firmware/releases/tag/v0.2.1), has signed images for 20 board variants. None is a supported release. What has run on which board is in its [hardware verification record](https://github.com/hoejriis/mecon-firmware/blob/main/docs/HARDWARE_VERIFIED.md). |
+| **Public Backend and Reader** | Not published. There is no source, image or installation guide yet. Self-hosting is described as a design in [deployment choices](DEPLOYMENT_MODES.md). Publishing the Backend is a separate decision, with no date. |
+| **Later capabilities** | Planned work is in the [roadmap](ROADMAP.md), and known limits are in [limitations](LIMITATIONS.md). The firmware keeps its own [availability page](https://github.com/hoejriis/mecon-firmware/blob/main/docs/AVAILABILITY.md). |
+
+The beta runs on private firmware. A beta feature does not prove the same feature on the public firmware, and the other way round.
+
+The table below is the detail.
 
 ## Status vocabulary
 
@@ -28,8 +41,8 @@ A beta feature can be implemented without being accepted for new external tester
 | Local and federated deployments | Beta implementation; public packaging Planned | Private deployments exist. Public images, installation guide and independent-operator acceptance remain release gates. |
 | Automatic first-run Deployment creation and first-Companion handoff | Planned | A target workflow; not yet a complete public setup path. |
 | Fully standalone direct Reader with later synchronization | Planned | The hosted Reader needs a reachable Backend. |
-| Public firmware source and pre-releases | Available | [mecon-firmware](https://github.com/hoejriis/mecon-firmware) under MIT. [v0.2.0](https://github.com/hoejriis/mecon-firmware/releases/tag/v0.2.0) is the first with signed images; not a supported release. Its [hardware verification record](https://github.com/hoejriis/mecon-firmware/blob/main/docs/HARDWARE_VERIFIED.md) says what has run on which board. |
-| Generic managed-device capabilities in the public firmware | Planned · in progress | Identity and authority, telemetry, managed operations, signed updates, management over LoRa, manager-requested send and outcomes, received-message collection, contact and channel administration, local delivery and standing instructions; see the [roadmap](ROADMAP.md). What exists now is on the firmware's [availability page](https://github.com/hoejriis/mecon-firmware/blob/main/docs/AVAILABILITY.md). |
+| Public firmware source and pre-releases | Available | [mecon-firmware](https://github.com/hoejriis/mecon-firmware) under MIT. Pre-releases from v0.2.0 carry signed images; the latest is [v0.2.1](https://github.com/hoejriis/mecon-firmware/releases/tag/v0.2.1). None is a supported release. Its [hardware verification record](https://github.com/hoejriis/mecon-firmware/blob/main/docs/HARDWARE_VERIFIED.md) says what has run on which board. |
+| Generic managed-device capabilities in the public firmware | Experimental · in pre-releases | Identity and authority, telemetry, managed operations, signed updates, management over LoRa, manager-requested send and outcomes, received-message collection, contact and channel administration, local delivery and standing instructions; in the pre-releases since v0.2.0, with limits; later MECON-specific work is on the [roadmap](ROADMAP.md). What has been proven is on the firmware's [availability page](https://github.com/hoejriis/mecon-firmware/blob/main/docs/AVAILABILITY.md). |
 | This Backend and Reader using those public capabilities | Planned | The beta runs on private firmware. A beta feature here does not prove the same feature on the public firmware, and the other way round. |
 | Supported firmware releases and public Backend source | Planned | Separate decisions with no date; see the [roadmap](ROADMAP.md). |
 | Broader board portability and non-Heltec profiles | Experimental | Compilation or software tests alone do not prove a physical board. |
@@ -49,7 +62,7 @@ Hardware verification of the public firmware covers four boards: Heltec V3, Helt
 
 ## Basis and maintenance
 
-The private beta rows were checked on 25 October 2026 against the private Backend/Reader beta release v0.236.1 and the private firmware release mecon-v0.90.29. The firmware rows were checked on 7 November 2026 against the public mecon-firmware release v0.2.0, its main branch, its hardware verification record and its contracts. These identify reviewed evidence, **not a recommended installation pair**. A tagged asset or passing CI does not prove fleet rollout or hardware acceptance.
+The private beta rows were checked on 25 October 2026 against the private Backend/Reader beta release v0.236.1 and the private firmware release mecon-v0.90.29. The firmware rows were checked on 8 November 2026 against the public mecon-firmware release v0.2.1, its main branch, its hardware verification record and its contracts. These identify reviewed evidence, **not a recommended installation pair**. A tagged asset or passing CI does not prove fleet rollout or hardware acceptance.
 
 For each promoted capability, publish a public evidence summary with version, board/role, transport, date, result and remaining limits. Summaries must omit private identities, infrastructure and messages. If evidence conflicts or is incomplete, retain the lower maturity classification.
 

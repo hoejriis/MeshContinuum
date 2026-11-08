@@ -1,12 +1,12 @@
 # Architecture
 
-> **Target documentation:** this public repository has no installable release yet. See the [shared capability matrix](CAPABILITIES.md) for current availability and acceptance; specifications do not certify hardware or release readiness.
+> **Reference: the target architecture.** What is available now is on [availability](CAPABILITIES.md). A specification does not certify hardware or release readiness.
 
 ## Design principles
 
 MeshContinuum is local-first and self-hostable. A small local installation is a complete product; cloud services add reachability and resilience rather than becoming prerequisites for MeshCore operation.
 
-One MECON **Deployment** represents one administrator/trust domain and has a human-readable name, for example `DeimosMesh`, plus a permanent cryptographic Deployment identity. The Deployment name is also the default name of its private offline sync channel. A self-hosting administrator owns the Deployment's infrastructure and credentials. MECON does not require a shared public MQTT hub.
+One MECON **Deployment** represents one administrator/trust domain and has a human-readable name, for example `HarbourMesh`, plus a permanent cryptographic Deployment identity. The Deployment name is also the default name of its private offline sync channel. A self-hosting administrator owns the Deployment's infrastructure and credentials. MECON does not require a shared public MQTT hub.
 
 ## Logical flow
 
@@ -142,6 +142,8 @@ Cold recovery proves Deployment continuity; it does not blindly resume all old o
 A Deployment may contain one permanent Deployment identity, 1..n Backend instances, 0..n Readers, one primary cloud broker, one secondary cloud broker, 0..n local brokers and enrolled devices. Neither cloud broker is required locally.
 
 ## Recommended deployment progression
+
+The same progression, told as user journeys, is in [deployment choices](DEPLOYMENT_MODES.md).
 
 ### Small local deployment
 

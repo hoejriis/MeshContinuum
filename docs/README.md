@@ -1,33 +1,46 @@
 # MeshContinuum documentation
 
-## For users and prospective testers
+Read in order, or jump to what you need. What is available today is on one page: [availability](CAPABILITIES.md).
 
-- [Why MeshContinuum](WHY_MESHCONTINUUM.md)
-- [Get started / beta expectations](GETTING_STARTED.md) and [beta boards](BETA_BOARDS.md)
-- [Current capabilities](CAPABILITIES.md) — shared maturity reference
-- [Roadmap](ROADMAP.md)
-- [Trust and privacy](TRUST_AND_PRIVACY.md)
-- [Deployment modes](DEPLOYMENT_MODES.md)
+## 1. MeshCore
 
-## For contributors and implementers
+- [MeshCore in brief](MESHCORE.md): what MeshCore is, its roles, channels and presets, and what you need to begin.
 
-- [Contributing](../CONTRIBUTING.md)
-- [Project status](PROJECT_STATUS.md)
-- [Components](COMPONENTS.md)
-- [Detailed product target](PRODUCT_TARGET.md)
+## 2. What MECON is
+
+- [What MECON adds](WHY_MESHCONTINUUM.md): what it is like to use, who it is for, and what it does not change.
+- [How MECON works](COMPONENTS.md): the Backend, Reader, broker and firmware, and who does what.
+- [Trust and privacy](TRUST_AND_PRIVACY.md): what a hosted service can read, and the separate permissions.
+
+## 3. Using and deploying MECON
+
+- [Deployment choices](DEPLOYMENT_MODES.md): hosted, a home site, several sites, or the firmware alone.
+- The mecon.cloud beta:
+  - [getting started](GETTING_STARTED.md)
+  - [boards and firmware](BETA_BOARDS.md)
+  - [support](BETA_SUPPORT.md)
+  - [what is stored and who can read it](HOSTED_BETA_DATA.md)
+
+## 4. Limitations and future concepts
+
+- [Limitations](LIMITATIONS.md): what MECON cannot do, or does only under conditions.
+- [Availability](CAPABILITIES.md): what exists today, in detail.
+- [Roadmap](ROADMAP.md): what is planned, and the gates before each step.
+- [Geographical flood scopes and dynamic Repeater load adaptation](GEOGRAPHICAL_FLOOD_SCOPES_PROPOSAL.md): an exploratory idea for MeshCore routing. Not a MECON plan.
+
+## 5. Reference
+
+For contributors and implementers. These pages describe the target design.
+
 - [Architecture](ARCHITECTURE.md)
 - [Backend target contract 0.9](BACKEND_TARGET_CONTRACT_0.9.md)
-- [Shared product message / front-page brief](PRODUCT_MESSAGING.md)
+- [Detailed product target](PRODUCT_TARGET.md)
+- [Contributing](../CONTRIBUTING.md)
 - [Security reporting](../SECURITY.md)
+- [Product message: maintainer brief](PRODUCT_MESSAGING.md)
 
-Architecture and contract documents describe the target. They do not override the capability matrix or prove that a public release exists.
-
-The sister [mecon-firmware](https://github.com/hoejriis/mecon-firmware) project owns the backend-neutral device contract.
-
-## Exploratory proposals
-
-[Geographical flood scopes and dynamic Repeater load adaptation](GEOGRAPHICAL_FLOOD_SCOPES_PROPOSAL.md) discusses possible upstream changes. It is not a release commitment.
+The device contract belongs to the sister [mecon-firmware](https://github.com/hoejriis/mecon-firmware) project.
 
 ## Naming
 
-**MeshContinuum** is the product; **MECON** the shorthand; **mecon-firmware** the firmware project; **MeshContinuum.info** the project domain; **mecon.cloud** the hosted service. Private installation names are configuration, not product/protocol identity.
+**MeshContinuum** is the product, and **MECON** its shorthand. **mecon-firmware** is the firmware project, **MeshContinuum.info** the project domain, and **mecon.cloud** the hosted service. Private installation names are configuration, not product or protocol identity.

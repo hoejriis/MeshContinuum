@@ -14,7 +14,7 @@ Documentation, use cases and contract review are welcome now. This repository do
 
 ## Documentation pull requests
 
-State the reader's problem, your change and which links or claims you checked. Keep capability claims consistent with [the shared matrix](docs/CAPABILITIES.md). Label target behavior as target behavior. Screenshots must use sanitized or synthetic data and identify their version/date.
+State the reader's problem, your change and which links or claims you checked. Product pages describe the product as designed. What is available now belongs on [availability](docs/CAPABILITIES.md) only, so keep status out of other pages. Follow the [maintainer brief](docs/PRODUCT_MESSAGING.md) for product wording. Screenshots must use sanitized or synthetic data and identify their version and date.
 
 ## Design boundaries
 

@@ -17,7 +17,7 @@ In every case, your radios keep working as ordinary MeshCore radios if MECON goe
 
 **What you need.** An account on the service. A Companion you want to read messages for. A desktop Chrome or Edge browser if you want to set up a radio over USB.
 
-**What you do.** Sign in. Enrol your Companion's identity, so the service can decrypt the messages meant for it. If you have a gateway, set it up over USB, and it reports what it hears to the service.
+**What you do.** Sign in. Enrol your Companion's identity, so the service can decrypt the messages meant for it. If you have a gateway, set it up over USB, and it reports what it hears to the service. A board with no Wi-Fi can be enrolled too; the service reaches it while a Reader holds its cable.
 
 **What you are responsible for.** Deciding which keys to give the service. A hosted service can read whatever it can decrypt: see [trust and privacy](TRUST_AND_PRIVACY.md), and for mecon.cloud, [what it stores](HOSTED_BETA_DATA.md).
 

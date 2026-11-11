@@ -17,6 +17,7 @@ What MECON cannot do, or does only under conditions, stated plainly. This page i
 
 - **What you can do depends on the device.** Its firmware, board and role decide which actions it offers. A Repeater cannot send messages as a Companion.
 - **Repeaters and Room servers have no Bluetooth**, by design. They are managed locally over USB.
+- **A board with no Wi-Fi is online only while a Reader holds it.** A Wio Tracker L1 or SenseCAP T1000-E Companion running the public firmware reaches its Backend through a Reader holding its USB cable, and shows offline whenever none does.
 - **Some boards update only over USB.** In the beta, the SenseCAP T1000-E and the Wio Tracker L1 cannot be updated over the air.
 - **A gateway's Wi-Fi companion port is unprotected.** It is off by default. When it is on, anyone on that network can use it, so switch it on only on a network you trust.
 - **Only tested boards are offered.** A board that only builds is not offered, and other boards and revisions, such as the Heltec V4 R8, are not supported. See the [beta boards](BETA_BOARDS.md) and the firmware's [supported hardware](https://github.com/hoejriis/mecon-firmware/blob/main/docs/SUPPORTED_HARDWARE.md).

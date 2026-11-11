@@ -23,8 +23,10 @@ Reading your messages and managing a radio are separate steps. In the Reader, op
 | **Add Standalone Companion** | Adds a Companion's private key, so the Reader can decrypt its messages. No USB, and no device management. |
 | **Add Standalone Repeater** | Follows an ordinary MeshCore Repeater heard on air, by its name and public key. Monitoring only. |
 | **Configure** | Connects to a MECON device on USB, configures it and enrols it. |
-| **Set up public-firmware device** | Gives a device running the public [mecon-firmware](https://github.com/hoejriis/mecon-firmware) its Wi-Fi, broker login and enrolment, over USB. |
+| **Set up public-firmware device** | Enrols a device running the public [mecon-firmware](https://github.com/hoejriis/mecon-firmware), over USB. Its **Board** choice is Companion, Repeater or Room server; a Repeater or Room server is set up over its USB console. A Heltec gets its Wi-Fi and broker login. A Wio Tracker L1 or SenseCAP T1000-E Companion has no Wi-Fi: tick **No Wi-Fi: this Reader holds the link**. |
 | **Flash** | Installs or upgrades MECON firmware on a supported Heltec board, over USB. |
+
+A board set up with **No Wi-Fi** has no link of its own. It is online while a Reader holds its cable (**Devices**, **Connect USB**), and offline otherwise; the Backend manages it through that Reader. A Repeater or Room server needs Wi-Fi, so on the Wio and the T1000-E only the Companion is set up this way. A public-firmware Repeater or Room server held over USB also takes a firmware update over its console.
 
 The USB items need desktop Chrome or Edge. Which boards the beta offers is on the [beta board list](BETA_BOARDS.md). Channels are added by the installation's owner.
 

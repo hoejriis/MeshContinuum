@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MeshContinuum">
+  <rect width="64" height="64" rx="12" fill="#0D1736"/>
+  <path d="M32 32 C 42 15, 61 15, 61 32 C 61 49, 42 49, 32 32 C 22 15, 3 15, 3 32 C 3 49, 22 49, 32 32 Z" fill="none" stroke="#F5F7FB" stroke-width="5.5" stroke-linejoin="round" transform="translate(32 32) scale(0.86) translate(-32 -32)"/>
+  <g transform="translate(32 32) scale(0.86) translate(-32 -32)">
+  <circle cx="13.75" cy="19.25" r="8" fill="#25D6C9"/>
+  <circle cx="50.25" cy="19.25" r="8" fill="#8B7CFF"/>
+  <circle cx="50.25" cy="44.75" r="8" fill="#25D6C9"/>
+  <circle cx="13.75" cy="44.75" r="8" fill="#8B7CFF"/>
+  </g>
+</svg>

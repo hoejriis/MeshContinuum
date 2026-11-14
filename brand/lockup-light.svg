@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 64" role="img" aria-label="MeshContinuum (MECON)">
+  <g>
+  <rect width="64" height="64" rx="14" fill="#0D1736"/>
+  <path d="M32 32 C 40 19, 55 19, 55 32 C 55 45, 40 45, 32 32 C 24 19, 9 19, 9 32 C 9 45, 24 45, 32 32 Z" fill="none" stroke="#F5F7FB" stroke-width="3.5" stroke-linejoin="round"/>
+  <circle cx="17.5" cy="22.25" r="5.25" fill="#25D6C9"/>
+  <circle cx="46.5" cy="22.25" r="5.25" fill="#8B7CFF"/>
+  <circle cx="46.5" cy="41.75" r="5.25" fill="#25D6C9"/>
+  <circle cx="17.5" cy="41.75" r="5.25" fill="#8B7CFF"/>
+  </g>
+  <text x="80" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="28" font-weight="650" fill="#0D1736">MeshContinuum</text>
+  <text x="81" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="3" fill="#4A5578">MECON</text>
+</svg>

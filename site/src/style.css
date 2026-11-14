@@ -5,13 +5,14 @@
  */
 
 :root {
-  --bg: #0b0e14;
-  --bg-panel: #12161f;
-  --border: #262c3a;
-  --text: #e8ebf1;
-  --text-muted: #9aa3b5;
-  --accent: #5eb1ff;
-  --accent-strong: #8fc9ff;
+  /* Brand palette (docs/BRAND.md): navy, violet, turquoise, light surface. */
+  --bg: #0a1230;
+  --bg-panel: #131d45;
+  --border: #2a3666;
+  --text: #f5f7fb;
+  --text-muted: #a9b4cf;
+  --accent: #8b7cff;
+  --accent-strong: #25d6c9;
   --success: #6ee7a8;
   --error: #ff8a8a;
   --safe-top: env(safe-area-inset-top, 0px);
@@ -57,9 +58,29 @@ body {
 }
 
 .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   font-weight: 600;
   font-size: 1.1rem;
   letter-spacing: 0.01em;
+}
+
+.wordmark-mark {
+  width: 28px;
+  height: 28px;
+  flex: none;
+}
+
+@media (max-width: 420px) {
+  .wordmark {
+    font-size: 1rem;
+    gap: 0.4rem;
+  }
+  .wordmark-mark {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 .wordmark-short {

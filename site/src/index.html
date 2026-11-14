@@ -6,21 +6,21 @@
     <meta name="color-scheme" content="dark" />
     <meta
       name="description"
-      content="MeshContinuum (MECON): MeshCore, without the boundaries of a single device. Your mesh stays independent; MECON makes it more useful when connected."
+      content="MeshContinuum (MECON): MECON lets small MeshCore radios, which talk to each other without mobile coverage, share what they hear when the Internet is there. Non-commercial and exploratory."
     />
     <meta name="generator" content="meshcontinuum-site {{VERSION}}" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="MeshContinuum" />
-    <meta property="og:title" content="MeshCore, without the boundaries of a single device" />
-    <meta property="og:description" content="Your mesh stays independent. MECON makes it more useful when connected." />
+    <meta property="og:title" content="A radio network that works without the Internet. A connected experience when you have it." />
+    <meta property="og:description" content="MECON lets small MeshCore radios, which talk to each other without mobile coverage, share what they hear when the Internet is there. Non-commercial and exploratory." />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="MeshCore, without the boundaries of a single device" />
-    <meta name="twitter:description" content="Your mesh stays independent. MECON makes it more useful when connected." />
+    <meta name="twitter:title" content="A radio network that works without the Internet. A connected experience when you have it." />
+    <meta name="twitter:description" content="MECON lets small MeshCore radios, which talk to each other without mobile coverage, share what they hear when the Internet is there. Non-commercial and exploratory." />
     <link rel="icon" type="image/png" sizes="32x32" href="{{ASSET}}/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="{{ASSET}}/favicon-16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="{{ASSET}}/apple-touch-icon.png" />
     <link rel="stylesheet" href="{{ASSET}}/style.css" />
-    <title>MeshContinuum — MeshCore, without the boundaries of a single device</title>
+    <title>MeshContinuum — radio messaging without the Internet, connected when you have it</title>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -34,16 +34,18 @@
 
       <main class="content" id="main">
         <section class="hero" aria-labelledby="hero-heading">
-          <h1 id="hero-heading">MeshCore, without the boundaries of a single device.</h1>
-          <p class="support-line">Your mesh stays independent. MECON makes it more useful when connected.</p>
+          <h1 id="hero-heading">A radio network that works without the Internet. A connected experience when you have it.</h1>
+          <p class="support-line">Small radios that pass messages to each other, with no mobile network. MECON makes them more useful when they are connected.</p>
           <p class="lede">
-            Bring messages captured by your Companions and configured observer sources into one web
-            Reader. Keep history, understand reception and manage supported devices while normal
-            MeshCore radio operation remains independent of the Internet.
+            MeshCore radios carry text messages for kilometres, from radio to radio, with no phone
+            mast or server. MECON is an optional layer on top: it combines what many participating
+            radios hear, keeps the history, and helps look after the radios. Take MECON away and
+            the radios keep talking, exactly as before.
           </p>
           <p class="status-line" data-testid="availability-notice">
-            <strong>Where things stand:</strong> private beta on mecon.cloud, by invitation. The
-            firmware is public as source and signed pre-releases; the Backend is not published yet.
+            <strong>Where things stand:</strong> a private beta on mecon.cloud, by invitation. The
+            radio firmware is public as source and test releases; the server software is not
+            published yet. Some features described here are planned.
             <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/CAPABILITIES.md" target="_blank" rel="noopener noreferrer">Availability</a>
           </p>
           <div class="cta-row">
@@ -58,31 +60,87 @@
         </section>
       </main>
 
+      <section class="wide-section meshcore-section" aria-labelledby="meshcore-heading">
+        <h2 id="meshcore-heading">What is MeshCore?</h2>
+        <p class="section-lede">
+          <a href="https://github.com/meshcore-dev/MeshCore" target="_blank" rel="noopener noreferrer">MeshCore</a>
+          is open-source software for small, low-cost LoRa radios. Each radio passes messages on to
+          the next, so a message can cross a town or a valley with no mobile network, no Internet
+          and no server. It keeps working in a power cut, in the mountains or at sea. Anyone can
+          join with a radio and a phone app. A few words you will meet:
+        </p>
+        <dl class="term-list">
+          <dt>Companion</dt>
+          <dd>Your personal radio, paired with an app on your phone or computer.</dd>
+          <dt>Repeater</dt>
+          <dd>A radio left on in a good spot, often high up, passing others' messages on to extend the mesh.</dd>
+          <dt>Room server</dt>
+          <dd>A small bulletin board on the mesh that keeps posts for you.</dd>
+          <dt>Observer</dt>
+          <dd>A radio that also reports what it hears to an online service. MECON learns from observers as well as your own radios.</dd>
+        </dl>
+        <p class="section-lede">
+          <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/MESHCORE.md" target="_blank" rel="noopener noreferrer">MeshCore in brief</a>
+          explains the rest, and what you need to begin.
+        </p>
+      </section>
+
       <section class="wide-section benefits-section" aria-labelledby="benefits-heading">
-        <h2 id="benefits-heading" class="visually-hidden">What MECON adds</h2>
+        <h2 id="benefits-heading">What MECON adds</h2>
         <div class="benefit-grid">
           <article class="benefit-card">
-            <h3>One Reader, more reception</h3>
+            <h3>Many receivers, one picture</h3>
             <p>
-              See traffic captured by the sources available to your deployment. Keep one message
-              with its reception evidence, even when several observers hear it.
+              A radio only hears what reaches it while it is on. MECON combines what many radios
+              and observers heard, and keeps each message once, with every reception of it. Read
+              your messages in the MECON Reader, a web app, from any device.
             </p>
           </article>
           <article class="benefit-card">
-            <h3>Manage devices remotely</h3>
+            <h3>See the network and its limits</h3>
             <p>
-              Check connectivity and health, configure supported devices and send through an
-              authorised Companion gateway. The actions available depend on the device.
+              Which radios carry the traffic, where paths break and where coverage is thin. MECON
+              shows what its receivers actually heard, never more.
             </p>
           </article>
           <article class="benefit-card">
-            <h3>Your infrastructure, your control</h3>
+            <h3>Look after radios from afar</h3>
             <p>
-              MECON is free and intended for open-source release. Run it hosted, at home, or across
-              several sites. mecon.cloud is one deployment, not a required service.
+              Health, battery and firmware for every radio in one list. Configure and update
+              supported radios, including those on a hilltop that only radio can reach.
+            </p>
+          </article>
+          <article class="benefit-card">
+            <h3>Explore together, your way</h3>
+            <p>
+              Use a hosted service, run it on a small computer at home, or join several sites. The
+              ideas, documents and radio firmware are shared openly for others to reuse.
             </p>
           </article>
         </div>
+      </section>
+
+      <section class="wide-section live-section" aria-labelledby="live-heading">
+        <h2 id="live-heading">See the network come alive</h2>
+        <p class="section-lede">
+          A map of the radios MECON's observers hear, and the messages moving between them, is
+          planned for this page. It is not here yet, and nothing on this page is live.
+        </p>
+        <ul class="plain-list">
+          <li><strong>Observed nodes</strong> are radios that some observer has heard. A radio no observer hears will not appear, so the map will never be the whole mesh.</li>
+          <li><strong>Recent packets</strong> will show activity, not message content. Private messages stay encrypted.</li>
+          <li><strong>Coverage is partial.</strong> Observers sit where volunteers put them, so some areas look quiet only because nobody is listening there.</li>
+          <li><strong>A location can be unknown.</strong> A radio will be placed only if it shares its own position. Where it was heard from is not where it is.</li>
+        </ul>
+      </section>
+
+      <section class="wide-section purpose-section" aria-labelledby="purpose-heading">
+        <h2 id="purpose-heading">Why MECON exists</h2>
+        <p>
+          MECON is an independent, non-commercial experiment: made to try ideas, learn, share
+          what works and inspire others to build on it. It has no revenue objective. mecon.cloud
+          may one day ask for voluntary help with hosting costs; that is not a subscription.
+        </p>
       </section>
 
       <section class="wide-section preview-section" aria-labelledby="preview-heading">
@@ -91,11 +149,11 @@
         <div class="preview-grid">
           <figure class="preview-item preview-wide">
             <img src="{{ASSET}}/preview/reader-reception-desktop.png" alt="The Packets view for one channel message: its route through two repeater hops, the decrypted text, and three receptions by different gateways with their offsets, RSSI and SNR." loading="lazy" width="2880" height="1800" />
-            <figcaption><strong>One Reader, more reception.</strong> One message, kept once, with every reception that heard it.</figcaption>
+            <figcaption><strong>Many receivers, one picture.</strong> One message, kept once, with every reception that heard it.</figcaption>
           </figure>
           <figure class="preview-item preview-wide">
             <img src="{{ASSET}}/preview/devices-desktop.png" alt="The Devices list: two Companions and a Repeater, each with its connection, firmware version, battery, uptime, when it was last heard and how many packets it reported." loading="lazy" width="3360" height="1440" />
-            <figcaption><strong>Manage devices remotely.</strong> Connection and health for every device, from one list.</figcaption>
+            <figcaption><strong>Look after radios from afar.</strong> Connection and health for every device, from one list.</figcaption>
           </figure>
           <figure class="preview-item preview-wide">
             <img src="{{ASSET}}/preview/device-configure-desktop.png" alt="A Companion's Configure page: name and location, and its radio settings matched to the EU/UK (Narrow) community preset, each field marked with the transport that writes it." loading="lazy" width="2880" height="1800" />
@@ -108,32 +166,10 @@
         </div>
       </section>
 
-      <section class="wide-section meshcore-section" aria-labelledby="meshcore-heading">
-        <h2 id="meshcore-heading">New to MeshCore?</h2>
-        <p class="section-lede">
-          MeshCore is open-source firmware for small LoRa radios that pass messages to each other
-          over long distances, with no mobile network or server. MECON is built around it.
-        </p>
-        <dl class="term-list">
-          <dt>Companion</dt>
-          <dd>Your personal radio, paired with an app on your phone or computer.</dd>
-          <dt>Repeater</dt>
-          <dd>A radio left on in a good spot, forwarding others' messages to extend the mesh.</dd>
-          <dt>Room server</dt>
-          <dd>A small bulletin board on the mesh that keeps posts for you.</dd>
-          <dt>Observer</dt>
-          <dd>A radio that also reports what it hears to an online service. MECON reads from observers as well as your own radios.</dd>
-        </dl>
-        <p class="section-lede">
-          <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/MESHCORE.md" target="_blank" rel="noopener noreferrer">MeshCore in brief</a>
-          explains the rest, and what you need to begin.
-        </p>
-      </section>
-
       <section class="wide-section architecture-section" aria-labelledby="architecture-heading">
         <h2 id="architecture-heading">How it fits together</h2>
         <p class="section-lede">
-          MECON is an application layer around MeshCore. It does not replace MeshCore's packet
+          MECON is an optional layer around MeshCore. It does not replace MeshCore's packet
           formats, radio routing, node identities or normal Companion apps. Everything inside the
           dashed boundary is optional; the MeshCore radios keep talking to each other without it.
         </p>

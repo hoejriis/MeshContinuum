@@ -292,7 +292,7 @@ input:focus-visible {
 
 @media (min-width: 800px) {
   .benefit-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -314,7 +314,8 @@ input:focus-visible {
   margin: 0;
 }
 
-.involved-section p {
+.involved-section p,
+.purpose-section p {
   color: var(--text-muted);
   max-width: 720px;
   margin: 0 0 0.8rem;
@@ -466,4 +467,19 @@ input:focus-visible {
 .term-list dd {
   margin: 0;
   color: var(--text-muted);
+}
+
+.plain-list {
+  color: var(--text-muted);
+  max-width: 720px;
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.plain-list li {
+  margin: 0 0 0.6rem;
+}
+
+.plain-list strong {
+  color: var(--text);
 }

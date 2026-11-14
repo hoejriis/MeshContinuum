@@ -33,4 +33,4 @@ If a remote update fails, the gateway returns to its previous firmware by itself
 
 ## See it in use
 
-The [MeshContinuum demonstration](../README.md#one-reader-more-reception) shows the Reader with two Heltec gateways (V3 and V4). Its screenshots use synthetic demo data and were taken on an earlier beta firmware. They show those two boards only and say nothing about any other board or role.
+The [MeshContinuum demonstration](../README.md#four-things-it-makes-possible) shows the Reader with two Heltec gateways (V3 and V4). Its screenshots use synthetic demo data and were taken on an earlier beta firmware. They show those two boards only and say nothing about any other board or role.

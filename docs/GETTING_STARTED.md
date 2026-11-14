@@ -36,7 +36,7 @@ Before you add a private key, read [what mecon.cloud stores and who can read it]
 
 Once signed in, the Reader shows the channels the installation reads, and the direct messages of the Companions you enrolled. Each message is kept once, with every reception that heard it. Much of what you see is heard by public observer feeds the installation subscribes to, not only by your own radio. A message's reception details say which observers heard it. If you manage devices, the Devices list shows each one's connection and health.
 
-The [screenshots](../README.md#one-reader-more-reception) show what this looks like, with made-up data. Your own Reader shows live traffic, and its sidebar shows the version it runs.
+The [screenshots](../README.md#four-things-it-makes-possible) show what this looks like, with made-up data. Your own Reader shows live traffic, and its sidebar shows the version it runs.
 
 An empty Reader before your sources have heard anything is normal. It means no packet has been received yet, not that something failed.
 

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MeshContinuum">
+  <path d="M32 32 C 40 19, 55 19, 55 32 C 55 45, 40 45, 32 32 C 24 19, 9 19, 9 32 C 9 45, 24 45, 32 32 Z" fill="none" stroke="#0D1736" stroke-width="3.5" stroke-linejoin="round"/>
+  <g fill="#0D1736">
+    <circle cx="17.5" cy="22.25" r="5.25"/>
+    <circle cx="46.5" cy="22.25" r="5.25"/>
+    <circle cx="46.5" cy="41.75" r="5.25"/>
+    <circle cx="17.5" cy="41.75" r="5.25"/>
+  </g>
+</svg>

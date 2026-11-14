@@ -2,6 +2,8 @@
 
 This is the editorial brief for maintainers. It sets the product message that the README, these docs and the presentation site share. It is not a product page. Readers should start at the [README](../README.md). It keeps no status of its own: what is available is on [availability](CAPABILITIES.md) only.
 
+The visual identity (mark, palette and files) is in the [brand guide](BRAND.md).
+
 ## Purpose
 
 MECON is an independent, exploratory, non-commercial project. It exists to experiment with how independent MeshCore radios, observations, identities and sites can work together, and to share what is learned so others reuse it, try it and contribute. It has no revenue objective. mecon.cloud may one day ask for voluntary help with hosting costs; that is not a subscription or a business model, and copy never presents it as one.

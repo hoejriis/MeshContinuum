@@ -9,7 +9,7 @@ The public front page for MeshContinuum. It is built into one static, versioned 
 | `src/index.html` | The page. `{{ASSET}}` and `{{VERSION}}` are filled in at build time |
 | `src/style.css`, `src/site.js` | Styles, and the small script that reads the instance's name and sign-in link |
 | `src/preview/` | Screenshots of the Reader |
-| `src/*.png` | Icons |
+| `src/*.png`, `src/*.svg` | Icons, the header mark and the social preview, copied from `brand/` |
 | `VERSION` | The site version. It is independent of Backend and firmware versions |
 | `build.py` | Builds `dist/`: the page, the assets, `site.json`, the tarball and `SHA256SUMS` |
 
@@ -37,4 +37,4 @@ Only public-safe presentation: copy, styles, icons and screenshots. Never sign-i
 
 ## Provenance
 
-The page, its styles, its icons and its diagram were taken from the hosted service's front page, written by the same author. That page's sign-in panel and its script stayed with the service. The screenshots were captured on 9 October 2026 in the real application, on a build whose Reader shows v0.193.0, with synthetic demo data. They are the same files as in `docs/images/`. Licensed with this repository under [Apache-2.0](../LICENSE).
+The page, its styles and its diagram were taken from the hosted service's front page, written by the same author. The icons, the header mark and the social preview are copies of the files in [`brand/`](../brand), described in the [brand guide](../docs/BRAND.md). That page's sign-in panel and its script stayed with the service. The screenshots were captured on 9 October 2026 in the real application, on a build whose Reader shows v0.193.0, with synthetic demo data. They are the same files as in `docs/images/`. Licensed with this repository under [Apache-2.0](../LICENSE).

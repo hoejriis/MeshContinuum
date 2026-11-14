@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="brand/lockup-dark.svg">
+  <img src="brand/lockup-light.svg" alt="MeshContinuum (MECON)" width="360">
+</picture>
+
 # MeshContinuum
 
 ## What if your MeshCore radios worked together?

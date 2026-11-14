@@ -6,7 +6,7 @@
 
 MeshContinuum is local-first and self-hostable. A small local installation is a complete product; cloud services add reachability and resilience rather than becoming prerequisites for MeshCore operation.
 
-One MECON **Deployment** represents one administrator/trust domain and has a human-readable name, for example `HarbourMesh`, plus a permanent cryptographic Deployment identity. The Deployment name is also the default name of its private offline sync channel. A self-hosting administrator owns the Deployment's infrastructure and credentials. MECON does not require a shared public MQTT hub.
+One MECON **Deployment** represents one administrator/trust domain and has a human-readable name, for example `HarbourMesh`, plus a permanent cryptographic Deployment identity. The Deployment name is also the default name of its Fleet Management Channel. A self-hosting administrator owns the Deployment's infrastructure and credentials. MECON does not require a shared public MQTT hub.
 
 ## Logical flow
 
@@ -71,23 +71,26 @@ MECON deliberately separates credentials by purpose rather than using one univer
 
 - **Deployment trust root / identity:** establishes continuity of one Deployment and authorizes Backend membership. Backend instances have their own instance identities rather than sharing one ordinary operational private key.
 - **Backend instance identity:** identifies and authenticates one trusted Backend to its peers.
-- **Offline sync-channel key:** shared with enrolled Companions and trusted Backends for the Deployment's private MeshCore sync channel. Because Companions possess this shared secret, loss/revocation of a Companion triggers sync-key rotation and redistribution to remaining authorized devices.
-- **Per-device MQTT identity/credential:** identifies one Companion to the Deployment's local/primary/secondary brokers and can be revoked individually. Possession of the offline sync key is not sufficient to mint an MQTT identity.
+- **Fleet Management Channel key:** shared with every enrolled device and the trusted Backends for the Deployment's private Fleet Management Channel. Because devices possess this shared secret, loss/revocation of a device triggers key rotation and redistribution to remaining authorized devices.
+- **Per-device MQTT identity/credential:** identifies one Companion to the Deployment's local/primary/secondary brokers and can be revoked individually. Possession of the Fleet Management Channel key is not sufficient to mint an MQTT identity.
+- **Delegated receive identities (planned):** up to four other identities of the same owner, such as a car, cabin or spare Companion, provisioned on a daily Companion in the Normal posture. The Companion receives and acknowledges messages for them, keeps its own primary identity for sending, and never sends an ordinary message as a delegated identity. These keys never go to a Repeater, the Fleet Management Channel, telemetry or logs. A copied key can impersonate its owner whatever the firmware restricts.
 - **Recovery material:** optional disaster-recovery authority stored only on explicitly designated Recovery Companions and protected by a user passphrase.
 
 MQTT transport identity and MECON cryptographic identity remain separate. Broker replacement/failover does not change device or Backend identity.
 
-## Offline sync channel
+## Fleet Management Channel
 
-Every Deployment has a private offline sync channel whose default name is the Deployment name. Enrolled Companions receive its current private key/generation so that authorized devices can participate in offline MECON coordination and can assist with enrollment flows when Backend connectivity is unavailable.
+Every Deployment, which is one fleet, has one private Fleet Management Channel whose default name is the Deployment name. It is the public firmware's bound [management channel](https://github.com/hoejriis/mecon-firmware/blob/main/docs/contract/MANAGEMENT_CHANNEL.md), not a separate protocol. Every enrolled Companion, Repeater and Room server holds its current key/generation, including devices with no IP link; a Repeater or Room server uses its single management slot for it. The channel carries scheduled and on-demand compact RF reports, signed management to devices only radio can reach, and a human-readable `ping` that members can send from a stock app.
 
-The shared channel is intentionally not the Deployment trust root. A device possessing the sync key cannot unilaterally become a Backend, mint arbitrary broker credentials or impersonate the Deployment root.
+The shared channel is intentionally not the Deployment trust root. Management on it is signed by the Deployment's authority as on any other path; a device possessing the channel key cannot unilaterally become a Backend, issue commands, mint broker credentials or impersonate the Deployment root. One Backend may serve several Deployments with different owners; each has its own channel and key, and nothing crosses between them.
 
-When a Companion is lost or revoked:
+This replaces the private firmware's offline sync channel and its autonomous outage forwarding, which are retired and not carried into the public firmware. The Fleet Management Channel is planned work; see the [roadmap](ROADMAP.md#moving-the-fleet-to-the-public-firmware).
+
+When a device is lost or revoked:
 
 1. revoke that device's individual MQTT/broker authority;
-2. increment the offline sync-key generation;
-3. create a new sync-channel private key;
+2. increment the channel key generation;
+3. create a new channel key;
 4. distribute the new generation to remaining authorized devices/Backends through available trusted paths;
 5. retain only the historical material required to interpret retained data, according to policy.
 
@@ -114,7 +117,7 @@ Cold recovery is intentionally physical and narrow:
 5. user enters the passphrase;
 6. recovery material is decrypted in the browser where practical and used to establish continuity of the recovered Deployment;
 7. fresh Backend instance and broker operational credentials are generated;
-8. the offline sync key is rotated as part of recovery before normal operation resumes.
+8. the Fleet Management Channel key is rotated as part of recovery before normal operation resumes.
 
 Recovery is not exposed over RF, MQTT or BLE. Firmware should not remotely advertise a Recovery Companion as a high-value target; the recovery package is accessible only through the explicit USB recovery operation.
 
@@ -126,7 +129,7 @@ The package contains only high-value information that cannot safely/reliably be 
 - permanent Deployment ID and Deployment name;
 - cryptographic material required to prove/re-establish Deployment trust-root continuity;
 - trust-root/key generation metadata required to interpret that material;
-- current offline sync-channel identity, private key and generation;
+- current Fleet Management Channel identity, key and generation;
 - cryptographic/KDF metadata required to authenticate/decrypt the package.
 
 It deliberately does **not** become a configuration backup. Do not store ordinary Wi-Fi presets, broker endpoints/passwords, retention settings, UI preferences, observations/history, routine device configuration, templates or similar reconstructable settings. Users, favourites and other state already represented on surviving Companions should be reconstructed/synchronized from those devices where the contracts provide sufficient evidence rather than duplicated into the Recovery Package.
@@ -135,7 +138,7 @@ It deliberately does **not** become a configuration backup. Do not store ordinar
 
 Recovery Packages have a monotonic generation. Fundamental recovery/trust changes create a new generation and update designated Recovery Companions. A recovered Backend can identify an older package as stale. Removing/revoking a Recovery Companion must advance the relevant recovery authority so its old package cannot be treated as current indefinitely.
 
-Cold recovery proves Deployment continuity; it does not blindly resume all old operational credentials. New Backend/broker credentials are generated and the offline sync key is rotated during recovery.
+Cold recovery proves Deployment continuity; it does not blindly resume all old operational credentials. New Backend/broker credentials are generated and the Fleet Management Channel key is rotated during recovery.
 
 ## Deployment components
 

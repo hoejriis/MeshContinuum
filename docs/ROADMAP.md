@@ -35,7 +35,7 @@ The public firmware builds reusable, generic managed-device capabilities first. 
 | Compact telemetry over LoRa | [#116](https://github.com/hoejriis/mecon-firmware/issues/116) |
 | Conformance on Heltec V3, Heltec V4, Wio Tracker L1 and SenseCAP T1000-E | [#117](https://github.com/hoejriis/mecon-firmware/issues/117) |
 
-**MECON-specific, later:** Deployment mapping, connected messaging, backfill, outage and sync-channel behaviour, the RF health policy, and firmware-image delivery over LoRa ([#118](https://github.com/hoejriis/mecon-firmware/issues/118) to [#123](https://github.com/hoejriis/mecon-firmware/issues/123)). Most of this is Backend orchestration over the generic capabilities. Autonomous outage forwarding is a distinct firmware process.
+**MECON-specific, later:** Deployment mapping, connected messaging, backfill, outage and sync-channel behaviour, the RF health policy, and firmware-image delivery over LoRa ([#118](https://github.com/hoejriis/mecon-firmware/issues/118) to [#123](https://github.com/hoejriis/mecon-firmware/issues/123)). Most of this is Backend orchestration over the generic capabilities. Autonomous outage forwarding is a distinct firmware process. The device side of connected messaging, backfill and RF health, built from the generic capabilities above, is mapped in [MECON journeys](https://github.com/hoejriis/mecon-firmware/blob/main/docs/MECON_JOURNEYS.md).
 
 Boundaries:
 - A private management channel is generic. Membership of the channel and its encryption grant no command authority.

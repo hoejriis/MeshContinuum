@@ -13,27 +13,27 @@ Hosted testing may precede public source publication. It is not blocked on finis
 
 ## Public firmware programme
 
-*Plans, not shipped features. What exists today is in the [capability matrix](CAPABILITIES.md).*
-
 The public firmware builds reusable, generic managed-device capabilities first. Any conforming manager can use them; none needs this Backend, a particular broker or a domain. MECON-specific behaviour then builds on them.
 
-**Generic capabilities, first:**
+**Generic capabilities in the pre-releases.** These are in the signed pre-releases, with the limits on [availability](CAPABILITIES.md). None is a supported release yet.
+- Device identity, management authority, replay protection and recovery ([#95](https://github.com/hoejriis/mecon-firmware/issues/95))
+- Managed operations and configuration with safe recovery ([#109](https://github.com/hoejriis/mecon-firmware/issues/109))
+- Signed firmware updates over IP, USB and BLE ([#110](https://github.com/hoejriis/mecon-firmware/issues/110))
+- Native send with correlated outcomes, direct and channel ([#260](https://github.com/hoejriis/mecon-firmware/issues/260))
+- Collecting received messages ([#262](https://github.com/hoejriis/mecon-firmware/issues/262))
+- Native contact administration ([#264](https://github.com/hoejriis/mecon-firmware/issues/264))
+- Supplying a message to the local app, with no RF retransmission ([#265](https://github.com/hoejriis/mecon-firmware/issues/265))
+- Bounded standing instructions and periodic reports ([#266](https://github.com/hoejriis/mecon-firmware/issues/266))
+- Private management channel and channel administration ([#114](https://github.com/hoejriis/mecon-firmware/issues/114), [#151](https://github.com/hoejriis/mecon-firmware/issues/151))
+
+**Generic capabilities still being completed.** *Plans, not finished features.* Parts of each are already in the pre-releases; the Issue stays open until the whole is done.
 
 | Capability | Firmware issue |
 |---|---|
-| Device identity, management authority, replay protection and recovery | [#95](https://github.com/hoejriis/mecon-firmware/issues/95) |
 | Full telemetry and subscriptions over MQTT, USB and BLE | [#96](https://github.com/hoejriis/mecon-firmware/issues/96) |
-| Managed operations and configuration with safe recovery | [#109](https://github.com/hoejriis/mecon-firmware/issues/109) |
-| Signed firmware updates over IP, USB and BLE | [#110](https://github.com/hoejriis/mecon-firmware/issues/110) |
-| Native send with correlated outcomes, direct and channel | [#260](https://github.com/hoejriis/mecon-firmware/issues/260) |
-| Collecting received messages | [#262](https://github.com/hoejriis/mecon-firmware/issues/262) |
-| Native contact administration | [#264](https://github.com/hoejriis/mecon-firmware/issues/264) |
-| Supplying a message to the local app, with no RF retransmission | [#265](https://github.com/hoejriis/mecon-firmware/issues/265) |
-| Bounded standing instructions and periodic reports | [#266](https://github.com/hoejriis/mecon-firmware/issues/266) |
-| Private management channel and channel administration | [#114](https://github.com/hoejriis/mecon-firmware/issues/114), [#151](https://github.com/hoejriis/mecon-firmware/issues/151) |
 | Authenticated management over direct and channel LoRa | [#115](https://github.com/hoejriis/mecon-firmware/issues/115) |
 | Compact telemetry over LoRa | [#116](https://github.com/hoejriis/mecon-firmware/issues/116) |
-| Conformance on Heltec V3, Heltec V4, Wio Tracker L1 and SenseCAP T1000-E | [#117](https://github.com/hoejriis/mecon-firmware/issues/117), [#1](https://github.com/hoejriis/mecon-firmware/issues/1) |
+| Conformance on Heltec V3, Heltec V4, Wio Tracker L1 and SenseCAP T1000-E | [#117](https://github.com/hoejriis/mecon-firmware/issues/117) |
 
 **MECON-specific, later:** Deployment mapping, connected messaging, backfill, outage and sync-channel behaviour, the RF health policy, and firmware-image delivery over LoRa ([#118](https://github.com/hoejriis/mecon-firmware/issues/118) to [#123](https://github.com/hoejriis/mecon-firmware/issues/123)). Most of this is Backend orchestration over the generic capabilities. Autonomous outage forwarding is a distinct firmware process.
 

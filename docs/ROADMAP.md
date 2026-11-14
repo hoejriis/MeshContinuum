@@ -35,8 +35,6 @@ The public firmware builds reusable, generic managed-device capabilities first. 
 | Compact telemetry over LoRa | [#116](https://github.com/hoejriis/mecon-firmware/issues/116) |
 | Conformance on Heltec V3, Heltec V4, Wio Tracker L1 and SenseCAP T1000-E | [#117](https://github.com/hoejriis/mecon-firmware/issues/117) |
 
-**MECON-specific, later:** Deployment mapping, connected messaging, backfill, outage and sync-channel behaviour, the RF health policy, and firmware-image delivery over LoRa ([#118](https://github.com/hoejriis/mecon-firmware/issues/118) to [#123](https://github.com/hoejriis/mecon-firmware/issues/123)). Most of this is Backend orchestration over the generic capabilities. Autonomous outage forwarding is a distinct firmware process. The device side of connected messaging, backfill and RF health, built from the generic capabilities above, is mapped in [MECON journeys](https://github.com/hoejriis/mecon-firmware/blob/main/docs/MECON_JOURNEYS.md).
-
 Boundaries:
 - A private management channel is generic. Membership of the channel and its encryption grant no command authority.
 - Compact RF telemetry is a smaller, less frequent selection of the same telemetry catalogue, not a second one. RF health monitoring uses it with standing instructions, and adds no telemetry mechanism of its own.
@@ -44,7 +42,32 @@ Boundaries:
 - Screen write-back is diagnostic telemetry from the device to its manager. It never writes to the display.
 - The existing Reader needs a Backend and bridges USB and BLE. A fully offline Reader is later, undesigned work. Independent managers may implement the public contracts.
 
-Release timing, migrating the production fleet, and publishing the Backend are separate decisions, with no date. The private Backend keeps improving for beta users and is adapted to the public firmware as it lands.
+Release timing and publishing the Backend are separate decisions, with no date. Moving the fleet follows the stages below, also with no date. The private Backend keeps improving for beta users and is adapted to the public firmware as it lands.
+
+## Moving the fleet to the public firmware
+
+The aim is to run the whole MECON fleet on the public firmware. This is planned work, in four stages, each gated on the one before:
+
+| Stage | Work | Owner |
+|---|---|---|
+| 1. Finish the foundations | Deployment mapping ([#118](https://github.com/hoejriis/mecon-firmware/issues/118)), connected messaging ([#119](https://github.com/hoejriis/mecon-firmware/issues/119)), backfill ([#120](https://github.com/hoejriis/mecon-firmware/issues/120)), RF health ([#122](https://github.com/hoejriis/mecon-firmware/issues/122)), Repeater-sent manager packets ([#537](https://github.com/hoejriis/mecon-firmware/issues/537)) and conformance on the four boards ([#117](https://github.com/hoejriis/mecon-firmware/issues/117)) | Firmware, with the Backend's halves |
+| 2. Accept the integration | This Backend managing public-firmware devices on real hardware | Backend |
+| 3. Fleet features | The Fleet Management Channel and its human-readable `ping` ([#557](https://github.com/hoejriis/mecon-firmware/issues/557), with Backend provisioning and screens), and delegated receive identities ([#552](https://github.com/hoejriis/mecon-firmware/issues/552), with Backend provisioning). Not started: these wait until stages 1 and 2 are fully closed | Firmware and Backend |
+| 4. Migration acceptance | The fleet on the public firmware, with stock iOS and Android apps and separate fleets kept apart on one Backend | Firmware and Backend |
+
+The device side of connected messaging, backfill and RF health is mapped in [MECON journeys](https://github.com/hoejriis/mecon-firmware/blob/main/docs/MECON_JOURNEYS.md). Firmware-image delivery over LoRa ([#123](https://github.com/hoejriis/mecon-firmware/issues/123)) is separate later work.
+
+**The Fleet Management Channel.** Each fleet has one private Fleet Management Channel, and every enrolled device joins it: Companions, Repeaters and Room servers, including those with no IP link. It is the public firmware's existing bound management channel, not a new protocol. It carries scheduled and on-demand compact RF reports, signed management from the Backend to devices that only radio can reach, and a human-readable `ping`, which any member can send from a stock app to get a short status from each device. Being on the channel grants no authority: management stays signed by the Deployment. One Backend can serve several independent fleet owners, and no channel key, command or data crosses from one fleet to another.
+
+**Delegated receive identities.** A daily Companion keeps its own primary identity, and can also hold up to four other identities belonging to its owner, such as a car, cabin or spare Companion. It receives messages for them and sends the native acknowledgement, but never sends an ordinary message as one of them. The messages must appear in the stock iOS and Android apps' normal conversation history. A feasibility review found this possible, with four identities. Building it, and checking it against the stock apps and acknowledgements, is stage 3 work. A Repeater never holds these keys. As on any device, a copied private key can be used to impersonate its owner.
+
+**Messages sent from a Repeater.** In stage 1, a Repeater transmits a native packet that the manager built, on a signed request. The Repeater holds no Companion's private key, and this does not make the Repeater a messaging user with an identity of its own. Stock MeshCore devices receive the packet as normal traffic. It needs a reachable manager, and is on the firmware's main branch, not yet in a release.
+
+**Retired.** Two items earlier listed as planned are cancelled: autonomous outage forwarding and the private firmware's sync channel ([#121](https://github.com/hoejriis/mecon-firmware/issues/121), and its Backend counterpart). The Fleet Management Channel, Repeater-sent packets, normal message catch-up and delegated receive identities replace them. Radio operation stays independent of any Backend, as before.
+
+## A live observation map, later
+
+A later aim is a near-live map of the MeshCore nodes and packet activity that connected observers hear, around Denmark first, for the Admin view and as a public-safe view on mecon.cloud. It would show only what observers actually heard, never invented coordinates, and never message content or private locations. A node's last receiver is not its own position. It needs Backend work first: the map itself, a privacy-reviewed public feed, and research into more authorised observation sources. The site's side is [#22](https://github.com/hoejriis/MeshContinuum/issues/22). Nothing on mecon.cloud is a live feed until that work is deployed.
 
 ## Before inviting external testers
 

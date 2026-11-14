@@ -2,6 +2,20 @@
 
 This is the editorial brief for maintainers. It sets the product message that the README, these docs and the presentation site share. It is not a product page. Readers should start at the [README](../README.md). It keeps no status of its own: what is available is on [availability](CAPABILITIES.md) only.
 
+## Purpose
+
+MECON is an independent, exploratory, non-commercial project. It exists to experiment with how independent MeshCore radios, observations, identities and sites can work together, and to share what is learned so others reuse it, try it and contribute. It has no revenue objective. mecon.cloud may one day ask for voluntary help with hosting costs; that is not a subscription or a business model, and copy never presents it as one.
+
+## Audiences
+
+The three places share the same facts and boundaries, but not the same reader:
+
+| Where | Reader | Approach |
+|---|---|---|
+| mecon.cloud | Someone who has never heard of MeshCore | Explain MeshCore in plain words before any MECON term (Companion, observer, Reader, Backend, broker). Lead with what it makes possible |
+| This repository's docs | Someone who already uses MeshCore | Start from recognisable MeshCore situations and what MECON adds to them. [MeshCore basics](MESHCORE.md) is an optional reference, not the opening |
+| mecon-firmware's docs | Developers and integrators | Present generic improvements to stock firmware that any manager can use. MeshContinuum is one manager among many |
+
 ## Hero
 
 **MeshCore, without the boundaries of a single device.**
@@ -41,7 +55,10 @@ Do not imply:
 - guaranteed reception or delivery;
 - support for every board or browser;
 - a Reader that works without a Backend;
-- operator-blind hosted decryption.
+- operator-blind hosted decryption;
+- a live map or live counters before a real public feed is deployed;
+- autonomous outage forwarding or the private firmware's sync channel as planned work (both are retired);
+- a commercial offer, subscription or sales funnel.
 
 "Free and open source" is the release intent. The firmware's source is public. The Backend's is not yet.
 

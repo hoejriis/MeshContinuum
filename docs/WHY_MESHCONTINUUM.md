@@ -1,20 +1,36 @@
 # What MECON adds
 
-MeshCore works without any cloud, and that is its strength. A radio, though, only knows what it heard itself, and only while it was switched on and in range. MeshContinuum (MECON) collects what your radios and the observers you choose hear, and keeps it in one place. Your mesh keeps working exactly as before. MECON makes it more useful when it is connected.
+MeshCore works without any cloud, and that is its strength. A radio, though, only knows what it heard itself, and only while it was switched on and in range. MeshContinuum (MECON) explores what happens when your radios, the observers you choose, your identities and your sites pool what they hear. Your mesh keeps working exactly as before. MECON makes it more useful when it is connected.
 
-New to MeshCore? Start with [MeshCore in brief](MESHCORE.md).
+This page assumes you know MeshCore. If not, start with [MeshCore in brief](MESHCORE.md). What is available today is on [availability](CAPABILITIES.md).
 
-## What it is like to use
+## One network, many receivers
 
 **You read your messages in one place.** Your Companion was switched off overnight, or out of range on a trip. A home gateway or an observer heard the message to you, and the MECON Reader has it in the morning, on your phone or your desktop. MECON can only show what one of its sources heard.
 
-**You see how a message reached you.** When three radios hear one message, you see one message, with each of the three receptions: which observer heard it, along which path of Repeaters, and how strong the signal was. That tells you where your mesh is strong and where it is thin.
+**One message, not three copies.** When three radios hear one message, you see one message, with each of the three receptions: which observer heard it, along which path of Repeaters, and how strong the signal was.
 
 **Your history is not tied to one phone.** Messages, channels and their history live with your MECON installation, not in one app on one device. Sign in from a new phone and the history is already there.
 
-**You manage your radios from anywhere.** See which of your devices are online, their battery, uptime and firmware, and when each was last heard. Configure a supported Companion or Repeater, update its firmware, and get a mail when one goes quiet. A device's firmware, board and role decide what can be done with it.
+## See how your mesh reaches
+
+**Paths and coverage, from many points of view.** Receptions from many observers show which Repeaters carry traffic, where a path fails and which nodes are heard rarely. That tells you where your mesh is strong and where it is thin. It shows what observers heard, not every radio that exists, and a node heard by one observer is not necessarily near it.
+
+**Health reports over radio.** A node can send a small signed report over LoRa on a schedule, so you know it is alive even with no IP link. Silence alone does not prove it failed.
+
+## Look after a fleet
+
+**You manage your radios from anywhere.** See which of your devices are online, their battery, uptime and firmware, and when each was last heard. Configure a supported Companion, Repeater or Room server, update its firmware, and get a mail when one goes quiet. A device's firmware, board and role decide what can be done with it.
+
+**Sites with no Internet.** A device that only radio can reach is still managed over LoRa, with every change signed. Each fleet has one private management channel that all its devices join. Anyone on it can send `ping` from a stock app and get a short status from each device, but being on the channel grants no right to change anything.
+
+**Several fleets, kept apart.** One installation can serve several independent fleet owners. No key, command or status crosses between fleets.
+
+## Your identities, across devices and places
 
 **You send through a radio at home.** From the Reader, send a message through a Companion that acts as your gateway. Your message goes out over RF from that radio, and the Reader shows what became of it.
+
+**One Companion, several of your identities.** The Companion you carry keeps its own identity, and can also receive for up to four of your others, such as a car, cabin or spare Companion. A message to any of them reaches you in the stock app's normal conversation, and the sender gets the usual acknowledgement. It never sends an ordinary message as one of them.
 
 **You choose where it runs.** Use a hosted service such as [mecon.cloud](https://mecon.cloud), run it on a small computer at home, or connect several sites. See [deployment choices](DEPLOYMENT_MODES.md).
 
@@ -39,5 +55,6 @@ The Reader needs its Backend, a server it talks to. It can attach a radio direct
 5. **Many sources.** A packet may be heard by your gateways, by others' Repeaters, or by community MQTT feeds.
 6. **No mandatory cloud.** A hosted service is one option, not a dependency of the protocol.
 7. **Instance neutral.** Public MECON code and contracts carry no operator's names, domains or configuration.
+8. **Shared, not sold.** MECON is an independent, non-commercial experiment, made to learn, share and invite reuse. It has no revenue objective. mecon.cloud may one day ask for voluntary help with hosting costs; that is not a business model.
 
 Next: [how MECON works](COMPONENTS.md) · [trust and privacy](TRUST_AND_PRIVACY.md) · [deployment choices](DEPLOYMENT_MODES.md)

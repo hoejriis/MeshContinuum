@@ -23,7 +23,7 @@ These pages assume you know MeshCore. New to it? [MeshCore in brief](MESHCORE.md
 
 - [Limitations](LIMITATIONS.md): what MECON cannot do, or does only under conditions.
 - [Availability](CAPABILITIES.md): what exists today, in detail.
-- [Roadmap](ROADMAP.md): what is planned, and the gates before each step.
+- [Roadmap](ROADMAP.md): what is planned, and the gates before each step.\n- [P5 Bluefy-first Reader MVP](P5_READER_MVP.md): the new communication-first Reader, architecture and MVP sequence.
 - [Geographical flood scopes and dynamic Repeater load adaptation](GEOGRAPHICAL_FLOOD_SCOPES_PROPOSAL.md): an exploratory idea for MeshCore routing. Not a MECON plan.
 
 ## 4. Reference

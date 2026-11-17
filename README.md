@@ -11,7 +11,7 @@ A MeshCore radio knows only what it heard itself, while it was on and in range. 
 
 MECON is an independent, non-commercial experiment. It exists to try these ideas, share what is learned and invite others to reuse and improve them. It has no revenue objective.
 
-> **Where things stand:** MECON runs as a private beta on [mecon.cloud](https://mecon.cloud), by invitation. The firmware is public as source and signed pre-releases. The Backend and Reader are not published yet. Some of what follows, such as the fleet channel and delegated identities, is planned work. [Availability →](docs/CAPABILITIES.md)
+> **Where things stand:** MECON runs as a private beta on [mecon.cloud](https://mecon.cloud), by invitation. The firmware is public as source and signed pre-releases. The public application repository is now available for documentation and MVP planning; no public Reader or Backend implementation is released yet. Some of what follows, such as the fleet channel and delegated identities, is planned work. [Availability →](docs/CAPABILITIES.md)
 
 ## Four things it makes possible
 
@@ -38,8 +38,8 @@ MECON is not a new radio protocol. Stock MeshCore devices and apps keep working 
 
 | Repository | What it holds today | Licence |
 |---|---|---|
-| **MeshContinuum** (this one) | Documentation, the target contracts for the Backend and the mecon.cloud presentation site. The Backend and Reader are developed privately and are not published yet | Apache-2.0 |
-| **[mecon-firmware](https://github.com/hoejriis/mecon-firmware)** | MeshCore firmware with secure management, diagnostics, signed updates and backend-neutral device contracts, as source and pre-releases | MIT |
+| **MeshContinuum** (this one) | Documentation, the target contracts for the Backend and the mecon.cloud presentation site. The private Backend and Reader continue running; the new public [mecon-backend](https://github.com/hoejriis/mecon-backend) repository contains P5 Reader-first documentation and plans, not a released application | Apache-2.0 |
+| **[mecon-backend](https://github.com/hoejriis/mecon-backend)** | New public Reader-first product design and future Backend/Reader code; documentation only today | License to be confirmed in the new repository |\n| **[mecon-firmware](https://github.com/hoejriis/mecon-firmware)** | MeshCore firmware with secure management, diagnostics, signed updates and backend-neutral device contracts, as source and pre-releases | MIT |
 
 The firmware is optional. Reading captured traffic with your own keys needs no special firmware. Managing a device needs it. Any manager that implements the firmware's contracts can use it, without MeshContinuum ([who does what](docs/COMPONENTS.md#who-does-what)).
 
@@ -58,7 +58,7 @@ Public issues are public. Never post email addresses, private keys, private mess
 - [Deployment choices](docs/DEPLOYMENT_MODES.md) and the [mecon.cloud beta guide](docs/GETTING_STARTED.md)
 - [Limitations](docs/LIMITATIONS.md), [availability](docs/CAPABILITIES.md) and the [roadmap](docs/ROADMAP.md)
 - New to MeshCore? [MeshCore in brief](docs/MESHCORE.md)
-- [Everything, in order](docs/README.md)
+- [P5 Bluefy-first Reader MVP](docs/P5_READER_MVP.md)\n- [Everything, in order](docs/README.md)
 
 ## Licence and upstream
 

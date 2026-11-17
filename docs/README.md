@@ -44,6 +44,7 @@ For contributors and implementers. These pages describe the target design.
 - [Security reporting](../SECURITY.md)
 - [Product message: maintainer brief](PRODUCT_MESSAGING.md)
 - [Visual identity](BRAND.md)
+- [Website product story and copy](WEBSITE_STORY.md)
 - [Presentation site](../site/README.md) and its [integration contract](../site/CONTRACT.md)
 
 The device contract belongs to the sister [mecon-firmware](https://github.com/hoejriis/mecon-firmware) project.

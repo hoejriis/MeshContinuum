@@ -84,7 +84,7 @@ Every Deployment, which is one fleet, has one private Fleet Management Channel w
 
 The shared channel is intentionally not the Deployment trust root. Management on it is signed by the Deployment's authority as on any other path; a device possessing the channel key cannot unilaterally become a Backend, issue commands, mint broker credentials or impersonate the Deployment root. One Backend may serve several Deployments with different owners; each has its own channel and key, and nothing crosses between them.
 
-This replaces the private firmware's offline sync channel and its autonomous outage forwarding, which are retired and not carried into the public firmware. The Fleet Management Channel is planned work; see the [roadmap](ROADMAP.md#moving-the-fleet-to-the-public-firmware).
+This target management channel is distinct from legacy beta synchronization behavior. The Fleet Management Channel is a target capability; see [availability](CAPABILITIES.md).
 
 When a device is lost or revoked:
 

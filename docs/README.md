@@ -2,7 +2,7 @@
 
 Read in order, or jump to what you need. What is available today is on one page: [availability](CAPABILITIES.md).
 
-These pages assume you know MeshCore. New to it? [MeshCore in brief](MESHCORE.md) covers its roles, channels and presets, and what you need to begin.
+No MeshCore experience is required. Start with [MeshCore in brief](MESHCORE.md) to learn how off-grid radio messaging, Companions and Repeaters work.
 
 ## 1. What MECON is
 
@@ -23,13 +23,14 @@ These pages assume you know MeshCore. New to it? [MeshCore in brief](MESHCORE.md
 
 - [Limitations](LIMITATIONS.md): what MECON cannot do, or does only under conditions.
 - [Availability](CAPABILITIES.md): what exists today, in detail.
-- [Roadmap](ROADMAP.md): what is planned, and the gates before each step.\n- [P5 Bluefy-first Reader MVP](P5_READER_MVP.md): the new communication-first Reader, architecture and MVP sequence.
+- [Roadmap](ROADMAP.md): what is planned, and how capabilities are introduced.
+- [The MeshContinuum Reader](P5_READER_MVP.md): the new communication-first Reader, architecture and MVP sequence.
 - [Geographical flood scopes and dynamic Repeater load adaptation](GEOGRAPHICAL_FLOOD_SCOPES_PROPOSAL.md): an exploratory idea for MeshCore routing. Not a MECON plan.
 
 ## 4. Public repositories and full application design
 
 - [MeshContinuum](../README.md): the product story, public documentation and visual identity (this repository).
-- [mecon-backend](https://github.com/hoejriis/mecon-backend): complete target for Reader, Backend, roles, deployments, components and privacy. Only the Bluefy Device User Reader MVP has active implementation issues.
+- [mecon-backend](https://github.com/hoejriis/mecon-backend): complete target for Reader, Backend, roles, deployments, components and privacy. Includes the Reader experience and the full application architecture.
 - [mecon-firmware](https://github.com/hoejriis/mecon-firmware): independent device firmware and public contracts.
 
 ## 5. Reference

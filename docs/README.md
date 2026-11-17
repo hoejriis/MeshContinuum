@@ -52,3 +52,8 @@ The device contract belongs to the sister [mecon-firmware](https://github.com/ho
 ## Naming
 
 **MeshContinuum** is the product, and **MECON** its shorthand. **mecon-firmware** is the firmware project, **MeshContinuum.info** the project domain, and **mecon.cloud** the hosted service. Private installation names are configuration, not product or protocol identity.
+
+
+## Architecture decisions
+
+Before proposing changes to roles, fleets, devices, trust, messaging or federation, consult the [Architecture decisions](https://github.com/hoejriis/mecon-backend/blob/main/docs/ARCHITECTURE_DECISIONS.md). Accepted decisions should not be reopened without a documented change; unresolved matters are listed separately.

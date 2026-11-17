@@ -1,6 +1,6 @@
 # Availability
 
-This is the one page that says what is available now. The other pages describe the product as it is meant to work. Firmware rows were reviewed on 15 November 2026, and private beta rows on 25 October 2026.
+This is the one page that says what is available now. The other pages describe the product as it is meant to work. Firmware rows were reviewed on 15 November 2026, and hosted beta rows on 25 October 2026.
 
 ## Where things stand
 
@@ -8,10 +8,10 @@ This is the one page that says what is available now. The other pages describe t
 |---|---|
 | **Hosted beta** | [mecon.cloud](https://mecon.cloud) runs MECON as a private beta, by invitation only. First external testers are expected there. No opening date is announced. |
 | **Public firmware** | [mecon-firmware](https://github.com/hoejriis/mecon-firmware) publishes its source under MIT, with pre-releases. The latest, [v0.3.7](https://github.com/hoejriis/mecon-firmware/releases/tag/v0.3.7), has signed images for 14 board variants: the standalone Companion, Repeater and Room server on the Heltec V3 and V4, and the BLE and USB Companion, Repeater and Room server on the Wio Tracker L1 and the T1000-E. The Heltec BLE, USB and Wi-Fi Companion builds are not signed: they lack the managed-device interface, so they cannot take a signed update, and the standalone build covers their transports. None is a supported release. What has run on which board is in its [hardware verification record](https://github.com/hoejriis/mecon-firmware/blob/main/docs/HARDWARE_VERIFIED.md). |
-| **Public Backend and Reader** | The public [mecon-backend](https://github.com/hoejriis/mecon-backend) repository now exists with **P5 documentation and MVP plans only**. No public Reader/Backend application code, images, supported release or installation guide yet. MVP1 targets a Bluefy BLE web Reader backed initially by the private Backend; compatibility and hardware acceptance remain unproven. |
+| **Public Backend and Reader** | The public [mecon-backend](https://github.com/hoejriis/mecon-backend) repository now exists with design documentation only. No public Reader/Backend application code, images, supported release or installation guide yet. MVP1 targets a Bluefy BLE web Reader using an authorized MECON Backend; compatibility and hardware acceptance remain unproven. |
 | **Later capabilities** | Planned work is in the [roadmap](ROADMAP.md), and known limits are in [limitations](LIMITATIONS.md). The firmware keeps its own [availability page](https://github.com/hoejriis/mecon-firmware/blob/main/docs/AVAILABILITY.md). |
 
-The beta runs on private firmware. A beta feature does not prove the same feature on the public firmware, and the other way round.
+The beta runs on earlier beta firmware. A beta feature does not prove the same feature on the public firmware, and the other way round.
 
 The table below is the detail.
 
@@ -37,7 +37,7 @@ A beta feature can be implemented without being accepted for new external tester
 | Sending through an enrolled Companion gateway | Beta | Requires an available authorized gateway. Submission and RF acknowledgement are distinct. |
 | Device status, configuration, flashing and managed updates | Beta | Exact firmware, board, role, transport and capability restrictions apply. |
 | Direct USB/BLE management and Reader bridge | Beta | Supported desktop browser/device combinations only; this does not imply backend-free Reader operation. |
-| Backfill and reconnect catch-up | Beta / Experimental | Existing private-beta assistance paths. Release-specific acceptance is required; no delivery guarantee. The private firmware's sync channel and outage forwarding are retired and do not carry over to the public firmware. |
+| Backfill and reconnect catch-up | Beta / Experimental | Existing private-beta assistance paths. Release-specific acceptance is required; no delivery guarantee. The earlier beta firmware's sync channel and outage forwarding are retired and do not carry over to the public firmware. |
 | Local and federated deployments | Beta implementation; public packaging Planned | Private deployments exist. Public images, installation guide and independent-operator acceptance remain release gates. |
 | Automatic first-run Deployment creation and first-Companion handoff | Planned | A target workflow; not yet a complete public setup path. |
 | Fully standalone direct Reader with later synchronization | Planned | The hosted Reader needs a reachable Backend. |
@@ -45,7 +45,7 @@ A beta feature can be implemented without being accepted for new external tester
 | Generic managed-device capabilities in the public firmware | Experimental · in pre-releases | Identity and authority, telemetry, managed operations, signed updates, management over LoRa, manager-requested send and outcomes, received-message collection, contact and channel administration, local delivery and standing instructions; in the pre-releases since v0.2.0, with limits. v0.3.0 adds device reset by scope, region scopes, and the read of identity and clock on the device interface. v0.3.1 adds the BLE bond count and their reset over the cable, the BLE PIN read and private-key export to a trusted caller, and stops the Wio Tracker L1 and T1000-E Companions offering Wi-Fi settings they have no radio for. v0.3.3 adds the remaining settings and actions of the stock CLI over the device interface, and the audit history; v0.3.2 and v0.3.4 give the Heltec V3 Companion enough heap in Wi-Fi mode; v0.3.5 lets a Heltec V3 take large requests over its cable and reports where a relayed LoRa reply was lost. v0.3.6 lets a Repeater transmit a packet a manager built (`packet.transmit`), stores the Deployment's continuity package, and counts events that could not be sent instead of losing them silently. v0.3.7 fixes the lost first frame of multi-frame LoRa management replies, by sending a request zero-hop first to a contact with no known path. Later MECON-specific work is on the [roadmap](ROADMAP.md). What has been proven is on the firmware's [availability page](https://github.com/hoejriis/mecon-firmware/blob/main/docs/AVAILABILITY.md). |
 | Fleet Management Channel: one private channel per fleet for compact RF reports, signed management and a human-readable `ping` | Planned | Waits for the foundation and integration stages on the [roadmap](ROADMAP.md#moving-the-fleet-to-the-public-firmware). |
 | Delegated receive identities: up to four of the owner's other identities on a daily Companion | Planned | Judged feasible; stock-app conversation history and acknowledgements are still to be proven on real phones and boards. |
-| This Backend and Reader using those public capabilities | Planned | The beta runs on private firmware. A beta feature here does not prove the same feature on the public firmware, and the other way round. |
+| This Backend and Reader using those public capabilities | Planned | The beta runs on earlier beta firmware. A beta feature here does not prove the same feature on the public firmware, and the other way round. |
 | Supported firmware releases and public Backend source | Planned | Separate decisions with no date; see the [roadmap](ROADMAP.md). |
 | Broader board portability and non-Heltec profiles | Experimental | Compilation or software tests alone do not prove a physical board. |
 
@@ -64,7 +64,7 @@ Hardware verification of the public firmware covers four boards: Heltec V3, Helt
 
 ## Basis and maintenance
 
-The private beta rows were checked on 25 October 2026 against the private Backend/Reader beta release v0.236.1 and the private firmware release mecon-v0.90.29. The firmware rows were checked on 15 November 2026 against the public mecon-firmware release v0.3.7, its main branch, its hardware verification record and its contracts. These identify reviewed evidence, **not a recommended installation pair**. A tagged asset or passing CI does not prove fleet rollout or hardware acceptance.
+The private beta rows were checked on 25 October 2026 against the MECON Backend/Reader beta release v0.236.1 and the earlier beta firmware release mecon-v0.90.29. The firmware rows were checked on 15 November 2026 against the public mecon-firmware release v0.3.7, its main branch, its hardware verification record and its contracts. These identify reviewed evidence, **not a recommended installation pair**. A tagged asset or passing CI does not prove fleet rollout or hardware acceptance.
 
 For each promoted capability, publish a public evidence summary with version, board/role, transport, date, result and remaining limits. Summaries must omit private identities, infrastructure and messages. If evidence conflicts or is incomplete, retain the lower maturity classification.
 

@@ -2,7 +2,7 @@
 
 MECON is free and intended for open-source release. Progress is expressed as evidence gates, not dates. This roadmap does not announce a launch or invite opening.
 
-## Two related tracks
+## P5 Reader-first public application programme\n\nThe new public [mecon-backend](https://github.com/hoejriis/mecon-backend) repository begins with **a Bluefy-first, Device User messaging Reader**. MVP1 will connect directly over Web Bluetooth to an authorized Companion where supported, and use the existing private Backend through a versioned compatibility API for account-authorized online history and messaging. The private Backend, MQTT broker and USB agent remain operational; a public Backend rebuild and Fleet Owner/Admin Reader screens follow later. This is a **design and issue-backed plan**, not a shipped app or a promise of Bluefy hardware compatibility. See [P5 Reader MVP](P5_READER_MVP.md) and [availability](CAPABILITIES.md).\n\n## Two related tracks
 
 | Track | Next outcome | Completion evidence |
 |---|---|---|

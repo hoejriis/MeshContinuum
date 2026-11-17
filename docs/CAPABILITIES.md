@@ -8,7 +8,7 @@ This is the one page that says what is available now. The other pages describe t
 |---|---|
 | **Hosted beta** | [mecon.cloud](https://mecon.cloud) runs MECON as a private beta, by invitation only. First external testers are expected there. No opening date is announced. |
 | **Public firmware** | [mecon-firmware](https://github.com/hoejriis/mecon-firmware) publishes its source under MIT, with pre-releases. The latest, [v0.3.7](https://github.com/hoejriis/mecon-firmware/releases/tag/v0.3.7), has signed images for 14 board variants: the standalone Companion, Repeater and Room server on the Heltec V3 and V4, and the BLE and USB Companion, Repeater and Room server on the Wio Tracker L1 and the T1000-E. The Heltec BLE, USB and Wi-Fi Companion builds are not signed: they lack the managed-device interface, so they cannot take a signed update, and the standalone build covers their transports. None is a supported release. What has run on which board is in its [hardware verification record](https://github.com/hoejriis/mecon-firmware/blob/main/docs/HARDWARE_VERIFIED.md). |
-| **Public Backend and Reader** | Not published. There is no source, image or installation guide yet. Self-hosting is described as a design in [deployment choices](DEPLOYMENT_MODES.md). Publishing the Backend is a separate decision, with no date. |
+| **Public Backend and Reader** | The public [mecon-backend](https://github.com/hoejriis/mecon-backend) repository now exists with **P5 documentation and MVP plans only**. No public Reader/Backend application code, images, supported release or installation guide yet. MVP1 targets a Bluefy BLE web Reader backed initially by the private Backend; compatibility and hardware acceptance remain unproven. |
 | **Later capabilities** | Planned work is in the [roadmap](ROADMAP.md), and known limits are in [limitations](LIMITATIONS.md). The firmware keeps its own [availability page](https://github.com/hoejriis/mecon-firmware/blob/main/docs/AVAILABILITY.md). |
 
 The beta runs on private firmware. A beta feature does not prove the same feature on the public firmware, and the other way round.
@@ -30,7 +30,7 @@ A beta feature can be implemented without being accepted for new external tester
 
 | Capability | State | What the claim means |
 |---|---|---|
-| Public architecture, device contracts and documentation contributions | Available | Both repositories can be read and discussed publicly. |
+| Public architecture, device contracts and documentation contributions | Available | MeshContinuum, mecon-firmware and mecon-backend documentation can be read and discussed publicly. |
 | mecon.cloud hosted service | Beta · invitation only | Existing private deployment. First external tests are expected here; timing and admission are unannounced. |
 | Web Reader, authorized identity/channel decryption and history | Beta | Backend-based access to traffic actually captured by configured sources. |
 | Several observation sources and packet/reception diagnostics | Beta | Combines authorized feeds; does not guarantee geographic coverage or complete delivery. |

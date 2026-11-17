@@ -59,7 +59,7 @@ Do not imply:
 - a Reader that works without a Backend;
 - operator-blind hosted decryption;
 - a live map or live counters before a real public feed is deployed;
-- autonomous outage forwarding or the private firmware's sync channel as planned work (both are retired);
+- autonomous outage forwarding or the earlier beta firmware's sync channel as planned work (both are retired);
 - a commercial offer, subscription or sales funnel.
 
 "Free and open source" is the release intent. The firmware's source is public. The Backend's is not yet.

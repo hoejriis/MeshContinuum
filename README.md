@@ -13,7 +13,7 @@ Your MeshCore Companion works when the Internet does not. But one radio only kno
 
 MECON is an independent, non-commercial project. It is not an official MeshCore app, firmware or service. Radios continue to operate normally if MECON, its Backend or the Internet is unavailable.
 
-> **Today:** [mecon.cloud](https://mecon.cloud) is an invitation-only private beta. Public [mecon-firmware](https://github.com/hoejriis/mecon-firmware) source and signed pre-releases exist. The public [mecon-backend](https://github.com/hoejriis/mecon-backend) repository currently contains **design documents and the first Reader MVP issues, not released application code**. See [availability](docs/CAPABILITIES.md).
+> **Today:** [mecon.cloud](https://mecon.cloud) is an invitation-only private beta. Public [mecon-firmware](https://github.com/hoejriis/mecon-firmware) source and signed pre-releases exist. The public [mecon-backend](https://github.com/hoejriis/mecon-backend) repository currently contains **design documents and the first Reader MVP issues and future replacement backlog, not released application code**. See [availability](docs/CAPABILITIES.md).
 
 ## Start with something familiar: a better-connected Reader
 
@@ -50,7 +50,7 @@ The optional MECON firmware adds generic device management, telemetry, updates a
 | Repository | Purpose | What you will find |
 |---|---|---|
 | **[MeshContinuum](https://github.com/hoejriis/MeshContinuum)** · this repository | The public-facing story | Product benefits, visual identity, conceptual architecture, roadmap, limitations, hosted-beta information and website |
-| **[mecon-backend](https://github.com/hoejriis/mecon-backend)** | The application | Full target Backend/Reader architecture, user/Fleet Owner/Admin experiences, deployment and security design. **Only the Device User Reader MVP currently has implementation issues** |
+| **[mecon-backend](https://github.com/hoejriis/mecon-backend)** | The application | Full target Backend/Reader architecture, user/Fleet Owner/Admin experiences, deployment and security design. **The Device User Reader MVP is the current implementation focus; the remaining public replacement is split into future design issues** |
 | **[mecon-firmware](https://github.com/hoejriis/mecon-firmware)** | The radios | Independent public firmware, supported hardware, device-facing interfaces, conformance and releases |
 
 The eventual application has three deployment units: **Backend with its served Reader**, **MQTT broker** and optional **transparent USB Connector**. Device-facing firmware contracts belong to mecon-firmware; application roles, history, sharing and federation belong to mecon-backend; the public explanation and visual brand live here.

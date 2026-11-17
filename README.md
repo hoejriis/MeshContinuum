@@ -5,21 +5,21 @@
 
 # MeshContinuum
 
-## Your MeshCore network. More connected. Still yours.
+## A stronger mesh network, without giving up control.
 
-Your MeshCore Companion works when the Internet does not. But one radio only knows what it hears, while it is awake and in range. What if your home Companion, the radio in your car, a Repeater on a hill and a community observation feed could each contribute to the bigger picture—**without changing how MeshCore works**?
+MeshCore is a decentralized radio network for exchanging messages without mobile coverage or the Internet. A Companion is the radio you use to send and receive those messages; Repeaters help them travel farther. Your Companion works when the Internet does not. But one radio only knows what it hears, while it is awake and in range. What if your home Companion, the radio in your car, a Repeater on a hill and a community observation feed could each contribute to the bigger picture—**without changing how MeshCore works**?
 
 **MeshContinuum (MECON)** connects the people, radios, observations and sites around a MeshCore network. It aims to make everyday messaging feel familiar, make missed traffic recoverable when it was heard elsewhere, and give fleet owners and administrators a clearer view of the infrastructure they look after. It is built for **individuals and small communities alike**, and is designed to be self-hosted.
 
 MECON is an independent, non-commercial project. It is not an official MeshCore app, firmware or service. Radios continue to operate normally if MECON, its Backend or the Internet is unavailable.
 
-> **Today:** [mecon.cloud](https://mecon.cloud) is an invitation-only private beta. Public [mecon-firmware](https://github.com/hoejriis/mecon-firmware) source and signed pre-releases exist. The public [mecon-backend](https://github.com/hoejriis/mecon-backend) repository currently contains **design documents and the first Reader MVP issues and future replacement backlog, not released application code**. See [availability](docs/CAPABILITIES.md).
+> **Today:** [mecon.cloud](https://mecon.cloud) is an invitation-only private beta. Public [mecon-firmware](https://github.com/hoejriis/mecon-firmware) source and signed pre-releases exist. The public [mecon-backend](https://github.com/hoejriis/mecon-backend) repository documents the application target and Reader design. See [availability](docs/CAPABILITIES.md).
 
 ## Start with something familiar: a better-connected Reader
 
 The **first public application MVP** is a web Reader for **Device Users**, built first for iPhone and iPad in **Bluefy** with direct Bluetooth access to a supported Companion. It follows the stock MeshCore app's familiar concepts—**Chats, Channels, Contacts, Companion and Settings**—so changing between apps should not require learning a new messaging model. It uses MECON's own visual identity and interaction design, not a copy of the stock app.
 
-Where authorized, the Reader can also use the existing private Backend for online history and messaging. Bluetooth and Backend are independent paths; connection and RF delivery are never treated as the same thing. Bluefy compatibility still requires real-device verification. This is a **planned MVP, not an available download**.
+Where authorized, the Reader can also use a MECON Backend for online history and messaging. Bluetooth and Backend are independent paths; connection and RF delivery are never treated as the same thing. Bluefy compatibility still requires real-device verification. This is a **planned MVP, not an available download**.
 
 [Explore the Reader MVP](docs/P5_READER_MVP.md) · [Read the complete public product target](https://github.com/hoejriis/mecon-backend/blob/main/docs/TARGET_ARCHITECTURE.md)
 
@@ -50,7 +50,7 @@ The optional MECON firmware adds generic device management, telemetry, updates a
 | Repository | Purpose | What you will find |
 |---|---|---|
 | **[MeshContinuum](https://github.com/hoejriis/MeshContinuum)** · this repository | The public-facing story | Product benefits, visual identity, conceptual architecture, roadmap, limitations, hosted-beta information and website |
-| **[mecon-backend](https://github.com/hoejriis/mecon-backend)** | The application | Full target Backend/Reader architecture, user/Fleet Owner/Admin experiences, deployment and security design. **The Device User Reader MVP is the current implementation focus; the remaining public replacement is split into future design issues** |
+| **[mecon-backend](https://github.com/hoejriis/mecon-backend)** | The application | Full target Backend/Reader architecture, user/Fleet Owner/Admin experiences, deployment and security design. Reader experience, Backend services and future deployment architecture |
 | **[mecon-firmware](https://github.com/hoejriis/mecon-firmware)** | The radios | Independent public firmware, supported hardware, device-facing interfaces, conformance and releases |
 
 The eventual application has three deployment units: **Backend with its served Reader**, **MQTT broker** and optional **transparent USB Connector**. Device-facing firmware contracts belong to mecon-firmware; application roles, history, sharing and federation belong to mecon-backend; the public explanation and visual brand live here.
@@ -62,10 +62,10 @@ MECON separates the right to **observe traffic**, **read a message** and **manag
 ## Explore
 
 - [What MECON adds](docs/WHY_MESHCONTINUUM.md), [how the pieces work](docs/COMPONENTS.md) and [deployment choices](docs/DEPLOYMENT_MODES.md)
-- [P5 Reader-first plan](docs/P5_READER_MVP.md), [availability](docs/CAPABILITIES.md) and [roadmap](docs/ROADMAP.md)
+- [Reader experience](docs/P5_READER_MVP.md), [availability](docs/CAPABILITIES.md) and [roadmap](docs/ROADMAP.md)
 - [Complete public Backend/Reader target](https://github.com/hoejriis/mecon-backend/blob/main/docs/TARGET_ARCHITECTURE.md) and [firmware documentation](https://github.com/hoejriis/mecon-firmware)
 - [Documentation index](docs/README.md) and [contributing](CONTRIBUTING.md)
 
-Public issues are public. Never post private messages, keys, credentials, personal locations or private deployment details.
+Never publish private messages, keys, credentials or personal locations.
 
 MeshContinuum is licensed under [Apache-2.0](LICENSE). MECON is an independent project built around [MeshCore](https://github.com/meshcore-dev/MeshCore), not an official MeshCore service.

@@ -39,11 +39,21 @@ function reducedMotion() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-function initialView() {
-  // Phones open closer on Denmark; wider screens include southern Sweden.
-  return window.matchMedia("(max-width: 600px)").matches
-    ? { center: [56.1, 10.6], zoom: 6 }
-    : { center: [56.3, 12.0], zoom: 7 };
+// Denmark and southern Sweden, the view a wide map opens on.
+const WIDE_VIEW = [
+  [54.6, 8.0],
+  [58.0, 15.2],
+];
+
+function narrowMap() {
+  // Judged by the map's own width: on a tablet or desktop it has half the page.
+  return root.clientWidth < 600;
+}
+
+// Sets the remaining life on a drawn layer, so its fade ends with it.
+function setLife(layer, ms) {
+  const el = layer.getElement && layer.getElement();
+  if (el) el.style.setProperty("--life", `${Math.round(ms)}ms`);
 }
 
 function relativeTime(iso, now) {
@@ -77,10 +87,8 @@ function sameSpot(a, lat, lon) {
 async function main() {
   if (!root || !L) return;
   root.classList.add("live-map-ready");
-  const view = initialView();
   const map = L.map(root, {
-    center: view.center,
-    zoom: view.zoom,
+    zoomSnap: 0.5,
     minZoom: 5,
     maxZoom: 10,
     maxBounds: [
@@ -94,6 +102,9 @@ async function main() {
     zoomControl: true,
     attributionControl: true,
   });
+  // Phones open closer on Denmark; a wider map fits southern Sweden too.
+  if (narrowMap()) map.setView([56.1, 10.6], 6);
+  else map.fitBounds(WIDE_VIEW);
   // A live feed credits its sources beside the map, as well as below it.
   map.attributionControl.setPrefix(
     root.dataset.feed === "poll" || root.dataset.feed === "stream"
@@ -129,6 +140,7 @@ async function main() {
     if (!pulse) return;
     window.clearTimeout(pulse.timer);
     pulse.layer.remove();
+    pulse.core.remove();
     pulses.delete(id);
   }
   function dropLine(ref) {
@@ -216,15 +228,22 @@ async function main() {
 
     dropPulse(event.public_node_id);
     const pulse = L.circleMarker(from, {
-      radius: 11,
+      radius: 22,
       interactive: false,
       className: still ? "map-pulse map-pulse-still" : "map-pulse",
     }).addTo(map);
+    const core = L.circleMarker(from, {
+      radius: 6,
+      interactive: false,
+      className: "map-pulse-core",
+    }).addTo(map);
+    setLife(pulse, remaining);
+    setLife(core, remaining);
     const pulseTimer = window.setTimeout(() => {
       dropPulse(event.public_node_id);
       report();
     }, remaining);
-    pulses.set(event.public_node_id, { layer: pulse, timer: pulseTimer });
+    pulses.set(event.public_node_id, { layer: pulse, core, timer: pulseTimer });
 
     for (const link of event.links) {
       if (sameSpot(from, link.lat, link.lon)) continue;
@@ -233,6 +252,7 @@ async function main() {
         interactive: false,
         className: still ? "map-line map-line-still" : "map-line",
       }).addTo(map);
+      setLife(layer, remaining);
       const timer = window.setTimeout(() => {
         dropLine(link.ref);
         report();
@@ -240,6 +260,7 @@ async function main() {
       lines.set(link.ref, { layer, timer, from: event.public_node_id, end: L.latLng(link.lat, link.lon) });
       if (lines.size > LINE_LIMIT) dropLine(lines.keys().next().value);
     }
+    core.bringToFront(); // the core sits over its own lines
     report();
   }
 

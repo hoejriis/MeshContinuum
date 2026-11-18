@@ -1,6 +1,6 @@
 # Availability
 
-This is the one page that says what is available now. The other pages describe the product as it is meant to work. Firmware rows were reviewed on 15 November 2026, and hosted beta rows on 25 October 2026.
+This is the one page that says what is available now. The other pages describe the product as it is meant to work. Firmware rows were reviewed on 15 November 2026, and hosted beta rows on 18 November 2026.
 
 ## Where things stand
 
@@ -11,7 +11,7 @@ This is the one page that says what is available now. The other pages describe t
 | **Public Backend and Reader** | The public [mecon-backend](https://github.com/hoejriis/mecon-backend) repository now exists with design documentation only. No public Reader/Backend application code, images, supported release or installation guide yet. MVP1 targets a Bluefy BLE web Reader using an authorized MECON Backend; compatibility and hardware acceptance remain unproven. |
 | **Later capabilities** | Planned work is in the [roadmap](ROADMAP.md), and known limits are in [limitations](LIMITATIONS.md). The firmware keeps its own [availability page](https://github.com/hoejriis/mecon-firmware/blob/main/docs/AVAILABILITY.md). |
 
-The beta runs on earlier beta firmware. A beta feature does not prove the same feature on the public firmware, and the other way round.
+The beta runs mostly on earlier beta firmware. Since late October 2026 it can also enrol, update and read devices running the public firmware pre-releases, on the project's test boards and with limits. A feature working on one firmware does not prove it on the other.
 
 The table below is the detail.
 
@@ -45,7 +45,7 @@ A beta feature can be implemented without being accepted for new external tester
 | Generic managed-device capabilities in the public firmware | Experimental · in pre-releases | Identity and authority, telemetry, managed operations, signed updates, management over LoRa, manager-requested send and outcomes, received-message collection, contact and channel administration, local delivery and standing instructions; in the pre-releases since v0.2.0, with limits. v0.3.0 adds device reset by scope, region scopes, and the read of identity and clock on the device interface. v0.3.1 adds the BLE bond count and their reset over the cable, the BLE PIN read and private-key export to a trusted caller, and stops the Wio Tracker L1 and T1000-E Companions offering Wi-Fi settings they have no radio for. v0.3.3 adds the remaining settings and actions of the stock CLI over the device interface, and the audit history; v0.3.2 and v0.3.4 give the Heltec V3 Companion enough heap in Wi-Fi mode; v0.3.5 lets a Heltec V3 take large requests over its cable and reports where a relayed LoRa reply was lost. v0.3.6 lets a Repeater transmit a packet a manager built (`packet.transmit`), stores the Deployment's continuity package, and counts events that could not be sent instead of losing them silently. v0.3.7 fixes the lost first frame of multi-frame LoRa management replies, by sending a request zero-hop first to a contact with no known path. Later MECON-specific work is on the [roadmap](ROADMAP.md). What has been proven is on the firmware's [availability page](https://github.com/hoejriis/mecon-firmware/blob/main/docs/AVAILABILITY.md). |
 | Fleet Management Channel: one private channel per fleet for compact RF reports, signed management and a human-readable `ping` | Planned | Later work on the [roadmap](ROADMAP.md#firmware-that-remains-independent). |
 | Delegated receive identities: up to four of the owner's other identities on a daily Companion | Planned | Judged feasible; stock-app conversation history and acknowledgements are still to be proven on real phones and boards. |
-| This Backend and Reader using those public capabilities | Planned | The beta runs on earlier beta firmware. A beta feature here does not prove the same feature on the public firmware, and the other way round. |
+| The hosted beta using those public capabilities | Beta · test boards only | Enrolment through the Reader's cable, signed updates over USB, Bluetooth and the broker, set-up of Companions with no Wi-Fi, and receptions into the archive. Limited to the project's test boards; a feature working on one firmware does not prove it on the other. |
 | Supported firmware releases and public Backend source | Planned | Separate decisions with no date; see the [roadmap](ROADMAP.md). |
 | Broader board portability and non-Heltec profiles | Experimental | Compilation or software tests alone do not prove a physical board. |
 
@@ -64,7 +64,7 @@ Hardware verification of the public firmware covers four boards: Heltec V3, Helt
 
 ## Basis and maintenance
 
-The private beta rows were checked on 25 October 2026 against the MECON Backend/Reader beta release v0.236.1 and the earlier beta firmware release mecon-v0.90.29. The firmware rows were checked on 15 November 2026 against the public mecon-firmware release v0.3.7, its main branch, its hardware verification record and its contracts. These identify reviewed evidence, **not a recommended installation pair**. A tagged asset or passing CI does not prove fleet rollout or hardware acceptance.
+The private beta rows were checked on 18 November 2026 against the hosted beta release then live and the earlier beta firmware release mecon-v0.90.29. The firmware rows were checked on 15 November 2026 against the public mecon-firmware release v0.3.7, its main branch, its hardware verification record and its contracts. These identify reviewed evidence, **not a recommended installation pair**. A tagged asset or passing CI does not prove fleet rollout or hardware acceptance.
 
 For each promoted capability, publish a public evidence summary with version, board/role, transport, date, result and remaining limits. Summaries must omit private identities, infrastructure and messages. If evidence conflicts or is incomplete, retain the lower maturity classification.
 

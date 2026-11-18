@@ -1,27 +1,36 @@
-// Front-page activity map, in demonstration mode.
+// Front-page activity map.
 //
-// Draws the public nodes of the anonymous observation projection and a
-// short violet pulse each time one is heard. Until the public feed exists
-// and its cutover is approved, the data comes from synthetic fixtures
-// served with the page: no network request leaves this origin, and the
-// map is labelled as a demonstration. The feed is behind `fixtureFeed`,
-// so a live adapter can replace it without touching the drawing code.
+// Draws the public nodes of the anonymous observation projection, a short
+// violet pulse each time one is heard, and a thin line to each radio that
+// heard it. The data comes from a feed (feeds.js). Every build uses the
+// synthetic fixture feed, labelled as a demonstration, so no request leaves
+// this origin. A live adapter is selected only by `data-feed="poll"` or
+// `data-feed="stream"` on the map element, which nothing sets until the
+// public feed exists and its use on the live page is approved.
 //
-// Rules carried from the approved specification:
+// Rules carried from the approved specification and the draft feed:
 // - only nodes with an approved location are drawn; unlocated nodes are
 //   absent, not counted and not listed;
 // - every node is the same turquoise dot, with no clustering or filters;
-// - a pulse lasts 15 seconds, is refreshed by later activity, and is
-//   never drawn for an event that has already expired (no replay);
+// - a pulse and its lines last until the event's expiry, at most 15 seconds,
+//   are refreshed by later activity, and are never drawn for an event that
+//   has already expired (no replay);
+// - a line is keyed by its short-lived reference: a repeated reference
+//   refreshes the line instead of drawing a second one;
 // - events are deduplicated by event id;
-// - when the feed is not live, every pulse is cleared;
-// - with reduced motion, a pulse is a stationary highlight with the same
-//   expiry.
+// - a revoked node, or one missing from a fresh catalogue, is removed at
+//   once with its pulse and every line touching it;
+// - when the feed is not live, every pulse and line is cleared;
+// - with reduced motion, pulses and lines are still, with the same expiry.
+
+import { fixtureFeed, pollFeed, streamFeed } from "./feeds.js";
 
 const L = window.L;
 const HERE = new URL(".", import.meta.url);
 const PULSE_MS = 15000;
 const SEEN_LIMIT = 2000;
+const LINE_LIMIT = 400;
+const TYPE_WORDS = { companion: "Companion", repeater: "Repeater", room: "Room server", sensor: "Sensor" };
 
 const root = document.getElementById("live-map");
 const statusEl = document.getElementById("map-status");
@@ -37,14 +46,9 @@ function initialView() {
     : { center: [56.3, 12.0], zoom: 7 };
 }
 
-async function fetchJSON(rel) {
-  const response = await fetch(new URL(rel, HERE), { credentials: "omit" });
-  if (!response.ok) throw new Error(`${rel}: HTTP ${response.status}`);
-  return response.json();
-}
-
 function relativeTime(iso, now) {
   const seconds = Math.max(0, Math.round((now - Date.parse(iso)) / 1000));
+  if (!Number.isFinite(seconds)) return "unknown";
   if (seconds < 90) return "just now";
   const minutes = Math.round(seconds / 60);
   if (minutes < 90) return `${minutes} minutes ago`;
@@ -54,87 +58,20 @@ function relativeTime(iso, now) {
 }
 
 function tooltipContent(node) {
-  // Built with text nodes only: a public label is never parsed as HTML.
+  // Built with text nodes only: a public name is never parsed as HTML.
   const box = document.createElement("div");
   const name = document.createElement("strong");
-  name.textContent = node.label || node.public_id.slice(0, 8);
+  name.textContent = node.name || node.public_node_id.slice(0, 8);
   const type = document.createElement("div");
-  type.textContent = node.type || "Node";
+  type.textContent = TYPE_WORDS[node.type] || "Node";
   const heard = document.createElement("div");
   heard.textContent = `Last heard ${relativeTime(node.last_heard, Date.now())}`;
   box.append(name, type, heard);
   return box;
 }
 
-// A synthetic feed shaped like the public projection: a node catalogue,
-// then activity events {event_id, kind, public_node_id, occurred_at,
-// expires_at, activity_class, cursor}. Fixture times are shifted so that
-// the fixture's `as_of` is now. Now and then it repeats an event id and
-// sends an already expired event, so deduplication and the no-replay
-// rule are exercised, not only described.
-function fixtureFeed({ onStatus, onEvent }) {
-  let timer = null;
-  let n = 0;
-  let seed = 22;
-  const random = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648);
-  let located = [];
-  let last = null;
-
-  function emit() {
-    const now = Date.now();
-    const node = located[Math.floor(random() * located.length)];
-    let event = {
-      event_id: `demo-${++n}`,
-      kind: "activity",
-      public_node_id: node.public_id,
-      occurred_at: new Date(now).toISOString(),
-      expires_at: new Date(now + PULSE_MS).toISOString(),
-      activity_class: "packet",
-      cursor: `demo-${n}`,
-    };
-    const roll = random();
-    if (last && roll < 0.08) event = last; // duplicate delivery
-    else if (roll < 0.12) event = { ...event, expires_at: new Date(now - 1000).toISOString() }; // stale
-    last = event;
-    onEvent(event);
-    timer = window.setTimeout(emit, 600 + random() * 1800);
-  }
-
-  function start() {
-    if (timer === null) {
-      onStatus("live");
-      emit();
-    }
-  }
-  function stop() {
-    window.clearTimeout(timer);
-    timer = null;
-    onStatus("offline");
-  }
-
-  return {
-    async catalogue() {
-      const doc = await fetchJSON("fixtures/nodes.json");
-      const shift = Date.now() - Date.parse(doc.as_of);
-      const nodes = doc.nodes.map((node) => ({
-        ...node,
-        last_heard: new Date(Date.parse(node.last_heard) + shift).toISOString(),
-      }));
-      located = nodes.filter((node) => node.location);
-      return nodes;
-    },
-    connect() {
-      document.addEventListener("visibilitychange", () => {
-        if (document.hidden) stop();
-        else {
-          onStatus("reconnecting");
-          window.setTimeout(start, 800);
-        }
-      });
-      if (!document.hidden) start();
-      else onStatus("offline");
-    },
-  };
+function sameSpot(a, lat, lon) {
+  return Math.abs(a.lat - lat) < 1e-6 && Math.abs(a.lng - lon) < 1e-6;
 }
 
 async function main() {
@@ -159,41 +96,102 @@ async function main() {
   });
   map.attributionControl.setPrefix("Leaflet · Natural Earth");
 
-  const counts = { nodes: 0, pulses: 0, dropped_stale: 0, dropped_duplicate: 0 };
+  const counts = { nodes: 0, pulses: 0, lines: 0, dropped_stale: 0, dropped_duplicate: 0, revoked: 0 };
   const report = () => {
+    counts.pulses = pulses.size;
+    counts.lines = lines.size;
+    counts.nodes = markers.size;
     for (const [key, value] of Object.entries(counts)) root.dataset[key] = String(value);
   };
 
-  const basemap = await fetchJSON("basemap.json");
-  L.geoJSON(basemap, {
-    interactive: false,
-    style: () => ({ className: "basemap-land", weight: 0.8, fillOpacity: 1 }),
-  }).addTo(map);
+  const response = await fetch(new URL("basemap.json", HERE), { credentials: "omit" });
+  if (response.ok) {
+    L.geoJSON(await response.json(), {
+      interactive: false,
+      style: () => ({ className: "basemap-land", weight: 0.8, fillOpacity: 1 }),
+    }).addTo(map);
+  }
 
-  const markers = new Map();
-  const pulses = new Map();
+  const markers = new Map(); // public_node_id -> {marker, node}
+  const pulses = new Map(); // public_node_id -> {layer, timer}
+  const lines = new Map(); // ref -> {layer, timer, from}
   const seen = new Set();
   let live = false;
+  let label = "";
 
-  function clearPulses() {
-    for (const { layer, timer } of pulses.values()) {
-      window.clearTimeout(timer);
-      layer.remove();
-    }
-    pulses.clear();
-    counts.pulses = 0;
+  function dropPulse(id) {
+    const pulse = pulses.get(id);
+    if (!pulse) return;
+    window.clearTimeout(pulse.timer);
+    pulse.layer.remove();
+    pulses.delete(id);
+  }
+  function dropLine(ref) {
+    const line = lines.get(ref);
+    if (!line) return;
+    window.clearTimeout(line.timer);
+    line.layer.remove();
+    lines.delete(ref);
+  }
+  function clearActivity() {
+    for (const id of [...pulses.keys()]) dropPulse(id);
+    for (const ref of [...lines.keys()]) dropLine(ref);
     report();
+  }
+
+  // Removes a node with everything drawn for it: its pulse, the lines it
+  // sent, and the lines that end at its position.
+  function removeNode(id) {
+    const entry = markers.get(id);
+    if (!entry) return false;
+    const at = entry.marker.getLatLng();
+    entry.marker.remove();
+    markers.delete(id);
+    dropPulse(id);
+    for (const [ref, line] of lines) {
+      if (line.from === id || sameSpot(line.end, at.lat, at.lng)) dropLine(ref);
+    }
+    return true;
   }
 
   function setStatus(state) {
     live = state === "live";
     const words = { live: "Live", reconnecting: "Reconnecting", offline: "Offline" };
-    statusEl.textContent = `Demonstration, synthetic data · ${words[state]}`;
+    statusEl.textContent = label === "Live" ? words[state] : `${label} · ${words[state]}`;
     statusEl.dataset.state = state;
-    if (!live) clearPulses();
+    if (!live) clearActivity();
   }
 
-  function onEvent(event) {
+  function onCatalogue(nodes) {
+    const fresh = new Set();
+    for (const node of nodes) {
+      fresh.add(node.public_node_id);
+      const existing = markers.get(node.public_node_id);
+      const latlng = [node.location.lat, node.location.lon];
+      if (existing) {
+        existing.node = node;
+        const at = existing.marker.getLatLng();
+        if (!sameSpot(at, latlng[0], latlng[1])) {
+          // A moved node: its old lines and pulse point at the old spot.
+          removeNode(node.public_node_id);
+        } else continue;
+      }
+      const entry = { node, marker: null };
+      entry.marker = L.circleMarker(latlng, { radius: 4.5, className: "map-node" })
+        .bindTooltip(() => tooltipContent(entry.node), { direction: "top", offset: [0, -4] })
+        .addTo(map);
+      markers.set(node.public_node_id, entry);
+    }
+    for (const id of [...markers.keys()]) if (!fresh.has(id)) removeNode(id);
+    report();
+  }
+
+  function onRevoked(id) {
+    if (removeNode(id)) counts.revoked += 1;
+    report();
+  }
+
+  function onObservation(event) {
     if (!live) return;
     if (seen.has(event.event_id)) {
       counts.dropped_duplicate += 1;
@@ -206,51 +204,53 @@ async function main() {
       counts.dropped_stale += 1;
       return report();
     }
-    const marker = markers.get(event.public_node_id);
-    if (!marker) return; // unknown or unlocated: nothing to draw
+    const entry = markers.get(event.public_node_id);
+    if (!entry) return; // unknown, unlocated or revoked: nothing to draw
+    const from = entry.marker.getLatLng();
+    const still = reducedMotion();
 
-    const existing = pulses.get(event.public_node_id);
-    if (existing) {
-      window.clearTimeout(existing.timer);
-      existing.layer.remove();
-    }
-    const layer = L.circleMarker(marker.getLatLng(), {
+    dropPulse(event.public_node_id);
+    const pulse = L.circleMarker(from, {
       radius: 11,
       interactive: false,
-      className: reducedMotion() ? "map-pulse map-pulse-still" : "map-pulse",
+      className: still ? "map-pulse map-pulse-still" : "map-pulse",
     }).addTo(map);
-    const timer = window.setTimeout(() => {
-      layer.remove();
-      pulses.delete(event.public_node_id);
-      counts.pulses = pulses.size;
+    const pulseTimer = window.setTimeout(() => {
+      dropPulse(event.public_node_id);
       report();
     }, remaining);
-    pulses.set(event.public_node_id, { layer, timer });
-    counts.pulses = pulses.size;
+    pulses.set(event.public_node_id, { layer: pulse, timer: pulseTimer });
+
+    for (const link of event.links) {
+      if (sameSpot(from, link.lat, link.lon)) continue;
+      dropLine(link.ref);
+      const layer = L.polyline([from, [link.lat, link.lon]], {
+        interactive: false,
+        className: still ? "map-line map-line-still" : "map-line",
+      }).addTo(map);
+      const timer = window.setTimeout(() => {
+        dropLine(link.ref);
+        report();
+      }, remaining);
+      lines.set(link.ref, { layer, timer, from: event.public_node_id, end: L.latLng(link.lat, link.lon) });
+      if (lines.size > LINE_LIMIT) dropLine(lines.keys().next().value);
+    }
     report();
   }
 
-  const feed = fixtureFeed({ onStatus: setStatus, onEvent });
-  let nodes = [];
+  const handlers = { onStatus: setStatus, onCatalogue, onObservation, onRevoked };
+  let feed;
   try {
-    nodes = await feed.catalogue();
+    const base = root.dataset.feedBase || "/api/observations/v1/public/";
+    const kind = root.dataset.feed;
+    feed =
+      kind === "poll" ? pollFeed(base, handlers) : kind === "stream" ? streamFeed(base, handlers) : fixtureFeed(handlers);
+    label = feed.label;
+    await feed.open();
   } catch {
+    label = label || "Map data";
     setStatus("offline");
-    return;
   }
-  for (const node of nodes) {
-    if (!node.location) continue;
-    const marker = L.circleMarker([node.location.lat, node.location.lon], {
-      radius: 4.5,
-      className: "map-node",
-    })
-      .bindTooltip(() => tooltipContent(node), { direction: "top", offset: [0, -4] })
-      .addTo(map);
-    markers.set(node.public_id, marker);
-  }
-  counts.nodes = markers.size;
-  report();
-  feed.connect();
 }
 
 main();

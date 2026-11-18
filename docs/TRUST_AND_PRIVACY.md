@@ -15,6 +15,17 @@ Before a hosted beta invitation is used, the operator must explain key storage, 
 - Broker connectivity does not by itself grant Deployment authority.
 - A management action is limited by device capability, role, authorization and security posture.
 
+## The public map
+
+The map on the [mecon.cloud](https://mecon.cloud) front page shows network activity heard by participating receivers. It follows these rules:
+
+- **Activity, not content.** The map shows that radios are active, never what their messages say.
+- **Only what is heard.** A radio that no participating receiver hears does not appear, so the map is never the whole mesh.
+- **No private positions.** A radio is placed only where it advertises its own position publicly. Where it was heard from is not where it is, and no position is inferred.
+- **No receiver details.** The lines to receivers carry no receiver identity, signal strength or packet identifier; their references are short-lived.
+- **Coverage is partial.** Some areas look quiet only because nobody is listening there.
+- **Sources with publication rights only.** Activity comes from MECON's own receivers and from the receivers that feed [Meshat.se](https://meshat.se/).
+
 ## Self-hosting
 
 The design lets an administrator operate their own Backend, Reader and broker. That gives control of infrastructure and credentials, together with responsibility for protecting them. Public self-hosting artifacts are still planned; see [availability](CAPABILITIES.md).

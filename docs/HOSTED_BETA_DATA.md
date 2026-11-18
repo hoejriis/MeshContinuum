@@ -1,13 +1,13 @@
 # mecon.cloud beta: what is stored and who can read it
 
-*Private beta. Checked against the service's code on 8 November 2026. This page describes the hosted beta at mecon.cloud; another deployment's operator sets their own rules.*
+*Private beta. Checked against the service's code on 18 November 2026. This page describes the hosted beta at mecon.cloud; another deployment's operator sets their own rules.*
 
 **MECON is not an operator-blind service.** When you enrol a Companion private key or a channel key, mecon.cloud uses it to decrypt traffic that its sources captured. The operator of mecon.cloud can technically read whatever the service can decrypt. Application permissions keep users apart: the Instance Owner runs the installation, a Fleet Owner sees their own devices and messages, a Device User sees the Companion assigned to them. They do not hide data from the operator.
 
 ## Keys
 
 - **Companion private keys** are stored encrypted, with the encryption key held outside the database.
-- **Channel keys**, and the Wi-Fi and broker passwords you save for your devices, are stored so that the service can use them. They are never shown back through the app.
+- **Channel keys**, and the Wi-Fi and broker passwords you save for your devices, are stored so that the service can use them. Lists never show a saved password. A Wi-Fi password is revealed only to someone with full access to that Wi-Fi profile, and only while the set-up wizard writes it to a device over the cable. A channel key can be shared on purpose through a channel invite.
 
 ## How long data is kept
 
@@ -16,6 +16,10 @@
 | Decrypted messages | Until removed |
 | Raw captures from your own devices | 365 days |
 | Raw captures from other sources | 7 days |
+| Messages copied from a public-firmware Companion's own inbox | Kept as received, marked device-reported, never decrypted by the service |
+| Logs streamed by public-firmware devices | 30 days |
+| Environment, observation and connectivity reports from public-firmware devices | 7 days |
+| A device's screen, when shown in the app | Memory only, never written to disk or a backup |
 
 ## Backups
 
@@ -23,7 +27,7 @@ The database is backed up daily. The newest 7 copies are kept on the server, and
 
 ## Leaving the beta
 
-On request, the operator removes your account, your enrolled keys, your decrypted messages and your devices from the live service within 7 days. Shared traffic stays, because other users can also read it: raw packets, and channel messages on channels other users can read. Your devices' fleet is retired.
+On request, the operator removes your account, your enrolled keys, your direct messages and your devices from the live service within 7 days. Shared traffic stays, because other users can also read it: raw packets, and channel messages on channels other users can read. Your devices' fleet is retired.
 
 ## Reporting a problem
 

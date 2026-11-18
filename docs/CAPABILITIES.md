@@ -1,6 +1,6 @@
 # Availability
 
-This is the one page that says what is available now. The other pages describe the product as it is meant to work. Firmware rows were reviewed on 15 November 2026, and hosted beta rows on 18 November 2026.
+This is the one page that says what is available now. The other pages describe the product as it is meant to work. Firmware rows were reviewed on 15 November 2026, and hosted beta and public Reader rows on 18 November 2026.
 
 ## Where things stand
 
@@ -8,7 +8,8 @@ This is the one page that says what is available now. The other pages describe t
 |---|---|
 | **Hosted beta** | [mecon.cloud](https://mecon.cloud) runs MECON as a private beta, by invitation only. First external testers are expected there. No opening date is announced. |
 | **Public firmware** | [mecon-firmware](https://github.com/hoejriis/mecon-firmware) publishes its source under MIT, with pre-releases. The latest, [v0.3.7](https://github.com/hoejriis/mecon-firmware/releases/tag/v0.3.7), has signed images for 14 board variants: the standalone Companion, Repeater and Room server on the Heltec V3 and V4, and the BLE and USB Companion, Repeater and Room server on the Wio Tracker L1 and the T1000-E. The Heltec BLE, USB and Wi-Fi Companion builds are not signed: they lack the managed-device interface, so they cannot take a signed update, and the standalone build covers their transports. None is a supported release. What has run on which board is in its [hardware verification record](https://github.com/hoejriis/mecon-firmware/blob/main/docs/HARDWARE_VERIFIED.md). |
-| **Public Backend and Reader** | The public [mecon-backend](https://github.com/hoejriis/mecon-backend) repository now exists with design documentation only. No public Reader/Backend application code, images, supported release or installation guide yet. MVP1 targets a Bluefy BLE web Reader using an authorized MECON Backend; compatibility and hardware acceptance remain unproven. |
+| **Public Reader** | [mecon-backend](https://github.com/hoejriis/mecon-backend) publishes the source of the new web Reader under Apache-2.0, with pre-releases (the latest is [v0.2.0](https://github.com/hoejriis/mecon-backend/releases/tag/v0.2.0)). An early build runs at `reader.mecon.cloud`, restricted to the existing mecon.cloud users and connected to the hosted beta's Backend. It has the five-tab shell, the sign-in client and a read-only Bluetooth diagnostics page. Signed-in use with test accounts has not been verified yet, messaging through the Backend is written but not verified live, and Bluetooth to a Companion is tested in simulation only. This is not a public beta. Its [availability record](https://github.com/hoejriis/mecon-backend/blob/main/docs/MVP1_PLAN.md#restricted-reader-deployment-and-availability) has the detail. |
+| **Public Backend** | Not published. The public Backend that would replace the hosted beta's own is a documented [target](https://github.com/hoejriis/mecon-backend/blob/main/docs/TARGET_ARCHITECTURE.md), with no code, images or installation guide yet. |
 | **Later capabilities** | Planned work is in the [roadmap](ROADMAP.md), and known limits are in [limitations](LIMITATIONS.md). The firmware keeps its own [availability page](https://github.com/hoejriis/mecon-firmware/blob/main/docs/AVAILABILITY.md). |
 
 The beta runs mostly on earlier beta firmware. Since late October 2026 it can also enrol, update and read devices running the public firmware pre-releases, on the project's test boards and with limits. A feature working on one firmware does not prove it on the other.
@@ -19,7 +20,7 @@ The table below is the detail.
 
 | Label | Meaning |
 |---|---|
-| **Available** | Publicly accessible now, with the scope stated. Today this covers documentation, contribution paths and the public firmware source and pre-releases. |
+| **Available** | Publicly accessible now, with the scope stated. Today this covers documentation, contribution paths, the public firmware source and pre-releases, and the public Reader source and pre-releases. |
 | **Beta** | Implemented in the private beta; access, compatible versions and test coverage remain limited. This is not a supported public release. |
 | **Planned** | A documented target or release gate, not a public availability claim. |
 | **Experimental** | Prototype, candidate build or incomplete acceptance; do not infer hardware support. |
@@ -32,7 +33,7 @@ A beta feature can be implemented without being accepted for new external tester
 |---|---|---|
 | Public architecture, device contracts and documentation contributions | Available | MeshContinuum, mecon-firmware and mecon-backend documentation can be read and discussed publicly. |
 | mecon.cloud hosted service | Beta · invitation only | Existing private deployment. First external tests are expected here; timing and admission are unannounced. |
-| Web Reader, authorized identity/channel decryption and history | Beta | Backend-based access to traffic actually captured by configured sources. |
+| The hosted beta's web Reader, authorized identity/channel decryption and history | Beta | Backend-based access to traffic actually captured by configured sources. |
 | Several observation sources and packet/reception diagnostics | Beta | Combines authorized feeds; does not guarantee geographic coverage or complete delivery. |
 | Sending through an enrolled Companion gateway | Beta | Requires an available authorized gateway. Submission and RF acknowledgement are distinct. |
 | Device status, configuration, flashing and managed updates | Beta | Exact firmware, board, role, transport and capability restrictions apply. |
@@ -46,7 +47,10 @@ A beta feature can be implemented without being accepted for new external tester
 | Fleet Management Channel: one private channel per fleet for compact RF reports, signed management and a human-readable `ping` | Planned | Later work on the [roadmap](ROADMAP.md#firmware-that-remains-independent). |
 | Delegated receive identities: up to four of the owner's other identities on a daily Companion | Planned | Judged feasible; stock-app conversation history and acknowledgements are still to be proven on real phones and boards. |
 | The hosted beta using those public capabilities | Beta · test boards only | Enrolment through the Reader's cable, signed updates over USB, Bluetooth and the broker, set-up of Companions with no Wi-Fi, and receptions into the archive. Limited to the project's test boards; a feature working on one firmware does not prove it on the other. |
-| Supported firmware releases and public Backend source | Planned | Separate decisions with no date; see the [roadmap](ROADMAP.md). |
+| Public Reader source and pre-releases | Available | The new web Reader's source in [mecon-backend](https://github.com/hoejriis/mecon-backend) under Apache-2.0, with pre-releases from v0.1.0. None is a supported release. |
+| Restricted public-Reader deployment at `reader.mecon.cloud` | Experimental · existing mecon.cloud users only | Five-tab shell, sign-in client and read-only Bluetooth diagnostics, connected to the hosted beta's Backend. Not yet verified: signed-in use with test accounts, messaging through the Backend, and Bluetooth on real hardware (simulated only, including Bluefy on iPhone and iPad). Its map, contacts, offline cache and USB access are planned. Not a public beta, and not a replacement for the hosted beta's own Reader. |
+| Privacy-filtered live observation feed and the front-page activity map | Planned | A public, anonymous feed of approved nodes and their activity, and a map of it on the front page. The map exists only as a demonstration on synthetic data and is not on the live page. |
+| Supported firmware and Reader releases, and the public Backend | Planned | Separate decisions with no date; see the [roadmap](ROADMAP.md). |
 | Broader board portability and non-Heltec profiles | Experimental | Compilation or software tests alone do not prove a physical board. |
 
 ## Hardware
@@ -64,7 +68,7 @@ Hardware verification of the public firmware covers four boards: Heltec V3, Helt
 
 ## Basis and maintenance
 
-The private beta rows were checked on 18 November 2026 against the hosted beta release then live and the earlier beta firmware release mecon-v0.90.29. The firmware rows were checked on 15 November 2026 against the public mecon-firmware release v0.3.7, its main branch, its hardware verification record and its contracts. These identify reviewed evidence, **not a recommended installation pair**. A tagged asset or passing CI does not prove fleet rollout or hardware acceptance.
+The private beta rows were checked on 18 November 2026 against the hosted beta release then live and the earlier beta firmware release mecon-v0.90.29. The public Reader rows were checked on 18 November 2026 against mecon-backend release v0.2.0 and its [availability record](https://github.com/hoejriis/mecon-backend/blob/main/docs/MVP1_PLAN.md#restricted-reader-deployment-and-availability) and [acceptance evidence](https://github.com/hoejriis/mecon-backend/blob/main/docs/MVP1_ACCEPTANCE.md). The firmware rows were checked on 15 November 2026 against the public mecon-firmware release v0.3.7, its main branch, its hardware verification record and its contracts. These identify reviewed evidence, **not a recommended installation pair**. A tagged asset or passing CI does not prove fleet rollout or hardware acceptance.
 
 For each promoted capability, publish a public evidence summary with version, board/role, transport, date, result and remaining limits. Summaries must omit private identities, infrastructure and messages. If evidence conflicts or is incomplete, retain the lower maturity classification.
 

@@ -49,11 +49,32 @@ The artifact is instance-neutral. The consumer may serve `GET /site-instance.jso
 
 ## 6. Version pin and rollback
 
+A consumer serves the artifact in one of two ways. Both meet the same guarantees:
+
+- only a release published as in section 1 is served, never a build from `main`, and nothing is fetched from GitHub at request time;
+- the tarball is checked against the sha256 published in `SHA256SUMS`, and the extracted tree against `site.json` and the tree digest, before it is served;
+- the tree digest is re-checked while the release is live, and on a mismatch the consumer stops serving the artifact and serves its own built-in page;
+- earlier releases stay available, so rollback is pinning an earlier version.
+
+`contract_version` is semver. A major bump means the consumer must change something: routes, the config shape or headers.
+
+### 6.1 Vendored by the application
+
 - The consumer vendors each pinned release. It fetches the tarball once, at pin time, and checks it against `SHA256SUMS`. It extracts it into its own tree, and pins the version, the release URL, the tarball sha256 and the tree digest.
 - At each start, the consumer re-checks the tree digest, and serves its own built-in page on a mismatch.
-- Nothing is fetched from GitHub at build or request time, and nothing is taken from `main`. An offline copy builds too.
-- Rollback: pin an earlier version and redeploy. Earlier releases stay available.
-- `contract_version` is semver. A major bump means the consumer must change something: routes, the config shape or headers.
+- An offline copy builds too.
+- Rollback: pin an earlier version and redeploy.
+
+### 6.2 Served from disk at the edge
+
+The consumer's reverse proxy answers the artifact's routes (section 2) from a directory on its host, and passes every other path to the application unchanged. The application needs no change and no redeploy to take a new release. mecon.cloud serves the site this way.
+
+- **Install.** One release per directory (`releases/X.Y.Z/`), never overwritten once installed. The installer takes a version and the tarball's sha256, downloads the tarball from the `site-vX.Y.Z` release, and refuses it unless it matches that sha256, which the maintainer takes from the release's `SHA256SUMS`. It refuses any entry outside `index.html` and `site/`, any absolute path or `..`, and anything other than a plain file or directory. It checks every file against `site.json` and records the tree digest.
+- **Switch.** A `current` link points at the live release and is switched atomically. A request is answered from disk only when the file it names exists in the live release; with no release live, the application answers, as it did before.
+- **Re-check.** The host recomputes the live tree's digest regularly, and at boot. On a mismatch, or any link or special file in the tree, it removes `current`, so the application's own page answers, and it raises an alert.
+- **Who pins.** The site's maintainers can pin without access to the application. Their pin access runs one restricted command that can only pin a published release by version and sha256, or report the live version. A failed pin leaves the live release as it was.
+- **Preview.** A disk pin has no in-app preview. The exact release tarball is checked headless under the section 5 headers before pinning, and the joint check (section 8) runs live after it.
+- **Rollback.** Pin the earlier version; it is already on disk. No reload of the proxy is needed to pin or roll back.
 
 ## 7. Local preview
 

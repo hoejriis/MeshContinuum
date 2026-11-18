@@ -1,6 +1,6 @@
 # The MeshContinuum Reader — messaging across radio and network
 
-The Reader is designed to bring familiar MeshCore conversations together with authorized history and network connectivity. For what can be used today, see [availability](CAPABILITIES.md).
+The Reader is designed to bring familiar MeshCore conversations together with authorized history and network connectivity. Its source is public in [mecon-backend](https://github.com/hoejriis/mecon-backend), and an early build runs in a deployment restricted to the existing mecon.cloud users; it is not a public release. For what can be used today, see [availability](CAPABILITIES.md).
 
 ## What is changing
 

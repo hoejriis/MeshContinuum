@@ -30,7 +30,7 @@ No MeshCore experience is required. Start with [MeshCore in brief](MESHCORE.md) 
 ## 4. Public repositories and full application design
 
 - [MeshContinuum](../README.md): the product story, public documentation and visual identity (this repository).
-- [mecon-backend](https://github.com/hoejriis/mecon-backend): complete target for Reader, Backend, roles, deployments, components and privacy. Includes the Reader experience and the full application architecture.
+- [mecon-backend](https://github.com/hoejriis/mecon-backend): the new Reader's source, and the complete target for Reader, Backend, roles, deployments, components and privacy. Includes the Reader experience and the full application architecture.
 - [mecon-firmware](https://github.com/hoejriis/mecon-firmware): independent device firmware and public contracts.
 
 ## 5. Reference

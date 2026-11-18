@@ -22,7 +22,7 @@ This page assumes you know MeshCore. If not, start with [MeshCore in brief](MESH
 
 **You manage your radios from anywhere.** See which of your devices are online, their battery, uptime and firmware, and when each was last heard. Configure a supported Companion, Repeater or Room server, update its firmware, and get a mail when one goes quiet. A device's firmware, board and role decide what can be done with it.
 
-**Sites with no Internet.** A device that only radio can reach is still managed over LoRa, with every change signed. Each fleet has one private management channel that all its devices join. Anyone on it can send `ping` from a stock app and get a short status from each device, but being on the channel grants no right to change anything.
+**Sites with no Internet.** A device that only radio can reach is still managed over LoRa, with every change signed. Planned: each Deployment will have one private management channel that all its devices join. Anyone on it will be able to send `ping` from a stock app and get a short status from each device, and being on the channel will grant no right to change anything.
 
 **Several fleets, kept apart.** One installation can serve several independent fleet owners. No key, command or status crosses between fleets.
 
@@ -30,7 +30,7 @@ This page assumes you know MeshCore. If not, start with [MeshCore in brief](MESH
 
 **You send through a radio at home.** From the Reader, send a message through a Companion that acts as your gateway. Your message goes out over RF from that radio, and the Reader shows what became of it.
 
-**One Companion, several of your identities.** The Companion you carry keeps its own identity, and can also receive for up to four of your others, such as a car, cabin or spare Companion. A message to any of them reaches you in the stock app's normal conversation, and the sender gets the usual acknowledgement. It never sends an ordinary message as one of them.
+**Planned: one Companion, several of your identities.** The Companion you carry would keep its own identity, and could also receive for up to four of your others, such as a car, cabin or spare Companion. A message to any of them would reach you in the stock app's normal conversation, and the sender would get the usual acknowledgement. It would never send an ordinary message as one of them. This is not built yet, and needs proof on real phones and boards.
 
 **You choose where it runs.** Use a hosted service such as [mecon.cloud](https://mecon.cloud), run it on a small computer at home, or connect several sites. See [deployment choices](DEPLOYMENT_MODES.md).
 

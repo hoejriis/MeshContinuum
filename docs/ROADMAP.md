@@ -4,7 +4,7 @@ MeshContinuum is designed to make decentralized MeshCore messaging easier to use
 
 ## A familiar Reader with more reach
 
-The first application experience focuses on everyday messaging: contacts, direct messages, channels, Companion selection and clear send status. A compatible Companion can connect locally through Bluetooth where supported, while an authorized Backend can provide online history and messaging. These paths remain distinct, so an Internet connection is never confused with radio delivery.
+The first application experience focuses on everyday messaging, in the familiar layout of MeshCore One: chats with their channels, nodes, a map, tools and settings, with Companion selection and clear send status. A compatible Companion can connect locally through Bluetooth where supported, while an authorized Backend can provide online history and messaging. These paths remain distinct, so an Internet connection is never confused with radio delivery.
 
 Read about the [Reader experience](P5_READER_MVP.md) and [application design](https://github.com/hoejriis/mecon-backend/blob/main/docs/TARGET_ARCHITECTURE.md).
 

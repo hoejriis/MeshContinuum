@@ -30,7 +30,14 @@ Open `http://127.0.0.1:8800/`. A release build, without `--dev`, refuses uncommi
 
 The map shows synthetic demonstration data, labelled as such, and makes no request outside the page's own files. It draws the public nodes that have a location as turquoise dots. When one is heard, it draws a violet pulse, and a thin line to each radio that heard it, for at most 15 seconds. A line is keyed by its short-lived reference, so a repeat refreshes it rather than drawing a second one. A repeated or already expired event is never drawn, and every pulse and line is cleared when the feed is not live. Reduced motion gets still highlights and lines.
 
-The data comes through `map/feeds.js`. `fixtureFeed` is the synthetic feed every build uses. `liveFeed` reads the public feed on the same origin (`<base>nodes` and the `<base>events` stream). It refetches the catalogue at least every 15 minutes, treats 50 seconds without a heartbeat as a dead stream, and resyncs on `resync_required` or a refused stream. It removes a node at once on `node_revoked`, or when a fresh catalogue no longer lists it. Nothing selects it yet: it would take `data-feed="live"` on the map element. The feed's shape is a draft and may change. On touch screens one finger scrolls the page and two fingers zoom; the mouse wheel scrolls the page. Releases leave the map out until the public feed exists and its use on the live page is approved.
+The data comes through `map/feeds.js`. `fixtureFeed` is the synthetic feed every build uses today. The live adapters read the public feed on the same origin, under `/api/observations/v1/public/` (or the element's `data-feed-base`):
+
+- `pollFeed` (`data-feed="poll"`) reads `<base>nodes`, then `<base>events?since=<cursor>`, which answers `{cursor, events, poll_after_ms}`. It spreads each batch over the poll interval, oldest first. HTTP 410 refetches the catalogue and polls again with no cursor; 429 and 503 honour Retry-After; `poll_after_ms` is clamped to 2–60 seconds. A `node_revoked` entry in the list removes that node at once.
+- `streamFeed` (`data-feed="stream"`) reads the same catalogue and a server-sent `<base>events` stream. 50 seconds without a heartbeat is a dead stream, and `resync_required` or a refused stream starts again with no cursor.
+
+Both refetch the catalogue at least every 15 minutes, and remove a node that a fresh catalogue no longer lists. Nothing selects either yet.
+
+On touch screens one finger scrolls the page and two fingers zoom; the mouse wheel scrolls the page. Releases leave the map out until the public feed exists and its use on the live page is approved.
 
 ## Releasing
 

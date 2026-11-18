@@ -59,7 +59,7 @@ The firmware's contracts live in its own repository, so other projects can build
 | Generic capability | Native send with correlated outcomes, collecting received messages, contact and channel administration, supplying a missed message to the local app, bounded standing instructions, compact telemetry | The firmware, for any conforming manager |
 | Backend orchestration | Which gateway sends a message, which history to catch up on, Deployment journeys, RF health policy, carrying favourite channels between devices, provisioning the Fleet Management Channel and delegated receive identities | The Backend |
 
-The firmware's planned fleet features, the Fleet Management Channel's `ping` and delegated receive identities, are on the [roadmap](ROADMAP.md#moving-the-fleet-to-the-public-firmware). Autonomous outage forwarding is retired.
+The firmware's planned fleet features, the Fleet Management Channel's `ping` and delegated receive identities, are on the [roadmap](ROADMAP.md#firmware-that-remains-independent). Autonomous outage forwarding is retired.
 
 ## Other sources and managers
 

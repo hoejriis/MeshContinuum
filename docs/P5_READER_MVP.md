@@ -6,14 +6,14 @@ The Reader is designed to bring familiar MeshCore conversations together with au
 
 The Reader is a communication-first application for everyday MeshCore users. It will be a web app designed first for **Bluefy on iPhone and iPad**, using Web Bluetooth to communicate with an authorized Companion where supported. An authorized MECON Backend provides account/session authority, online messaging, history, MQTT and USB-agent services. The Reader and Backend communicate through a versioned application interface.
 
-The Reader should feel familiar to anyone using the stock MeshCore app: chats, channels, contacts, Companion connection, composing and honest delivery status. **Familiar tasks and terminology, original MECON design.** Do not copy stock app code, screenshots, graphics, logo or exact layouts.
+The Reader should feel familiar to anyone using the stock MeshCore app: chats, channels, contacts, Companion connection, composing and honest delivery status. **Familiar layout and workflows, original MECON code and branding.** The Reader follows [MeshCore One](https://github.com/Avi0n/MeshCoreOne) as closely as practicable in layout, navigation and workflows. Do not copy its source, screenshots, graphics or logo.
 
 Use the established [MECON visual identity](BRAND.md), including the original mark, navy `#0D1736`, violet `#8B7CFF`, turquoise `#25D6C9` and light surface `#F5F7FB`, with documented contrast constraints.
 
 ## Messaging experience
 
 - Bluefy Web Bluetooth connection to a supported Companion, with real iPhone/iPad hardware acceptance.
-- Communication-first Reader: chats/DMs, channels, contacts, active Companion, account/settings.
+- Communication-first Reader with Chats (channels within Chats), Nodes, Map, Tools and Settings tabs, and the active Companion visible in the flow. Fleet management is a separate, web-only tool, deferred beyond this MVP.
 - Optional Backend account login for authorized history and online messaging.
 - Clearly distinguish Bluetooth connected, Backend connected, RF transmission and message acknowledgement.
 - Explicit send path; no automatic duplicate BLE + Backend transmissions.

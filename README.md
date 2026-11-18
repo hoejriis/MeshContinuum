@@ -17,7 +17,7 @@ MECON is an independent, non-commercial project. It is not an official MeshCore 
 
 ## Start with something familiar: a better-connected Reader
 
-The **first public application MVP** is a web Reader for **Device Users**, built first for iPhone and iPad in **Bluefy** with direct Bluetooth access to a supported Companion. It follows the stock MeshCore app's familiar concepts—**Chats, Channels, Contacts, Companion and Settings**—so changing between apps should not require learning a new messaging model. It uses MECON's own visual identity and interaction design, not a copy of the stock app.
+The **first public application MVP** is a web Reader for **Device Users**, built first for iPhone and iPad in **Bluefy** with direct Bluetooth access to a supported Companion. It follows the layout and workflows of [MeshCore One](https://github.com/Avi0n/MeshCoreOne), a familiar MeshCore client, as closely as practicable—**Chats (with channels), Nodes, Map, Tools and Settings**—so changing between apps should not require learning a new messaging model. Its code and visual identity are MECON's own; no MeshCore One source or artwork is copied. Fleet management is a separate, web-only tool, not part of the Reader.
 
 Where authorized, the Reader can also use a MECON Backend for online history and messaging. Bluetooth and Backend are independent paths; connection and RF delivery are never treated as the same thing. Bluefy compatibility still requires real-device verification. This is a **planned MVP, not an available download**.
 

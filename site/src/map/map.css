@@ -40,65 +40,64 @@
   stroke-width: 1;
 }
 
-.live-map .map-pulse {
+/* A live pulse: a solid violet core on the node and a violet ring that
+ * ripples outward, so a single event stands out among the dots. Both, and
+ * the lines, stay strong for most of the event's remaining life and fade
+ * only at its end (map.js runs that fade). */
+.live-map .map-pulse-core {
   fill: var(--accent);
-  fill-opacity: 0.35;
+  fill-opacity: 1;
+  stroke: var(--text);
+  stroke-width: 1.5;
+}
+
+.live-map .map-pulse {
+  fill: none;
   stroke: var(--accent);
-  stroke-width: 2;
-  animation: map-pulse 15s ease-out forwards;
+  stroke-width: 3;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: map-ripple 1.8s ease-out infinite;
 }
 
 .live-map .map-pulse-still {
   animation: none;
-  fill-opacity: 0.3;
+  stroke-opacity: 0.8;
 }
 
-@keyframes map-pulse {
+@keyframes map-ripple {
   0% {
+    transform: scale(0.25);
     stroke-opacity: 1;
-    stroke-width: 6;
-  }
-  10% {
-    stroke-width: 2;
   }
   100% {
+    transform: scale(1);
     stroke-opacity: 0;
-    fill-opacity: 0;
   }
+}
+
+
+.live-map .map-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.8;
+  stroke-opacity: 0.95;
+  stroke-linecap: round;
+}
+
+.live-map .map-line-still {
+  animation: none;
+  stroke-opacity: 0.8;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .live-map .map-pulse {
     animation: none;
-    fill-opacity: 0.3;
   }
 
-  .live-map .map-line {
-    animation: none;
-    stroke-opacity: 0.6;
-  }
-}
-
-.live-map .map-line {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 1.2;
-  stroke-opacity: 0.8;
-  stroke-linecap: round;
-  animation: map-line 15s linear forwards;
-}
-
-.live-map .map-line-still {
-  animation: none;
-  stroke-opacity: 0.6;
-}
-
-@keyframes map-line {
-  0% {
-    stroke-opacity: 0.9;
-  }
-  100% {
-    stroke-opacity: 0;
+  .live-map .map-pulse {
+    transform: none;
+    stroke-opacity: 0.8;
   }
 }
 
@@ -155,4 +154,48 @@
   padding: 0 1.5rem;
   color: var(--text-muted);
   font-size: 0.85rem;
+}
+
+/* Tablet and desktop: the introduction on the left, the map on the right
+ * half, side by side above the rest of the page. Phones keep the map on
+ * top at full width. */
+@media (min-width: 740px) {
+  .lead-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .lead-split > .map-section {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    border-left: 1px solid var(--border);
+  }
+
+  .lead-split > .content {
+    grid-column: 1;
+    grid-row: 1;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .lead-split .map-frame {
+    flex: 1;
+    min-height: min(78vh, 760px);
+  }
+
+  .lead-split .live-map {
+    position: absolute;
+    inset: 0;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+  }
+
+  .lead-split .map-note {
+    padding: 0 1rem 1rem;
+  }
 }

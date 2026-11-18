@@ -45,15 +45,16 @@
 
       <!-- MAP:BEGIN -->
       <section class="map-section" aria-labelledby="map-heading">
-        <h2 id="map-heading" class="visually-hidden">Map of network activity (demonstration)</h2>
+        <h2 id="map-heading" class="visually-hidden">Map of network activity</h2>
         <div class="map-frame">
-          <div id="live-map" class="live-map" role="region" aria-label="Map of public MeshCore radios, with a pulse when one is heard and lines to the radios that heard it. Demonstration with synthetic data." tabindex="0"></div>
-          <p class="map-status" id="map-status" role="status" aria-live="polite">Demonstration, synthetic data</p>
+          <div id="live-map" class="live-map" data-feed="poll" data-feed-base="/api/public/v1/" role="region" aria-label="Map of public MeshCore radios, with a pulse when one is heard and lines to the radios that heard it." tabindex="0"></div>
+          <p class="map-status" id="map-status" role="status" aria-live="polite">Connecting</p>
         </div>
         <p class="map-note">
-          <strong>Demonstration:</strong> the radios and activity on this map are synthetic, not
-          real traffic. A violet pulse shows a radio being heard, and a thin line runs to each
-          radio that heard it. The real public feed comes later.
+          A violet pulse shows a radio being heard, and a thin line runs to each receiver that
+          heard it. <strong>Data sources:</strong> MECON's own receivers, and the receivers that
+          feed <a href="https://meshat.se/" target="_blank" rel="noopener noreferrer">Meshat.se</a>.
+          Only radios with a position approved for publication are shown.
         </p>
       </section>
       <!-- MAP:END -->
@@ -288,8 +289,8 @@
           nothing on this page is live. When it comes, it will follow these rules:
           <!-- NOMAP:END -->
           <!-- MAP:BEGIN -->
-          The map at the top of this page shows synthetic demonstration data. The public
-          map of real activity is planned, and will follow these rules:
+          The map at the top of this page shows activity heard by participating receivers. It
+          follows these rules:
           <!-- MAP:END -->
         </p>
         <ul class="plain-list">

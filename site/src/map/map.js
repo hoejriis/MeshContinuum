@@ -94,7 +94,12 @@ async function main() {
     zoomControl: true,
     attributionControl: true,
   });
-  map.attributionControl.setPrefix("Leaflet · Natural Earth");
+  // A live feed credits its sources beside the map, as well as below it.
+  map.attributionControl.setPrefix(
+    root.dataset.feed === "poll" || root.dataset.feed === "stream"
+      ? 'Leaflet · Natural Earth · Activity: MECON, <a href="https://meshat.se/" target="_blank" rel="noopener noreferrer">Meshat.se</a>'
+      : "Leaflet · Natural Earth",
+  );
 
   const counts = { nodes: 0, pulses: 0, lines: 0, dropped_stale: 0, dropped_duplicate: 0, revoked: 0 };
   const report = () => {
@@ -241,7 +246,7 @@ async function main() {
   const handlers = { onStatus: setStatus, onCatalogue, onObservation, onRevoked };
   let feed;
   try {
-    const base = root.dataset.feedBase || "/api/observations/v1/public/";
+    const base = root.dataset.feedBase || "/api/public/v1/";
     const kind = root.dataset.feed;
     feed =
       kind === "poll" ? pollFeed(base, handlers) : kind === "stream" ? streamFeed(base, handlers) : fixtureFeed(handlers);

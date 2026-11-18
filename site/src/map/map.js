@@ -246,7 +246,7 @@ async function main() {
   const handlers = { onStatus: setStatus, onCatalogue, onObservation, onRevoked };
   let feed;
   try {
-    const base = root.dataset.feedBase || "/api/observations/v1/public/";
+    const base = root.dataset.feedBase || "/api/public/v1/";
     const kind = root.dataset.feed;
     feed =
       kind === "poll" ? pollFeed(base, handlers) : kind === "stream" ? streamFeed(base, handlers) : fixtureFeed(handlers);

@@ -94,7 +94,12 @@ async function main() {
     zoomControl: true,
     attributionControl: true,
   });
-  map.attributionControl.setPrefix("Leaflet · Natural Earth");
+  // A live feed credits its sources beside the map, as well as below it.
+  map.attributionControl.setPrefix(
+    root.dataset.feed === "poll" || root.dataset.feed === "stream"
+      ? 'Leaflet · Natural Earth · Activity: MECON, <a href="https://meshat.se/" target="_blank" rel="noopener noreferrer">Meshat.se</a>'
+      : "Leaflet · Natural Earth",
+  );
 
   const counts = { nodes: 0, pulses: 0, lines: 0, dropped_stale: 0, dropped_duplicate: 0, revoked: 0 };
   const report = () => {

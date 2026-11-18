@@ -1,0 +1,1 @@
+- [Site pin key](reference_site_pin_key.md) — F2 forced-command key for pinning the mecon.cloud front page

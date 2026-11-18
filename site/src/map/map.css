@@ -1,0 +1,130 @@
+/* Front-page activity map (built only with --map). */
+.map-section {
+  width: 100%;
+  margin: 0 auto 1.5rem;
+}
+
+.map-frame {
+  position: relative;
+}
+
+.live-map {
+  height: 70vh;
+  min-height: 360px;
+  max-height: 820px;
+  background: #070d24;
+  border-bottom: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+  .live-map {
+    height: 60vh;
+    min-height: 300px;
+  }
+}
+
+.live-map:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: -2px;
+}
+
+.live-map .basemap-land {
+  fill: #16214a;
+  stroke: #2a3666;
+}
+
+.live-map .map-node {
+  fill: var(--accent-strong);
+  fill-opacity: 1;
+  stroke: #0a1230;
+  stroke-width: 1;
+}
+
+.live-map .map-pulse {
+  fill: var(--accent);
+  fill-opacity: 0.35;
+  stroke: var(--accent);
+  stroke-width: 2;
+  animation: map-pulse 15s ease-out forwards;
+}
+
+.live-map .map-pulse-still {
+  animation: none;
+  fill-opacity: 0.3;
+}
+
+@keyframes map-pulse {
+  0% {
+    stroke-opacity: 1;
+    stroke-width: 6;
+  }
+  10% {
+    stroke-width: 2;
+  }
+  100% {
+    stroke-opacity: 0;
+    fill-opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-map .map-pulse {
+    animation: none;
+    fill-opacity: 0.3;
+  }
+}
+
+.live-map .leaflet-tooltip {
+  background: var(--bg-panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: none;
+  font-size: 0.85rem;
+}
+
+.live-map .leaflet-tooltip-top::before {
+  border-top-color: var(--border);
+}
+
+.live-map .leaflet-control-zoom a {
+  background: var(--bg-panel);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.live-map .leaflet-control-attribution {
+  background: rgba(10, 18, 48, 0.8);
+  color: var(--text-muted);
+}
+
+.live-map .leaflet-control-attribution a {
+  color: var(--accent-strong);
+}
+
+.map-status {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 1000;
+  margin: 0;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: var(--bg-panel);
+  border: 1px solid var(--accent);
+  color: var(--text);
+  font-size: 0.8rem;
+}
+
+.map-status[data-state="offline"],
+.map-status[data-state="reconnecting"] {
+  border-color: var(--text-muted);
+}
+
+.map-note {
+  max-width: 1100px;
+  margin: 0.6rem auto 0;
+  padding: 0 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}

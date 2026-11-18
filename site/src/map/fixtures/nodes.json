@@ -1,0 +1,395 @@
+{
+ "schema_version": 1,
+ "synthetic": true,
+ "as_of": "2026-01-01T12:00:00Z",
+ "nodes": [
+  {
+   "public_id": "demo010587c2e0ed9827a6c38ad2bd55fcad1edf1f1eb3b3406c2f2b3f2c72775666",
+   "label": "Demo Repeater 01",
+   "location": {
+    "lat": 55.58,
+    "lon": 9.62
+   },
+   "last_heard": "2026-01-01T08:17:00Z",
+   "type": "Repeater"
+  },
+  {
+   "public_id": "demo020e232ab54705e46e15336bec816103bbae4d5faf6d39398d4fc201ee9d4b09",
+   "label": "Demo Repeater 02",
+   "location": {
+    "lat": 56.07,
+    "lon": 10.27
+   },
+   "last_heard": "2026-01-01T02:56:00Z",
+   "type": "Repeater"
+  },
+  {
+   "public_id": "demo030ba983f0200a7787e54b499533f2491c8fb400d98d0c6c2e37499e30ac8b56",
+   "label": "Demo Companion 03",
+   "location": {
+    "lat": 55.72,
+    "lon": 12.44
+   },
+   "last_heard": "2026-01-01T11:44:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo040f4c0cf462ea71dee6ea94c7f6cc42e69660c34ffe307a64a75371f4eb6820",
+   "label": "Demo Room server 04",
+   "location": {
+    "lat": 56.09,
+    "lon": 12.44
+   },
+   "last_heard": "2026-01-01T03:09:00Z",
+   "type": "Room server"
+  },
+  {
+   "public_id": "demo0506b5ce084279a7e6b6ab9e8825217357a8b8930c9376906e91a2a32f5e04e2",
+   "label": "Demo Repeater 05",
+   "location": {
+    "lat": 55.07,
+    "lon": 9.91
+   },
+   "last_heard": "2026-01-01T03:18:00Z",
+   "type": "Repeater"
+  },
+  {
+   "public_id": "demo0609524d65afc9a55faff222903295ed4eaba0352f52d9feea9d5b1aeca9c6d0",
+   "label": "Demo Repeater 06",
+   "location": {
+    "lat": 55.56,
+    "lon": 13.09
+   },
+   "last_heard": "2026-01-01T07:36:00Z",
+   "type": "Repeater"
+  },
+  {
+   "public_id": "demo070ff199172f7e96168e57646d664ecb873ac894e6328b8bac594e8dc1ee8e46",
+   "label": "Demo Companion 07",
+   "location": {
+    "lat": 57.49,
+    "lon": 10.06
+   },
+   "last_heard": "2026-01-01T06:06:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo08018b8801bae140669197a93d1e542d8312011a326b19baf3c08c03d757b49d",
+   "label": "Demo Companion 08",
+   "location": {
+    "lat": 57.85,
+    "lon": 11.66
+   },
+   "last_heard": "2026-01-01T08:10:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo0901014e097735a2718ec74230f66ff3a129b8c85b71fe54e8e6fb63540aaf63",
+   "label": "Demo Companion 09",
+   "location": null,
+   "last_heard": "2026-01-01T09:50:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo100ebc7a25c70204d3fe693b1f3ae7096926b10731ef0e2b0d55e82319db0e85",
+   "label": "Demo Companion 10",
+   "location": {
+    "lat": 56.69,
+    "lon": 8.73
+   },
+   "last_heard": "2026-01-01T04:02:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo11079e667918fe96dbbc53f0be61b28daf11119efdc4cef148c1a13695a49eca",
+   "label": "Demo Room server 11",
+   "location": {
+    "lat": 57.05,
+    "lon": 9.94
+   },
+   "last_heard": "2026-01-01T10:41:00Z",
+   "type": "Room server"
+  },
+  {
+   "public_id": "demo1202fd4204a810a61e965e16f1569c7f4245f37c9bc09dd1cec65776d1de1909",
+   "label": "Demo Companion 12",
+   "location": {
+    "lat": 54.7,
+    "lon": 12.07
+   },
+   "last_heard": "2026-01-01T06:40:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo130139150ab7cd8b2d64c3c044dcf78cb32f7b9b6f34ca3898cdf3a0b12c06ef",
+   "label": "Demo Repeater 13",
+   "location": {
+    "lat": 55.32,
+    "lon": 10.16
+   },
+   "last_heard": "2026-01-01T06:43:00Z",
+   "type": "Repeater"
+  },
+  {
+   "public_id": "demo14018ec3c0a5ed3746bfe27405f81a682e3f4e74116a7f93ddbf0bfa7c942a45",
+   "label": "Demo Companion 14",
+   "location": {
+    "lat": 57.3,
+    "lon": 9.94
+   },
+   "last_heard": "2026-01-01T04:39:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo15060b483cd9d6d909ccd8ac2e2f9859d58b00f886576bb0ecd0be12e87dd7bb",
+   "label": "Demo Companion 15",
+   "location": {
+    "lat": 56.41,
+    "lon": 9.13
+   },
+   "last_heard": "2026-01-01T11:13:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo1603fbfa40fcb56c76e6f6406b5c8312b7d7b96db056f1bec013007a0c942812",
+   "label": "Demo Repeater 16",
+   "location": {
+    "lat": 56.59,
+    "lon": 9.49
+   },
+   "last_heard": "2026-01-01T10:17:00Z",
+   "type": "Repeater"
+  },
+  {
+   "public_id": "demo1707faea07acb4d20e89b7ad519f61daa55d2108f63264e3e3b034982da63228",
+   "label": "Demo Repeater 17",
+   "location": {
+    "lat": 55.62,
+    "lon": 10.44
+   },
+   "last_heard": "2026-01-01T02:17:00Z",
+   "type": "Repeater"
+  },
+  {
+   "public_id": "demo180fc4cdcfc29c70a1ca31d637201037010aa95dc4bf5f5fc42aacb846ee62ba",
+   "label": "Demo Companion 18",
+   "location": null,
+   "last_heard": "2026-01-01T01:14:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo190b3f1302544f4ab06e51d5d156fb82f89cf47fdd261cb5424fb5cb57a051c8",
+   "label": "Demo Companion 19",
+   "location": {
+    "lat": 56.69,
+    "lon": 12.61
+   },
+   "last_heard": "2026-01-01T02:40:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo200d82ebd93785af4763392d5cb0901da5b4346e8d2872fd9efdcb68e4a06ec6",
+   "label": "Demo Companion 20",
+   "location": {
+    "lat": 56.89,
+    "lon": 10.13
+   },
+   "last_heard": "2026-01-01T07:12:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo21022c2fd13e6a897ff7f503b2588e8f7eeb78cd82866a08cb4886d9d6b65e9a",
+   "label": "Demo Companion 21",
+   "location": {
+    "lat": 54.8,
+    "lon": 9.55
+   },
+   "last_heard": "2026-01-01T08:31:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo22029686b4fc898e31eaaffa86c07018a7e08aecaa7f982063011a3c13dd9f29",
+   "label": "Demo Repeater 22",
+   "location": {
+    "lat": 55.97,
+    "lon": 12.95
+   },
+   "last_heard": "2026-01-01T11:58:00Z",
+   "type": "Repeater"
+  },
+  {
+   "public_id": "demo230dd5a15cacd7378ec48774326536c227224374d9a5e7edf8318a31864060c3",
+   "label": "Demo Companion 23",
+   "location": {
+    "lat": 55.97,
+    "lon": 12.38
+   },
+   "last_heard": "2026-01-01T11:33:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo24010ac2d3416fdba1e08047ce80717f0d2bd1f2afbc562281b8a00df2d4f868",
+   "label": "Demo Repeater 24",
+   "location": {
+    "lat": 56.16,
+    "lon": 12.28
+   },
+   "last_heard": "2026-01-01T02:04:00Z",
+   "type": "Repeater"
+  },
+  {
+   "public_id": "demo250bd659868c912d9f5689319333a1c36977266ee9a2af16e8c82df8500714ac",
+   "label": "Demo Companion 25",
+   "location": {
+    "lat": 55.37,
+    "lon": 8.31
+   },
+   "last_heard": "2026-01-01T06:20:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo260add9b52433190f3dc2f0ba6f7c8a7830f101bcd02ffb53bfc4e72e6c42eb3",
+   "label": "Demo Repeater 26",
+   "location": {
+    "lat": 55.31,
+    "lon": 14.86
+   },
+   "last_heard": "2026-01-01T11:15:00Z",
+   "type": "Repeater"
+  },
+  {
+   "public_id": "demo270e83151a69464b1cdc6e2350ebe9d1efd14326061cbe04e3950b0f4c604ac7",
+   "label": "Demo Companion 27",
+   "location": null,
+   "last_heard": "2026-01-01T06:58:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo2808a8e53c1af20e4e892e12674e1707d0320be923c806c45aa30a0064e35c7d",
+   "label": "Demo Repeater 28",
+   "location": {
+    "lat": 55.32,
+    "lon": 8.3
+   },
+   "last_heard": "2026-01-01T02:58:00Z",
+   "type": "Repeater"
+  },
+  {
+   "public_id": "demo2903d2f5d294388420d0fbbf17c5262237b43c098af8f79a839f202447ab4ee5",
+   "label": "Demo Repeater 29",
+   "location": {
+    "lat": 55.8,
+    "lon": 12.97
+   },
+   "last_heard": "2026-01-01T03:08:00Z",
+   "type": "Repeater"
+  },
+  {
+   "public_id": "demo3002a9cfcd27b56e5390d7c97b11385e8f2c975d1d028e51271bebacd1fc2fb1",
+   "label": "Demo Companion 30",
+   "location": {
+    "lat": 56.44,
+    "lon": 13.21
+   },
+   "last_heard": "2026-01-01T05:04:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo31089e63a1735a4f6f1505b9757fc082e52ec87c9538423baac2c19dea1d5a48",
+   "label": "Demo Repeater 31",
+   "location": {
+    "lat": 55.01,
+    "lon": 14.62
+   },
+   "last_heard": "2026-01-01T05:43:00Z",
+   "type": "Repeater"
+  },
+  {
+   "public_id": "demo3201d87114ff8ed0efab3664029946acb010c8974935c93f356c38e45c625fea",
+   "label": "Demo Repeater 32",
+   "location": {
+    "lat": 56.82,
+    "lon": 12.98
+   },
+   "last_heard": "2026-01-01T04:48:00Z",
+   "type": "Repeater"
+  },
+  {
+   "public_id": "demo330295c8eba9969dc31b5d54054172b2200b291ea125ed7e44736f31a2c9d038",
+   "label": "Demo Companion 33",
+   "location": {
+    "lat": 55.26,
+    "lon": 10.37
+   },
+   "last_heard": "2026-01-01T07:34:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo3402cc91b75286068e9f104b72f3441f65e80bddbd028ce9565b8dbacae098b5",
+   "label": "Demo Companion 34",
+   "location": {
+    "lat": 55.9,
+    "lon": 9.64
+   },
+   "last_heard": "2026-01-01T01:58:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo350a4b7139b5fbd83e8b1a1cc85c23ad3549cfebde636754c70b26d143093188",
+   "label": "Demo Companion 35",
+   "location": {
+    "lat": 56.7,
+    "lon": 13.09
+   },
+   "last_heard": "2026-01-01T07:43:00Z",
+   "type": "Companion"
+  },
+  {
+   "public_id": "demo360cea37cc46f72075d8a0135ac43f0b3dcf98558dcd529c9c5ff46c3d7476c2",
+   "label": "Demo Repeater 36",
+   "location": null,
+   "last_heard": "2026-01-01T10:37:00Z",
+   "type": "Repeater"
+  },
+  {
+   "public_id": "demo370810529adcecf88ce86a0c0bc28e0b235cee80bc8387d6f7221fbd20c9a955",
+   "label": "Demo Repeater 37",
+   "location": {
+    "lat": 54.9,
+    "lon": 10.55
+   },
+   "last_heard": "2026-01-01T01:49:00Z",
+   "type": "Repeater"
+  },
+  {
+   "public_id": "demo380814b65f5e7fab1a2723ce215804526564aa8b3bae6582eafe008bb6c7d5a6",
+   "label": "Demo Room server 38",
+   "location": {
+    "lat": 56.86,
+    "lon": 10.05
+   },
+   "last_heard": "2026-01-01T07:00:00Z",
+   "type": "Room server"
+  },
+  {
+   "public_id": "demo3902919a991b57dd821b4f9729dfbf85f0d29cc67bcae72d2866497155e5d411",
+   "label": "Demo Room server 39",
+   "location": {
+    "lat": 55.51,
+    "lon": 12.92
+   },
+   "last_heard": "2026-01-01T10:16:00Z",
+   "type": "Room server"
+  },
+  {
+   "public_id": "demo40071c05afa25449410739ecab32721d8052a212b1f02ab91587a102b6ef7359",
+   "label": "Demo Companion 40",
+   "location": {
+    "lat": 55.41,
+    "lon": 12.77
+   },
+   "last_heard": "2026-01-01T04:20:00Z",
+   "type": "Companion"
+  }
+ ]
+}

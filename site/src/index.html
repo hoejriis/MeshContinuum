@@ -26,6 +26,10 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ASSET}}/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="{{ASSET}}/favicon-16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="{{ASSET}}/apple-touch-icon.png" />
+    <!-- MAP:BEGIN -->
+    <link rel="stylesheet" href="{{ASSET}}/map/vendor/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="{{ASSET}}/map/map.css" />
+    <!-- MAP:END -->
     <link rel="stylesheet" href="{{ASSET}}/style.css" />
     <title>MeshContinuum — a stronger mesh network, without giving up control</title>
   </head>
@@ -39,6 +43,20 @@
         </nav>
       </header>
 
+      <!-- MAP:BEGIN -->
+      <section class="map-section" aria-labelledby="map-heading">
+        <h2 id="map-heading" class="visually-hidden">Map of network activity (demonstration)</h2>
+        <div class="map-frame">
+          <div id="live-map" class="live-map" role="region" aria-label="Map of public MeshCore radios, with a pulse when one is heard. Demonstration with synthetic data." tabindex="0"></div>
+          <p class="map-status" id="map-status" role="status" aria-live="polite">Demonstration, synthetic data</p>
+        </div>
+        <p class="map-note">
+          <strong>Demonstration:</strong> the radios and activity on this map are synthetic, not
+          real traffic. A violet pulse shows a radio being heard. Lines between radios and the
+          real public feed come later.
+        </p>
+      </section>
+      <!-- MAP:END -->
       <main class="content" id="main">
         <section class="hero" aria-labelledby="hero-heading">
           <h1 id="hero-heading">A stronger mesh network, without giving up control.</h1>
@@ -265,8 +283,14 @@
       <section class="wide-section live-section" aria-labelledby="live-heading">
         <h2 id="live-heading">A public map, with privacy built in</h2>
         <p class="section-lede">
+          <!-- NOMAP:BEGIN -->
           A public map of network activity is planned for this page. It is not here yet, and
           nothing on this page is live. When it comes, it will follow these rules:
+          <!-- NOMAP:END -->
+          <!-- MAP:BEGIN -->
+          The map at the top of this page shows synthetic demonstration data. The public
+          map of real activity is planned, and will follow these rules:
+          <!-- MAP:END -->
         </p>
         <ul class="plain-list">
           <li><strong>Activity, not content.</strong> The map shows that radios are active, never what their messages say.</li>
@@ -380,5 +404,9 @@
       </footer>
     </div>
     <script type="module" src="{{ASSET}}/site.js"></script>
+    <!-- MAP:BEGIN -->
+    <script defer src="{{ASSET}}/map/vendor/leaflet/leaflet.js"></script>
+    <script type="module" src="{{ASSET}}/map/map.js"></script>
+    <!-- MAP:END -->
   </body>
 </html>

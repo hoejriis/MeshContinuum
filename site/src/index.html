@@ -7,27 +7,27 @@
     <meta name="theme-color" content="#0a1230" />
     <meta
       name="description"
-      content="MeshContinuum (MECON): MECON lets small MeshCore radios, which talk to each other without mobile coverage, share what they hear when the Internet is there. Non-commercial and exploratory."
+      content="MeshContinuum (MECON) helps people and communities connect, understand and manage decentralized radio messaging networks. Independent and non-profit, built around MeshCore."
     />
     <meta name="generator" content="meshcontinuum-site {{VERSION}}" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="MeshContinuum" />
-    <meta property="og:title" content="A radio network that works without the Internet. A connected experience when you have it." />
-    <meta property="og:description" content="MECON lets small MeshCore radios, which talk to each other without mobile coverage, share what they hear when the Internet is there. Non-commercial and exploratory." />
+    <meta property="og:title" content="A stronger mesh network, without giving up control." />
+    <meta property="og:description" content="MeshContinuum (MECON) helps people and communities connect, understand and manage decentralized radio messaging networks. Independent and non-profit, built around MeshCore." />
     <meta property="og:image" content="{{ASSET}}/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="The MeshContinuum mark, a figure-of-eight loop through four nodes, beside the MeshContinuum and MECON names and the tagline." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="{{ASSET}}/og.png" />
-    <meta name="twitter:title" content="A radio network that works without the Internet. A connected experience when you have it." />
-    <meta name="twitter:description" content="MECON lets small MeshCore radios, which talk to each other without mobile coverage, share what they hear when the Internet is there. Non-commercial and exploratory." />
+    <meta name="twitter:title" content="A stronger mesh network, without giving up control." />
+    <meta name="twitter:description" content="MeshContinuum (MECON) helps people and communities connect, understand and manage decentralized radio messaging networks. Independent and non-profit, built around MeshCore." />
     <link rel="icon" type="image/svg+xml" href="{{ASSET}}/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{ASSET}}/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="{{ASSET}}/favicon-16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="{{ASSET}}/apple-touch-icon.png" />
     <link rel="stylesheet" href="{{ASSET}}/style.css" />
-    <title>MeshContinuum — radio messaging without the Internet, connected when you have it</title>
+    <title>MeshContinuum — a stronger mesh network, without giving up control</title>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -41,52 +41,46 @@
 
       <main class="content" id="main">
         <section class="hero" aria-labelledby="hero-heading">
-          <h1 id="hero-heading">A radio network that works without the Internet. A connected experience when you have it.</h1>
-          <p class="support-line">Small radios that pass messages to each other, with no mobile network. MECON makes them more useful when they are connected.</p>
-          <p class="lede">
-            MeshCore radios carry text messages for kilometres, from radio to radio, with no phone
-            mast or server. MECON is an optional layer on top: it combines what many participating
-            radios hear, keeps the history, and helps look after the radios. Take MECON away and
-            the radios keep talking, exactly as before.
+          <h1 id="hero-heading">A stronger mesh network, without giving up control.</h1>
+          <p class="support-line">
+            MeshContinuum (MECON) helps people and communities connect, understand and manage
+            decentralized radio messaging networks.
           </p>
-          <p class="status-line" data-testid="availability-notice">
-            <strong>Where things stand:</strong> a private beta on mecon.cloud, by invitation. The
-            radio firmware is public as source and test releases; the server software is not
-            published yet. Some features described here are planned.
-            <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/CAPABILITIES.md" target="_blank" rel="noopener noreferrer">Availability</a>
+          <p class="lede">
+            Use the radios you already have, keep communicating when the Internet is unavailable,
+            and add shared observation, authorized history and device management when you choose.
           </p>
           <div class="cta-row">
-            <a class="cta cta-primary" href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/README.md" target="_blank" rel="noopener noreferrer">Explore the docs</a>
-            <a class="cta cta-secondary" href="https://github.com/hoejriis/mecon-firmware" target="_blank" rel="noopener noreferrer">The firmware</a>
-            <a class="cta cta-secondary" href="https://github.com/hoejriis/MeshContinuum/issues/new?template=beta-interest.yml" target="_blank" rel="noopener noreferrer">Express beta interest</a>
+            <a class="cta cta-primary" href="#meshcore-heading">Explore how it works</a>
+            <a class="cta cta-secondary" href="#entry-heading">Explore the open projects</a>
           </div>
-          <p class="cta-note">
-            Expressing interest opens a public GitHub issue. It does not create an account or
-            guarantee an invitation. Already have access? <a href="/sign-in" data-sign-in>Sign in</a>.
+          <p class="status-line" data-testid="availability-notice">
+            <strong>Where things stand:</strong> the hosted service is an invitation-only beta.
+            The public radio firmware offers pre-release builds, and the public application is
+            being developed. This page describes what MECON is for, not everything you can use
+            today.
+            <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/CAPABILITIES.md" target="_blank" rel="noopener noreferrer">See what is available</a>
           </p>
         </section>
       </main>
 
       <section class="wide-section meshcore-section" aria-labelledby="meshcore-heading">
-        <h2 id="meshcore-heading">What is MeshCore?</h2>
+        <h2 id="meshcore-heading">First, what is MeshCore?</h2>
         <p class="section-lede">
           <a href="https://github.com/meshcore-dev/MeshCore" target="_blank" rel="noopener noreferrer">MeshCore</a>
-          is open-source software for small, low-cost LoRa radios. Each radio passes messages on to
-          the next, so a message can cross a town or a valley with no mobile network, no Internet
-          and no server. It keeps working in a power cut, in the mountains or at sea. Anyone can
-          join with a radio and a phone app. A few words you will meet:
+          is a radio-based messaging system. Small, low-cost radios pass text messages from one to
+          the next, so a message can cross a town or a valley without cellular service or the
+          Internet. Two words you will meet:
         </p>
         <dl class="term-list">
           <dt>Companion</dt>
-          <dd>Your personal radio, paired with an app on your phone or computer.</dd>
+          <dd>The radio connected to your phone or computer. You read and write messages through it.</dd>
           <dt>Repeater</dt>
-          <dd>A radio left on in a good spot, often high up, passing others' messages on to extend the mesh.</dd>
-          <dt>Room server</dt>
-          <dd>A small bulletin board on the mesh that keeps posts for you.</dd>
-          <dt>Observer</dt>
-          <dd>A radio that also reports what it hears to an online service. MECON learns from observers as well as your own radios.</dd>
+          <dd>A radio, often in a high spot, that relays messages so they travel beyond the reach of a single radio.</dd>
         </dl>
         <p class="section-lede">
+          The radios talk to each other directly, with no server in between. A message can still
+          be missed if a radio is out of range, asleep or disconnected.
           <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/MESHCORE.md" target="_blank" rel="noopener noreferrer">MeshCore in brief</a>
           explains the rest, and what you need to begin.
         </p>
@@ -94,104 +88,74 @@
 
       <section class="wide-section benefits-section" aria-labelledby="benefits-heading">
         <h2 id="benefits-heading">What MECON adds</h2>
+        <p class="section-lede">
+          You do not need MECON to send MeshCore messages. It is an optional layer for people and
+          communities who want more from the network they already have.
+        </p>
         <div class="benefit-grid">
           <article class="benefit-card">
-            <h3>Many receivers, one picture</h3>
+            <h3>Keep conversations familiar</h3>
             <p>
-              A radio only hears what reaches it while it is on. MECON combines what many radios
-              and observers heard, and keeps each message once, with every reception of it. Read
-              your messages in the MECON Reader, a web app, from any device.
+              A Reader for your contacts, direct messages and channels, connected straight to your
+              Companion, with optional authorized history online. It tells you when a message is
+              queued, transmitted or acknowledged by the radio network, and never invents a read
+              receipt.
             </p>
           </article>
           <article class="benefit-card">
-            <h3>See the network and its limits</h3>
+            <h3>Make more of what the network hears</h3>
             <p>
-              Which radios carry the traffic, where paths break and where coverage is thin. MECON
-              shows what its receivers actually heard, never more.
+              One radio hears only what reaches it while it is on. MECON combines authorized
+              reception evidence from several locations, so a message heard elsewhere can still
+              reach your history. It cannot promise perfect coverage or delivery.
             </p>
           </article>
           <article class="benefit-card">
-            <h3>Look after radios from afar</h3>
+            <h3>See how the network performs</h3>
             <p>
-              Health, battery and firmware for every radio in one list. Configure and update
-              supported radios, including those on a hilltop that only radio can reach.
+              Understand device health, reception and radio conditions, with observation that
+              respects privacy, and an optional public map of activity that shows no message
+              content.
             </p>
           </article>
           <article class="benefit-card">
-            <h3>Explore together, your way</h3>
+            <h3>Manage radios responsibly</h3>
             <p>
-              Use a hosted service, run it on a small computer at home, or join several sites. The
-              ideas, documents and radio firmware are shared openly for others to reuse.
+              Fleet owners configure and maintain their devices, including ones on a hilltop.
+              Owning a radio never grants access to other people's private conversations.
             </p>
           </article>
-        </div>
-      </section>
-
-      <section class="wide-section live-section" aria-labelledby="live-heading">
-        <h2 id="live-heading">See the network come alive</h2>
-        <p class="section-lede">
-          A map of the radios MECON's observers hear, and the messages moving between them, is
-          planned for this page. It is not here yet, and nothing on this page is live.
-        </p>
-        <ul class="plain-list">
-          <li><strong>Observed nodes</strong> are radios that some observer has heard. A radio no observer hears will not appear, so the map will never be the whole mesh.</li>
-          <li><strong>Recent packets</strong> will show activity, not message content. Private messages stay encrypted.</li>
-          <li><strong>Coverage is partial.</strong> Observers sit where volunteers put them, so some areas look quiet only because nobody is listening there.</li>
-          <li><strong>A location can be unknown.</strong> A radio will be placed only if it shares its own position. Where it was heard from is not where it is.</li>
-        </ul>
-      </section>
-
-      <section class="wide-section purpose-section" aria-labelledby="purpose-heading">
-        <h2 id="purpose-heading">Why MECON exists</h2>
-        <p>
-          MECON is an independent, non-commercial experiment: made to try ideas, learn, share
-          what works and inspire others to build on it. It has no revenue objective. mecon.cloud
-          may one day ask for voluntary help with hosting costs; that is not a subscription.
-        </p>
-      </section>
-
-      <section class="wide-section preview-section" aria-labelledby="preview-heading">
-        <h2 id="preview-heading">A look at the Reader</h2>
-        <p class="section-lede">Captured 9 October 2026 in the real application, MECON v0.193.0, with synthetic demo data: the devices, names, places and messages are made up. Signed in, you see live traffic instead.</p>
-        <div class="preview-grid">
-          <figure class="preview-item preview-wide">
-            <img src="{{ASSET}}/preview/reader-reception-desktop.png" alt="The Packets view for one channel message: its route through two repeater hops, the decrypted text, and three receptions by different gateways with their offsets, RSSI and SNR." loading="lazy" width="2880" height="1800" />
-            <figcaption><strong>Many receivers, one picture.</strong> One message, kept once, with every reception that heard it.</figcaption>
-          </figure>
-          <figure class="preview-item preview-wide">
-            <img src="{{ASSET}}/preview/devices-desktop.png" alt="The Devices list: two Companions and a Repeater, each with its connection, firmware version, battery, uptime, when it was last heard and how many packets it reported." loading="lazy" width="3360" height="1440" />
-            <figcaption><strong>Look after radios from afar.</strong> Connection and health for every device, from one list.</figcaption>
-          </figure>
-          <figure class="preview-item preview-wide">
-            <img src="{{ASSET}}/preview/device-configure-desktop.png" alt="A Companion's Configure page: name and location, and its radio settings matched to the EU/UK (Narrow) community preset, each field marked with the transport that writes it." loading="lazy" width="2880" height="1800" />
-            <figcaption><strong>Configure a supported device.</strong> Settings read from the device and written back over its connection. The actions available depend on the device and its firmware.</figcaption>
-          </figure>
-          <figure class="preview-item preview-phone">
-            <img src="{{ASSET}}/preview/reader-reception-phone.png" alt="A channel conversation on a phone, with how many observers heard each message." loading="lazy" width="780" height="1688" />
-            <figcaption>The same Reader on a phone.</figcaption>
-          </figure>
+          <article class="benefit-card">
+            <h3>Run it your way</h3>
+            <p>
+              Self-host on a small machine, extend across several sites, or choose a hosted service.
+              Your MeshCore radios keep working on their own either way.
+              <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/DEPLOYMENT_MODES.md" target="_blank" rel="noopener noreferrer">Ways to run it</a>
+            </p>
+          </article>
         </div>
       </section>
 
       <section class="wide-section architecture-section" aria-labelledby="architecture-heading">
         <h2 id="architecture-heading">How it fits together</h2>
         <p class="section-lede">
-          MECON is an optional layer around MeshCore. It does not replace MeshCore's packet
-          formats, radio routing, node identities or normal Companion apps. Everything inside the
-          dashed boundary is optional; the MeshCore radios keep talking to each other without it.
+          The radio network comes first and works on its own. A MECON <strong>Backend</strong> is
+          an optional service that gathers authorized observations, stores the history you are
+          permitted to keep, and coordinates the management of your radios. The Reader can also
+          talk to your Companion directly over Bluetooth.
         </p>
         <svg
-          class="architecture-diagram"
-          viewBox="0 0 920 300"
+          class="architecture-diagram architecture-diagram-wide"
+          viewBox="0 0 920 290"
           role="img"
           aria-labelledby="architecture-diagram-title architecture-diagram-desc"
         >
-          <title id="architecture-diagram-title">MeshContinuum architecture</title>
+          <title id="architecture-diagram-title">How MECON fits around a MeshCore radio network</title>
           <desc id="architecture-diagram-desc">
-            MeshCore radios (Companions, Repeaters, the RF network) connect to observers and MQTT
-            brokers, which connect to the MeshContinuum backend, which serves the Reader web app.
-            A dashed boundary encloses the observers, brokers, backend and Reader as optional; the
-            MeshCore radios sit outside it and keep working peer to peer without any of it.
+            Four steps from left to right. The radio network connects Companions and Repeaters.
+            They report to an optional MECON Backend, shown inside a dashed boundary. The Backend
+            serves the Reader and fleet tools. A second path below connects a Companion directly to
+            the Reader over Bluetooth. The radio network and its radios keep working on their own.
           </desc>
           <defs>
             <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -199,96 +163,219 @@
             </marker>
           </defs>
 
-          <rect x="234" y="24" width="662" height="252" rx="14" class="optional-boundary" />
-          <text x="250" y="46" class="boundary-label">MeshContinuum (optional)</text>
+          <rect x="474" y="34" width="232" height="186" rx="14" class="optional-boundary" />
+          <text x="490" y="56" class="boundary-label">Optional</text>
 
-          <rect x="30" y="110" width="170" height="90" rx="10" class="diagram-box diagram-box-core" />
-          <text x="115" y="140" class="box-title" text-anchor="middle">MeshCore</text>
-          <text x="115" y="160" class="box-line" text-anchor="middle">Companions, Repeaters</text>
-          <text x="115" y="176" class="box-line" text-anchor="middle">RF network</text>
+          <rect x="20" y="90" width="170" height="100" rx="10" class="diagram-box diagram-box-core" />
+          <text x="105" y="135" class="box-title" text-anchor="middle">Radio network</text>
+          <text x="105" y="155" class="box-line" text-anchor="middle">MeshCore</text>
 
-          <rect x="260" y="110" width="180" height="90" rx="10" class="diagram-box" />
-          <text x="350" y="135" class="box-title" text-anchor="middle">Observers &amp;</text>
-          <text x="350" y="153" class="box-title" text-anchor="middle">MQTT brokers</text>
-          <text x="350" y="172" class="box-line" text-anchor="middle">own · shared · public</text>
+          <rect x="250" y="90" width="180" height="100" rx="10" class="diagram-box diagram-box-core" />
+          <text x="340" y="128" class="box-title" text-anchor="middle">Companions</text>
+          <text x="340" y="146" class="box-title" text-anchor="middle">and Repeaters</text>
+          <text x="340" y="166" class="box-line" text-anchor="middle">your radios</text>
 
-          <rect x="500" y="90" width="200" height="130" rx="10" class="diagram-box diagram-box-accent" />
-          <text x="600" y="118" class="box-title" text-anchor="middle">MeshContinuum</text>
-          <text x="600" y="136" class="box-title" text-anchor="middle">backend</text>
-          <text x="600" y="158" class="box-line" text-anchor="middle">stores · dedupes</text>
-          <text x="600" y="174" class="box-line" text-anchor="middle">decrypts · routes</text>
-          <text x="600" y="200" class="box-line" text-anchor="middle">one durable record</text>
+          <rect x="490" y="90" width="200" height="100" rx="10" class="diagram-box diagram-box-accent" />
+          <text x="590" y="128" class="box-title" text-anchor="middle">MECON Backend</text>
+          <text x="590" y="150" class="box-line" text-anchor="middle">observations · history</text>
+          <text x="590" y="166" class="box-line" text-anchor="middle">device management</text>
 
-          <rect x="760" y="110" width="130" height="90" rx="10" class="diagram-box" />
-          <text x="825" y="147" class="box-title" text-anchor="middle">Reader</text>
-          <text x="825" y="167" class="box-line" text-anchor="middle">web app</text>
+          <rect x="750" y="90" width="150" height="100" rx="10" class="diagram-box" />
+          <text x="825" y="128" class="box-title" text-anchor="middle">Reader and</text>
+          <text x="825" y="146" class="box-title" text-anchor="middle">fleet tools</text>
+          <text x="825" y="166" class="box-line" text-anchor="middle">phone · computer</text>
 
-          <line x1="200" y1="155" x2="256" y2="155" class="diagram-arrow" marker-end="url(#arrow)" />
-          <line x1="440" y1="155" x2="496" y2="155" class="diagram-arrow" marker-end="url(#arrow)" />
-          <line x1="700" y1="155" x2="756" y2="155" class="diagram-arrow" marker-end="url(#arrow)" />
+          <line x1="190" y1="140" x2="246" y2="140" class="diagram-arrow" marker-start="url(#arrow)" marker-end="url(#arrow)" />
+          <line x1="430" y1="140" x2="486" y2="140" class="diagram-arrow" marker-end="url(#arrow)" />
+          <line x1="690" y1="140" x2="746" y2="140" class="diagram-arrow" marker-end="url(#arrow)" />
 
-          <text x="228" y="145" class="edge-label" text-anchor="middle">RF packets</text>
-          <text x="468" y="145" class="edge-label" text-anchor="middle">MQTT</text>
-          <text x="728" y="145" class="edge-label" text-anchor="middle">API</text>
+          <text x="218" y="128" class="edge-label" text-anchor="middle">radio</text>
+          <text x="458" y="128" class="edge-label" text-anchor="middle">reports</text>
+          <text x="718" y="128" class="edge-label" text-anchor="middle">app</text>
 
-          <text x="115" y="260" class="works-alone-label" text-anchor="middle">
-            keeps working, offline, on its own
-          </text>
+          <path d="M340,190 L340,250 L825,250 L825,194" class="diagram-arrow diagram-direct" marker-start="url(#arrow)" marker-end="url(#arrow)" />
+          <text x="582" y="272" class="edge-label" text-anchor="middle">direct Bluetooth connection</text>
+
+          <text x="105" y="214" class="works-alone-label" text-anchor="middle">keeps working on its own</text>
         </svg>
+        <svg
+          class="architecture-diagram architecture-diagram-narrow"
+          viewBox="0 0 360 470"
+          role="img"
+          aria-labelledby="architecture-narrow-title architecture-narrow-desc"
+        >
+          <title id="architecture-narrow-title">How MECON fits around a MeshCore radio network</title>
+          <desc id="architecture-narrow-desc">
+            Four steps from top to bottom. The radio network connects Companions and Repeaters.
+            They report to an optional MECON Backend, shown inside a dashed boundary. The Backend
+            serves the Reader and fleet tools. A second path at the side connects a Companion
+            directly to the Reader over Bluetooth. The radio network and its radios keep working
+            on their own.
+          </desc>
+          <defs>
+            <marker id="arrow-narrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" class="arrow-head" />
+            </marker>
+          </defs>
+
+          <rect x="70" y="10" width="220" height="80" rx="10" class="diagram-box diagram-box-core" />
+          <text x="180" y="38" class="box-title" text-anchor="middle">Radio network</text>
+          <text x="180" y="56" class="box-line" text-anchor="middle">MeshCore</text>
+          <text x="180" y="76" class="works-alone-label" text-anchor="middle">keeps working on its own</text>
+
+          <rect x="70" y="130" width="220" height="70" rx="10" class="diagram-box diagram-box-core" />
+          <text x="180" y="160" class="box-title" text-anchor="middle">Companions and Repeaters</text>
+          <text x="180" y="182" class="box-line" text-anchor="middle">your radios</text>
+
+          <rect x="56" y="228" width="248" height="124" rx="14" class="optional-boundary" />
+          <text x="66" y="245" class="boundary-label">Optional</text>
+          <rect x="70" y="252" width="220" height="88" rx="10" class="diagram-box diagram-box-accent" />
+          <text x="180" y="282" class="box-title" text-anchor="middle">MECON Backend</text>
+          <text x="180" y="304" class="box-line" text-anchor="middle">observations · history</text>
+          <text x="180" y="322" class="box-line" text-anchor="middle">device management</text>
+
+          <rect x="70" y="390" width="220" height="70" rx="10" class="diagram-box" />
+          <text x="180" y="420" class="box-title" text-anchor="middle">Reader and fleet tools</text>
+          <text x="180" y="442" class="box-line" text-anchor="middle">phone · computer</text>
+
+          <line x1="180" y1="90" x2="180" y2="126" class="diagram-arrow" marker-start="url(#arrow-narrow)" marker-end="url(#arrow-narrow)" />
+          <line x1="180" y1="200" x2="180" y2="248" class="diagram-arrow" marker-end="url(#arrow-narrow)" />
+          <line x1="180" y1="340" x2="180" y2="386" class="diagram-arrow" marker-end="url(#arrow-narrow)" />
+
+          <text x="190" y="113" class="edge-label">radio</text>
+          <text x="190" y="219" class="edge-label">reports</text>
+          <text x="190" y="372" class="edge-label">app</text>
+
+          <path d="M290,165 L330,165 L330,425 L294,425" class="diagram-arrow diagram-direct" marker-start="url(#arrow-narrow)" marker-end="url(#arrow-narrow)" />
+          <text x="344" y="295" class="edge-label" text-anchor="middle" transform="rotate(90 344 295)">direct Bluetooth connection</text>
+        </svg>
+        <details class="tech-details">
+          <summary>The technical detail</summary>
+          <p>
+            Radios with Wi-Fi report what they hear through a message broker (MQTT). The broker can
+            belong to your own site, be shared with others, or be a public one. A radio can also be
+            connected by USB cable to the computer running the Reader. MECON does not change
+            MeshCore's packet formats, radio routing or node identities, and ordinary MeshCore apps
+            keep working.
+            <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Architecture</a>
+          </p>
+        </details>
       </section>
 
-      <section class="wide-section journeys-section" aria-labelledby="journeys-heading">
-        <h2 id="journeys-heading">Ways to run it</h2>
+      <section class="wide-section live-section" aria-labelledby="live-heading">
+        <h2 id="live-heading">A public map, with privacy built in</h2>
         <p class="section-lede">
-          From someone else's server to infrastructure of your own. In every case your radios keep
-          working as ordinary MeshCore radios if MECON goes away.
-          <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/DEPLOYMENT_MODES.md" target="_blank" rel="noopener noreferrer">Deployment choices</a>
+          A public map of network activity is planned for this page. It is not here yet, and
+          nothing on this page is live. When it comes, it will follow these rules:
         </p>
-        <div class="journey-grid">
-          <article class="journey-card">
-            <h3>Hosted</h3>
-            <p>A hosted service runs the Backend, Reader and broker. You bring your Companion, and optionally a gateway radio at home.</p>
-          </article>
-          <article class="journey-card">
-            <h3>A home site</h3>
-            <p>One small computer on your network runs the Backend, Reader and a local broker. Nothing has to be reachable from the Internet.</p>
-          </article>
-          <article class="journey-card">
-            <h3>Several sites</h3>
-            <p>Each site runs its own Backend, and they share records as peers, with brokers on the Internet for reach and resilience.</p>
-          </article>
-          <article class="journey-card">
-            <h3>The firmware alone</h3>
-            <p>Run <a href="https://github.com/hoejriis/mecon-firmware" target="_blank" rel="noopener noreferrer">mecon-firmware</a> with a manager of your own, using its open device contracts.</p>
-          </article>
+        <ul class="plain-list">
+          <li><strong>Activity, not content.</strong> The map shows that radios are active, never what their messages say.</li>
+          <li><strong>Only what is heard.</strong> A radio no participating receiver hears will not appear, so the map is never the whole mesh.</li>
+          <li><strong>No private positions.</strong> A radio is placed only where it shares its own position. Where it was heard from is not where it is.</li>
+          <li><strong>Coverage is partial.</strong> Some areas look quiet only because nobody is listening there.</li>
+        </ul>
+      </section>
+
+      <section class="wide-section trust-section" aria-labelledby="trust-heading">
+        <h2 id="trust-heading">Trust and independence</h2>
+        <p class="trust-claim">Observing a packet is not permission to read its message.</p>
+        <p>
+          Which messages you can read is decided by the identities and channels assigned to you.
+          Administrators see operational information, such as device health and reception, not a
+          private-message inbox.
+        </p>
+        <p>
+          The limits, plainly: a Backend you entrust with your keys can technically decrypt the
+          messages you are authorized to read. Application permissions stop administrator tools
+          from reading other people's content.
+          <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/TRUST_AND_PRIVACY.md" target="_blank" rel="noopener noreferrer">Trust and privacy</a>
+        </p>
+        <p>
+          MECON is an independent, non-profit project with no revenue objective. It is built to
+          share what works, openly, so that others can use it, run it and build on it. It is not
+          affiliated with the MeshCore project.
+        </p>
+      </section>
+
+      <section class="wide-section preview-section" aria-labelledby="preview-heading">
+        <h2 id="preview-heading">A look at the Reader in the beta</h2>
+        <p class="section-lede">
+          Screenshots from the invitation-only beta, with made-up demo data: the devices, names,
+          places and messages are not real. They show the beta, not a public release.
+        </p>
+        <div class="preview-grid">
+          <figure class="preview-item preview-wide">
+            <img src="{{ASSET}}/preview/reader-reception-desktop.png" alt="The Packets view for one channel message: its route through two repeater hops, the decrypted text, and three receptions by different gateways with their offsets, RSSI and SNR." loading="lazy" width="2880" height="1800" />
+            <figcaption><strong>Make more of what the network hears.</strong> One message, kept once, with every reception that heard it.</figcaption>
+          </figure>
+          <figure class="preview-item preview-wide">
+            <img src="{{ASSET}}/preview/devices-desktop.png" alt="The Devices list: two Companions and a Repeater, each with its connection, firmware version, battery, uptime, when it was last heard and how many packets it reported." loading="lazy" width="3360" height="1440" />
+            <figcaption><strong>See how the network performs.</strong> Connection and health for every device, from one list.</figcaption>
+          </figure>
+          <figure class="preview-item preview-wide">
+            <img src="{{ASSET}}/preview/device-configure-desktop.png" alt="A Companion's Configure page: name and location, and its radio settings matched to the EU/UK (Narrow) community preset, each field marked with the connection that writes it." loading="lazy" width="2880" height="1800" />
+            <figcaption><strong>Manage radios responsibly.</strong> Settings read from the device and written back over its connection. What you can change depends on the device and its firmware.</figcaption>
+          </figure>
+          <figure class="preview-item preview-phone">
+            <img src="{{ASSET}}/preview/reader-reception-phone.png" alt="A channel conversation on a phone, with how many receivers heard each message." loading="lazy" width="780" height="1688" />
+            <figcaption>The same Reader on a phone.</figcaption>
+          </figure>
         </div>
       </section>
 
-      <section class="wide-section involved-section" aria-labelledby="involved-heading">
-        <h2 id="involved-heading">Getting involved</h2>
-        <p>
-          Read the documentation, review the device contracts in mecon-firmware, describe a use
-          case, or express interest in testing. Documentation feedback and contract review are
-          welcome now.
-        </p>
+      <section class="wide-section entry-section" aria-labelledby="entry-heading">
+        <h2 id="entry-heading">Choose your entry point</h2>
+        <div class="benefit-grid entry-grid">
+          <article class="benefit-card">
+            <h3>New to radio messaging?</h3>
+            <p><a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/MESHCORE.md" target="_blank" rel="noopener noreferrer">MeshCore in brief</a></p>
+          </article>
+          <article class="benefit-card">
+            <h3>Want to understand MECON?</h3>
+            <p>
+              <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/WHY_MESHCONTINUUM.md" target="_blank" rel="noopener noreferrer">What MECON adds</a>
+              and its
+              <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">architecture</a>
+            </p>
+          </article>
+          <article class="benefit-card">
+            <h3>Want to build or integrate?</h3>
+            <p>
+              The open projects:
+              <a href="https://github.com/hoejriis/mecon-firmware" target="_blank" rel="noopener noreferrer">mecon-firmware</a>
+              and
+              <a href="https://github.com/hoejriis/mecon-backend" target="_blank" rel="noopener noreferrer">mecon-backend</a>
+            </p>
+          </article>
+          <article class="benefit-card">
+            <h3>Want to try it?</h3>
+            <p>
+              Check
+              <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/CAPABILITIES.md" target="_blank" rel="noopener noreferrer">availability</a>
+              and
+              <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/GETTING_STARTED.md" target="_blank" rel="noopener noreferrer">getting started</a>.
+              Already have access? <a href="/sign-in" data-sign-in>Sign in</a>.
+            </p>
+          </article>
+        </div>
       </section>
 
       <footer class="page-footer">
         <nav aria-label="Project links">
           <ul class="footer-links">
             <li><a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/CAPABILITIES.md" target="_blank" rel="noopener noreferrer">Availability</a></li>
-            <li><a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/GETTING_STARTED.md" target="_blank" rel="noopener noreferrer">Get started with the beta</a></li>
             <li><a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/LIMITATIONS.md" target="_blank" rel="noopener noreferrer">Limitations</a></li>
             <li><a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/ROADMAP.md" target="_blank" rel="noopener noreferrer">Roadmap</a></li>
             <li><a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/TRUST_AND_PRIVACY.md" target="_blank" rel="noopener noreferrer">Trust and privacy</a></li>
             <li><a href="https://github.com/hoejriis/MeshContinuum" target="_blank" rel="noopener noreferrer">MeshContinuum</a></li>
             <li><a href="https://github.com/hoejriis/mecon-firmware" target="_blank" rel="noopener noreferrer">mecon-firmware</a></li>
+            <li><a href="https://github.com/hoejriis/mecon-backend" target="_blank" rel="noopener noreferrer">mecon-backend</a></li>
           </ul>
         </nav>
         <p>
-          MeshContinuum is an independent project built around the open
+          MeshContinuum is an independent, non-profit project built around the open
           <a href="https://meshcore.io" target="_blank" rel="noopener noreferrer">MeshCore</a> firmware,
-          not an official MeshCore service. Site {{VERSION}}.
+          not affiliated with the MeshCore project. Site {{VERSION}}.
         </p>
       </footer>
     </div>

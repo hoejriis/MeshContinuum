@@ -335,13 +335,6 @@ input:focus-visible {
   margin: 0;
 }
 
-.involved-section p,
-.purpose-section p {
-  color: var(--text-muted);
-  max-width: 720px;
-  margin: 0 0 0.8rem;
-}
-
 .footer-links {
   list-style: none;
   display: flex;
@@ -432,39 +425,10 @@ input:focus-visible {
 
 .status-line a,
 .section-lede a,
-.journey-card a,
-.involved-section a {
+.benefit-card a,
+.trust-section a,
+.tech-details a {
   color: var(--accent-strong);
-}
-
-.journey-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-}
-
-@media (min-width: 800px) {
-  .journey-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.journey-card {
-  background: var(--bg-panel);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.1rem 1.25rem;
-}
-
-.journey-card h3 {
-  font-size: 1.05rem;
-  margin: 0 0 0.4rem;
-}
-
-.journey-card p {
-  color: var(--text-muted);
-  font-size: 0.92rem;
-  margin: 0 0 0.5rem;
 }
 
 .term-list {
@@ -503,4 +467,82 @@ input:focus-visible {
 
 .plain-list strong {
   color: var(--text);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.diagram-direct {
+  fill: none;
+  stroke-dasharray: 5 4;
+}
+
+.tech-details {
+  margin-top: 1.25rem;
+  max-width: 720px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.8rem 1.1rem;
+}
+
+.tech-details summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tech-details summary:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+
+.tech-details p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin: 0.6rem 0 0;
+}
+
+.trust-section p {
+  color: var(--text-muted);
+  max-width: 720px;
+  margin: 0 0 0.8rem;
+}
+
+.trust-section .trust-claim {
+  color: var(--text);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+@media (min-width: 1000px) {
+  .benefit-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .entry-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.architecture-diagram-narrow {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .architecture-diagram-wide {
+    display: none;
+  }
+
+  .architecture-diagram-narrow {
+    display: block;
+    max-width: 380px;
+    margin: 0 auto;
+  }
 }

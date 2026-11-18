@@ -20,7 +20,18 @@ Use the established [MECON visual identity](BRAND.md), including the original ma
 - Responsive mobile/tablet/desktop layout, preserving user familiarity.
 - Enforce the established role model: **Device Users see messages to public/authorized channels and their assigned identities, not raw observation streams**. Fleet Owners and Instance Admins cannot read private messages assigned to other users.
 
-A Fleet Owner may assign one user per device, including themselves; one user may have up to five devices. The primary Companion receiving for up to four additional identities is a future capability, separate from the first Reader experience.
+A Fleet Owner may assign one user per device, including themselves; one user may have up to five devices.
+
+**Delegated receive identities are a target, not shipped.** A primary Companion receiving for up to four of the user's other identities depends on work in both the Backend and [mecon-firmware](https://github.com/hoejriis/mecon-firmware), and on proof that stock-app conversation history and acknowledgements work on real phones and boards. It is not part of the first Reader experience, and nothing in the public firmware pre-releases or the hosted beta provides it today.
+
+## What the first Reader is not
+
+- Not a replacement for the stock MeshCore app, and not a new firmware protocol.
+- Not a standalone, fully offline Reader. Direct Bluetooth may work while the Backend is unreachable, but offline authorization, secure local history and reconciliation with the Backend are later work.
+- No Fleet Owner or Admin management, observation explorer or firmware update manager. Management is a separate, later, web-only tool.
+- No access to private messages of identities assigned to other users, for anyone, including Fleet Owners and Admins.
+- No raw observation streams for Device Users, and no online MQTT credentials in the Reader.
+- No public Backend rewrite or migration, and no change to the hosted service at mecon.cloud.
 
 ## Extended capabilities
 
@@ -35,5 +46,8 @@ The authoritative working MVP specification is in the public [mecon-backend repo
 - [Access model](https://github.com/hoejriis/mecon-backend/blob/main/docs/ACCESS_MODEL.md)
 - [MVP architecture](https://github.com/hoejriis/mecon-backend/blob/main/docs/MVP1_ARCHITECTURE.md)
 - [Reader availability and acceptance](https://github.com/hoejriis/mecon-backend/blob/main/docs/MVP1_PLAN.md)
+- [Implementation design](https://github.com/hoejriis/mecon-backend/blob/main/docs/MVP1_IMPLEMENTATION_DESIGN.md)
+- [Accepted architecture decisions](https://github.com/hoejriis/mecon-backend/blob/main/docs/ARCHITECTURE_DECISIONS.md)
+- [Implementation work and its acceptance evidence](https://github.com/hoejriis/mecon-backend/issues), tracked in the public repository
 
 Current product availability is documented in [Availability](CAPABILITIES.md).

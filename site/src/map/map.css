@@ -72,6 +72,34 @@
     animation: none;
     fill-opacity: 0.3;
   }
+
+  .live-map .map-line {
+    animation: none;
+    stroke-opacity: 0.6;
+  }
+}
+
+.live-map .map-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  stroke-opacity: 0.8;
+  stroke-linecap: round;
+  animation: map-line 15s linear forwards;
+}
+
+.live-map .map-line-still {
+  animation: none;
+  stroke-opacity: 0.6;
+}
+
+@keyframes map-line {
+  0% {
+    stroke-opacity: 0.9;
+  }
+  100% {
+    stroke-opacity: 0;
+  }
 }
 
 .live-map .leaflet-tooltip {

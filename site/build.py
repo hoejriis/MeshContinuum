@@ -3,6 +3,7 @@
 
     python3 site/build.py            # release build: needs a clean, committed tree
     python3 site/build.py --dev      # local preview build from the working tree
+    python3 site/build.py --dev --map  # the same, with the demonstration map
 
 Output, in site/dist/:
     index.html                     the entry page, assets referenced under /site/<version>/
@@ -18,6 +19,7 @@ import gzip
 import hashlib
 import io
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -40,6 +42,10 @@ def sha256(data: bytes) -> str:
 
 def main() -> int:
     dev = "--dev" in sys.argv[1:]
+    # The activity map stays out of the artifact unless asked for. It shows
+    # synthetic data until the public feed exists and its cutover is
+    # approved, so a release build leaves it out by default.
+    with_map = "--map" in sys.argv[1:]
     version = (HERE / "VERSION").read_text().strip()
     commit = git("rev-parse", "HEAD")
     commit_time = int(git("log", "-1", "--format=%ct"))
@@ -56,9 +62,20 @@ def main() -> int:
         if not path.is_file():
             continue
         rel = path.relative_to(SRC).as_posix()
+        if rel.startswith("map/") and not with_map:
+            continue
         data = path.read_bytes()
         if rel == "index.html":
-            text = data.decode("utf-8").replace("{{ASSET}}", asset_root).replace("{{VERSION}}", version)
+            text = data.decode("utf-8")
+            keep, drop = ("MAP", "NOMAP") if with_map else ("NOMAP", "MAP")
+            # Markers are whole lines: a dropped block goes with its lines, and
+            # a kept block loses only its marker lines.
+            text = re.sub(rf"^[ \t]*<!-- {drop}:BEGIN -->\n.*?^[ \t]*<!-- {drop}:END -->\n", "", text, flags=re.S | re.M)
+            text = re.sub(rf"^[ \t]*<!-- {keep}:(BEGIN|END) -->\n", "", text, flags=re.M)
+            if "<!-- MAP:" in text or "<!-- NOMAP:" in text:
+                print("index.html has an unbalanced MAP marker", file=sys.stderr)
+                return 1
+            text = text.replace("{{ASSET}}", asset_root).replace("{{VERSION}}", version)
             if "{{" in text:
                 print("index.html has an unfilled placeholder", file=sys.stderr)
                 return 1
@@ -72,6 +89,7 @@ def main() -> int:
         "source_commit": commit,
         "built_at": commit_iso,
         "files": {p: sha256(d) for p, d in sorted(files.items())},
+        "map": with_map,
     }
     files[f"site/{version}/site.json"] = (json.dumps(meta, indent=2, sort_keys=True) + "\n").encode("utf-8")
 

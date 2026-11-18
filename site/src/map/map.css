@@ -42,14 +42,13 @@
 
 /* A live pulse: a solid violet core on the node and a violet ring that
  * ripples outward, so a single event stands out among the dots. Both, and
- * the lines, stay strong for most of the event's remaining life (--life,
- * set per event) and fade only at its end. */
+ * the lines, stay strong for most of the event's remaining life and fade
+ * only at its end (map.js runs that fade). */
 .live-map .map-pulse-core {
   fill: var(--accent);
   fill-opacity: 1;
   stroke: var(--text);
   stroke-width: 1.5;
-  animation: map-fade var(--life, 15s) linear forwards;
 }
 
 .live-map .map-pulse {
@@ -58,13 +57,11 @@
   stroke-width: 3;
   transform-box: fill-box;
   transform-origin: center;
-  animation:
-    map-ripple 1.8s ease-out infinite,
-    map-fade var(--life, 15s) linear forwards;
+  animation: map-ripple 1.8s ease-out infinite;
 }
 
 .live-map .map-pulse-still {
-  animation: map-fade-still var(--life, 15s) step-end forwards;
+  animation: none;
   stroke-opacity: 0.8;
 }
 
@@ -79,26 +76,6 @@
   }
 }
 
-@keyframes map-fade {
-  0%,
-  75% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-/* Reduced motion: no ripple and no fading; the highlight simply goes at
- * the end of its life (the layer is removed then too). */
-@keyframes map-fade-still {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 
 .live-map .map-line {
   fill: none;
@@ -106,7 +83,6 @@
   stroke-width: 1.8;
   stroke-opacity: 0.95;
   stroke-linecap: round;
-  animation: map-fade var(--life, 15s) linear forwards;
 }
 
 .live-map .map-line-still {
@@ -115,9 +91,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .live-map .map-pulse,
-  .live-map .map-pulse-core,
-  .live-map .map-line {
+  .live-map .map-pulse {
     animation: none;
   }
 

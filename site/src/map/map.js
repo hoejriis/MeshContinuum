@@ -50,10 +50,14 @@ function narrowMap() {
   return root.clientWidth < 600;
 }
 
-// Sets the remaining life on a drawn layer, so its fade ends with it.
+// Fades a drawn layer over the last quarter of its remaining life. This uses
+// the Web Animations API: an inline style would be refused by the page's
+// content policy (WebKit applies style-src to it). With reduced motion
+// nothing fades; the layer simply goes when its timer removes it.
 function setLife(layer, ms) {
   const el = layer.getElement && layer.getElement();
-  if (el) el.style.setProperty("--life", `${Math.round(ms)}ms`);
+  if (!el || !el.animate || reducedMotion()) return;
+  el.animate([{ opacity: 1 }, { opacity: 1, offset: 0.75 }, { opacity: 0 }], { duration: Math.max(1, Math.round(ms)), fill: "forwards" });
 }
 
 function relativeTime(iso, now) {

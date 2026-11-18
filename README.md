@@ -13,13 +13,13 @@ MeshCore is a decentralized radio network for exchanging messages without mobile
 
 MECON is an independent, non-commercial project. It is not an official MeshCore app, firmware or service. Radios continue to operate normally if MECON, its Backend or the Internet is unavailable.
 
-> **Today:** [mecon.cloud](https://mecon.cloud) is an invitation-only private beta. Public [mecon-firmware](https://github.com/hoejriis/mecon-firmware) source and signed pre-releases exist. The public [mecon-backend](https://github.com/hoejriis/mecon-backend) repository documents the application target and Reader design. See [availability](docs/CAPABILITIES.md).
+> **Today:** [mecon.cloud](https://mecon.cloud) is an invitation-only private beta. Public [mecon-firmware](https://github.com/hoejriis/mecon-firmware) source and signed pre-releases exist. The public [mecon-backend](https://github.com/hoejriis/mecon-backend) repository documents the application target and holds the new Reader's source; an early Reader build runs restricted to existing mecon.cloud users. The public Backend is not published yet. See [availability](docs/CAPABILITIES.md).
 
 ## Start with something familiar: a better-connected Reader
 
 The **first public application MVP** is a web Reader for **Device Users**, built first for iPhone and iPad in **Bluefy** with direct Bluetooth access to a supported Companion. It follows the layout and workflows of [MeshCore One](https://github.com/Avi0n/MeshCoreOne), a familiar MeshCore client, as closely as practicable—**Chats (with channels), Nodes, Map, Tools and Settings**—so changing between apps should not require learning a new messaging model. Its code and visual identity are MECON's own; no MeshCore One source or artwork is copied. Fleet management is a separate, web-only tool, not part of the Reader.
 
-Where authorized, the Reader can also use a MECON Backend for online history and messaging. Bluetooth and Backend are independent paths; connection and RF delivery are never treated as the same thing. Bluefy compatibility still requires real-device verification. This is a **planned MVP, not an available download**.
+Where authorized, the Reader can also use a MECON Backend for online history and messaging. Bluetooth and Backend are independent paths; connection and RF delivery are never treated as the same thing. Bluefy compatibility still requires real-device verification. Its source is public and an early build runs in a deployment restricted to existing mecon.cloud users, but it is **not a public release or an available download**.
 
 [Explore the Reader MVP](docs/P5_READER_MVP.md) · [Read the complete public product target](https://github.com/hoejriis/mecon-backend/blob/main/docs/TARGET_ARCHITECTURE.md)
 
@@ -50,7 +50,7 @@ The optional MECON firmware adds generic device management, telemetry, updates a
 | Repository | Purpose | What you will find |
 |---|---|---|
 | **[MeshContinuum](https://github.com/hoejriis/MeshContinuum)** · this repository | The public-facing story | Product benefits, visual identity, conceptual architecture, roadmap, limitations, hosted-beta information and website |
-| **[mecon-backend](https://github.com/hoejriis/mecon-backend)** | The application | Full target Backend/Reader architecture, user/Fleet Owner/Admin experiences, deployment and security design. Reader experience, Backend services and future deployment architecture |
+| **[mecon-backend](https://github.com/hoejriis/mecon-backend)** | The application | The new Reader's source, and the full target Backend/Reader architecture, user/Fleet Owner/Admin experiences, deployment and security design. Reader experience, Backend services and future deployment architecture |
 | **[mecon-firmware](https://github.com/hoejriis/mecon-firmware)** | The radios | Independent public firmware, supported hardware, device-facing interfaces, conformance and releases |
 
 The eventual application has three deployment units: **Backend with its served Reader**, **MQTT broker** and optional **transparent USB Connector**. Device-facing firmware contracts belong to mecon-firmware; application roles, history, sharing and federation belong to mecon-backend; the public explanation and visual brand live here.

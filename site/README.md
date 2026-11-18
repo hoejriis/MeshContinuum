@@ -35,7 +35,9 @@ The map shows synthetic demonstration data, labelled as such, and makes no reque
 1. Bump `VERSION`, and merge the change.
 2. On that commit of `main`, run `python3 site/build.py`. Note the tarball sha256 and the tree digest it prints.
 3. Create the release `site-vX.Y.Z` from that commit, with `dist/meshcontinuum-site-X.Y.Z.tar.gz` and `dist/SHA256SUMS` attached. Put the source commit, the tarball sha256 and the tree digest in the notes.
-4. Tell the consumer. It pins the release by itself, per the contract.
+4. Pin it. **mecon.cloud** serves the site from disk at its edge ([contract section 6.2](CONTRACT.md#62-served-from-disk-at-the-edge)), and this repository's maintainers pin it there themselves, with their restricted pin access: `pin site-vX.Y.Z <tarball sha256>`, then `status` to confirm the version and tree digest. A consumer that vendors the site in its application ([section 6.1](CONTRACT.md#61-vendored-by-the-application)) is told the version and pins it by itself.
+5. Run the joint check ([section 8](CONTRACT.md#8-before-a-live-front-page-is-replaced)) against the live page: assets, sign-in, links, the application's own routes, phone, iPad and desktop. The page's `generator` meta names the live version.
+6. If anything fails, roll back by pinning the previous version, which is still on disk.
 
 A published release is never edited or replaced. A fix is a new version.
 

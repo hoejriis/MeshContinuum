@@ -48,12 +48,13 @@
       <section class="map-section" aria-labelledby="map-heading">
         <h2 id="map-heading" class="visually-hidden">Map of network activity</h2>
         <div class="map-frame">
-          <div id="live-map" class="live-map" data-feed="poll" data-feed-base="/api/public/v1/" role="region" aria-label="Map of public MeshCore radios, with a pulse when one is heard and lines to the radios that heard it." tabindex="0"></div>
+          <div id="live-map" class="live-map" data-feed="poll" data-feed-base="/api/public/v1/" role="region" aria-label="Map of public MeshCore radios, with a pulse when one is heard or passes a message on, and lines to the radios that heard it." tabindex="0"></div>
           <p class="map-status" id="map-status" role="status" aria-live="polite">Connecting</p>
         </div>
         <p class="map-note">
-          A violet pulse shows a radio being heard, and a thin line runs to each receiver that
-          heard it. <strong>Data sources:</strong> MECON's own receivers, and the receivers that
+          A violet pulse shows a radio being heard, or a repeater passing a message on, and a
+          thin line runs to the radio that heard it or the next repeater on its path. What you
+          see is up to about half a minute old. <strong>Data sources:</strong> MECON's own receivers, and the receivers that
           feed <a href="https://meshat.se/" target="_blank" rel="noopener noreferrer">Meshat.se</a>.
           Only radios with a position approved for publication are shown.
         </p>

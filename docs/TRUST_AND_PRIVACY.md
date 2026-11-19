@@ -22,7 +22,7 @@ The map on the [mecon.cloud](https://mecon.cloud) front page shows network activ
 - **Activity, not content.** The map shows that radios are active, never what their messages say.
 - **Only what is heard.** A radio that no participating receiver hears does not appear, so the map is never the whole mesh.
 - **No private positions.** A radio is placed only where it advertises its own position publicly. Where it was heard from is not where it is, and no position is inferred.
-- **No receiver details.** The lines to receivers carry no receiver identity, signal strength or packet identifier; their references are short-lived.
+- **No receiver details.** The lines carry no receiver identity, signal strength or packet identifier; their references are short-lived.
 - **Coverage is partial.** Some areas look quiet only because nobody is listening there.
 - **Sources with publication rights only.** Activity comes from MECON's own receivers and from the receivers that feed [Meshat.se](https://meshat.se/).
 

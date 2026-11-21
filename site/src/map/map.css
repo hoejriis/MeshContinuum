@@ -1,7 +1,15 @@
 /* Front-page activity map (built only with --map). */
 .map-section {
   width: 100%;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 2.5rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.map-heading {
+  font-size: 1.05rem;
+  margin: 0;
+  padding: 0.8rem 1.5rem;
 }
 
 .map-frame {
@@ -148,17 +156,93 @@
   border-color: var(--text-muted);
 }
 
-.map-note {
-  max-width: 1100px;
-  margin: 0.6rem auto 0;
-  padding: 0 1.5rem;
-  color: var(--text-muted);
-  font-size: 0.85rem;
+/* The legend sits with the map: below it on phones and tablets, beside it
+ * on wide screens. Its glyphs repeat the map's own marks, and each has a
+ * text label, so nothing depends on colour alone. */
+.map-legend {
+  padding: 1rem 1.5rem 1.25rem;
+  background: var(--bg-panel);
+  font-size: 0.9rem;
 }
 
-/* Tablet and desktop: the introduction on the left, the map on the right
- * half, side by side above the rest of the page. Phones keep the map on
- * top at full width. */
+.map-legend h3 {
+  font-size: 1rem;
+  margin: 0 0 0.75rem;
+}
+
+.legend-list {
+  margin: 0 0 0.75rem;
+}
+
+.legend-item {
+  margin: 0 0 0.7rem;
+}
+
+.legend-item dt {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.legend-item dd {
+  margin: 0.1rem 0 0 calc(32px + 0.5rem);
+  color: var(--text-muted);
+}
+
+.legend-glyph {
+  width: 32px;
+  height: 20px;
+  flex: none;
+}
+
+.glyph-node {
+  fill: var(--accent-strong);
+  stroke: var(--bg);
+  stroke-width: 1;
+}
+
+.glyph-ring {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.glyph-core {
+  fill: var(--accent);
+  stroke: var(--text);
+  stroke-width: 1.2;
+}
+
+.glyph-line {
+  stroke: var(--accent);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.legend-note,
+.legend-sources {
+  margin: 0 0 0.6rem;
+  color: var(--text-muted);
+}
+
+.legend-note strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.legend-sources {
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.legend-sources a {
+  color: var(--accent-strong);
+}
+
+/* Tablet and desktop: the introduction on the left and the map on the
+ * right, side by side above the rest of the page. Phones read the
+ * introduction first, then the map at full width. */
 @media (min-width: 740px) {
   .lead-split {
     display: grid;
@@ -166,25 +250,36 @@
     align-items: stretch;
   }
 
-  .lead-split > .map-section {
-    grid-column: 2;
-    grid-row: 1;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    border-left: 1px solid var(--border);
-  }
-
-  .lead-split > .content {
+  .lead-split > .hero {
     grid-column: 1;
     grid-row: 1;
     max-width: 640px;
     margin: 0 auto;
   }
 
+  .lead-split > .map-section {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 2.5rem;
+    border-top: 0;
+    border-left: 1px solid var(--border);
+  }
+
+  .lead-split .map-heading {
+    padding: 0.8rem 1rem;
+  }
+
+  .lead-split .map-layout {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
   .lead-split .map-frame {
     flex: 1;
-    min-height: min(78vh, 760px);
+    min-height: min(64vh, 620px);
   }
 
   .lead-split .live-map {
@@ -195,7 +290,27 @@
     max-height: none;
   }
 
-  .lead-split .map-note {
-    padding: 0 1rem 1rem;
+  .lead-split .map-legend {
+    padding: 1rem 1rem 1.25rem;
+  }
+}
+
+/* Wide screens: the legend becomes a column beside the map. */
+@media (min-width: 1100px) {
+  .lead-split {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+
+  .lead-split .map-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 16rem;
+  }
+
+  .lead-split .map-frame {
+    min-height: min(78vh, 760px);
+  }
+
+  .lead-split .map-legend {
+    border-left: 1px solid var(--border);
   }
 }

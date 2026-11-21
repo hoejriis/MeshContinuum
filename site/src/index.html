@@ -7,21 +7,21 @@
     <meta name="theme-color" content="#0a1230" />
     <meta
       name="description"
-      content="MeshContinuum (MECON) helps people and communities connect, understand and manage decentralized radio messaging networks. Independent and non-profit, built around MeshCore."
+      content="MeshCore radios can pass text messages without mobile service or internet. MeshContinuum (MECON) adds an optional web app for reading messages, seeing what the network heard and managing supported radios. Independent and non-profit."
     />
     <meta name="generator" content="meshcontinuum-site {{VERSION}}" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="MeshContinuum" />
-    <meta property="og:title" content="A stronger mesh network, without giving up control." />
-    <meta property="og:description" content="MeshContinuum (MECON) helps people and communities connect, understand and manage decentralized radio messaging networks. Independent and non-profit, built around MeshCore." />
+    <meta property="og:title" content="Text over radio. See your mesh online." />
+    <meta property="og:description" content="MeshCore radios can pass text messages without mobile service or internet. MeshContinuum (MECON) adds an optional web app for reading messages, seeing what the network heard and managing supported radios. Independent and non-profit." />
     <meta property="og:image" content="{{ASSET}}/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="The MeshContinuum mark, a figure-of-eight loop through four nodes, beside the MeshContinuum and MECON names and the tagline." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="{{ASSET}}/og.png" />
-    <meta name="twitter:title" content="A stronger mesh network, without giving up control." />
-    <meta name="twitter:description" content="MeshContinuum (MECON) helps people and communities connect, understand and manage decentralized radio messaging networks. Independent and non-profit, built around MeshCore." />
+    <meta name="twitter:title" content="Text over radio. See your mesh online." />
+    <meta name="twitter:description" content="MeshCore radios can pass text messages without mobile service or internet. MeshContinuum (MECON) adds an optional web app for reading messages, seeing what the network heard and managing supported radios. Independent and non-profit." />
     <link rel="icon" type="image/svg+xml" href="{{ASSET}}/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{ASSET}}/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="{{ASSET}}/favicon-16.png" />
@@ -31,75 +31,153 @@
     <link rel="stylesheet" href="{{ASSET}}/map/map.css" />
     <!-- MAP:END -->
     <link rel="stylesheet" href="{{ASSET}}/style.css" />
-    <title>MeshContinuum — a stronger mesh network, without giving up control</title>
+    <title>MeshContinuum — text over radio, see your mesh online</title>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <div id="app">
       <header class="topbar">
         <span class="wordmark"><img class="wordmark-mark" src="{{ASSET}}/mark.svg" alt="" width="28" height="28" />MeshContinuum <span class="wordmark-short" data-instance-name>(MECON)</span></span>
-        <nav class="topbar-actions" aria-label="Account">
+        <nav class="topbar-nav" aria-label="Main">
+          <ul class="topbar-links">
+            <!-- MAP:BEGIN -->
+            <li><a href="#public-map">Public map</a></li>
+            <!-- MAP:END -->
+            <li><a href="#meshcore-heading">How it works</a></li>
+            <li><a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/CAPABILITIES.md" target="_blank" rel="noopener noreferrer">Availability</a></li>
+          </ul>
           <a class="sign-in-link" id="sign-in" href="/sign-in">Sign in</a>
         </nav>
       </header>
 
+      <main id="main">
       <div class="lead-split">
-      <!-- MAP:BEGIN -->
-      <section class="map-section" aria-labelledby="map-heading">
-        <h2 id="map-heading" class="visually-hidden">Map of network activity</h2>
-        <div class="map-frame">
-          <div id="live-map" class="live-map" data-feed="poll" data-feed-base="/api/public/v1/" role="region" aria-label="Map of public MeshCore radios, with a pulse when one is heard or passes a message on, and lines to the radios that heard it." tabindex="0"></div>
-          <p class="map-status" id="map-status" role="status" aria-live="polite">Connecting</p>
-        </div>
-        <p class="map-note">
-          Live view of nodes (green) broadcasting their locations and packets (violet) observed by
-          MECON fleets and <a href="https://meshat.se/" target="_blank" rel="noopener noreferrer">meshat.se</a> observers.
-        </p>
-      </section>
-      <!-- MAP:END -->
-      <main class="content" id="main">
         <section class="hero" aria-labelledby="hero-heading">
-          <h1 id="hero-heading">A stronger mesh network, without giving up control.</h1>
-          <p class="support-line">
-            MeshContinuum (MECON) helps people and communities connect, understand and manage
-            decentralized radio messaging networks.
+          <h1 id="hero-heading">Text over radio. <span class="hero-accent">See your mesh online.</span></h1>
+          <p class="lede">
+            MeshCore radios can pass text messages without mobile service or internet.
           </p>
           <p class="lede">
-            Use the radios you already have, keep communicating when the Internet is unavailable,
-            and add shared observation, authorized history and device management when you choose.
+            MeshContinuum adds an optional web app for reading messages, seeing what the network
+            heard and managing supported radios.
           </p>
           <div class="cta-row">
-            <a class="cta cta-primary" href="#meshcore-heading">Explore how it works</a>
-            <a class="cta cta-secondary" href="#entry-heading">Explore the open projects</a>
+            <!-- MAP:BEGIN -->
+            <a class="cta cta-primary" href="#public-map">Explore the public map</a>
+            <!-- MAP:END -->
+            <!-- NOMAP:BEGIN -->
+            <a class="cta cta-primary" href="#start-heading">Find your starting point</a>
+            <!-- NOMAP:END -->
+            <a class="cta cta-secondary" href="#meshcore-heading">New to MeshCore?</a>
           </div>
           <p class="status-line" data-testid="availability-notice">
-            <strong>Where things stand:</strong> the hosted service is an invitation-only beta.
-            The public radio firmware offers pre-release builds, and the public application is
-            being developed. This page describes what MECON is for, not everything you can use
-            today.
-            <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/CAPABILITIES.md" target="_blank" rel="noopener noreferrer">See what is available</a>
+            <strong>Hosted beta by invitation.</strong>
+            The web app is a private beta, and the open firmware and Reader are pre-releases.
+            <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/CAPABILITIES.md" target="_blank" rel="noopener noreferrer">See what’s available</a>
           </p>
         </section>
-      </main>
+        <!-- MAP:BEGIN -->
+        <section class="map-section" id="public-map" aria-labelledby="map-heading">
+          <h2 id="map-heading" class="map-heading">Public activity map</h2>
+          <div class="map-layout">
+            <div class="map-frame">
+              <div id="live-map" class="live-map" data-feed="poll" data-feed-base="/api/public/v1/" role="region" aria-label="Map of public MeshCore radios, with a pulse when one is heard or passes a message on, and lines to the radios that heard it." tabindex="0"></div>
+              <p class="map-status" id="map-status" role="status" aria-live="polite">Connecting</p>
+            </div>
+            <div class="map-legend">
+              <h3 id="legend-heading">How to read the map</h3>
+              <dl class="legend-list">
+                <div class="legend-item">
+                  <dt>
+                    <svg class="legend-glyph" viewBox="0 0 32 20" aria-hidden="true" focusable="false"><circle class="glyph-node" cx="16" cy="10" r="5" /></svg>
+                    Public radio
+                  </dt>
+                  <dd>A radio whose location is included on the public map.</dd>
+                </div>
+                <div class="legend-item">
+                  <dt>
+                    <svg class="legend-glyph" viewBox="0 0 32 20" aria-hidden="true" focusable="false"><circle class="glyph-ring" cx="16" cy="10" r="8.5" /><circle class="glyph-core" cx="16" cy="10" r="4" /></svg>
+                    Recent activity
+                  </dt>
+                  <dd>A pulse: a radio was heard, or a repeater passed a transmission on.</dd>
+                </div>
+                <div class="legend-item">
+                  <dt>
+                    <svg class="legend-glyph" viewBox="0 0 32 20" aria-hidden="true" focusable="false"><line class="glyph-line" x1="6" y1="15" x2="26" y2="5" /><circle class="glyph-core" cx="6" cy="15" r="3.5" /><circle class="glyph-node" cx="26" cy="5" r="3.5" /></svg>
+                    Heard by / passed to
+                  </dt>
+                  <dd>A line to a radio that heard it, or to the next identified repeater, depending on the event. A line shows a reported link.</dd>
+                </div>
+              </dl>
+              <p class="legend-note">
+                The map shows reports from participating sources, never message content. An empty
+                area can still have radio activity. Activity appears some seconds after it happens.
+              </p>
+              <p class="legend-note">
+                The badge on the map says <strong>Live</strong> while reports arrive,
+                <strong>Connecting</strong> or <strong>Reconnecting</strong> while it reaches them,
+                and <strong>Offline</strong> when they are unavailable. Live with no pulses is a quiet
+                moment.
+              </p>
+              <p class="legend-sources">
+                Activity: MECON’s receivers and
+                <a href="https://meshat.se/" target="_blank" rel="noopener noreferrer">Meshat.se</a>
+                (CC BY 4.0). Map: Leaflet, Natural Earth.
+                <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/TRUST_AND_PRIVACY.md#the-public-map" target="_blank" rel="noopener noreferrer">Map privacy</a>
+              </p>
+            </div>
+          </div>
+        </section>
+        <!-- MAP:END -->
       </div>
 
+      <section class="wide-section start-section" aria-labelledby="start-heading">
+        <div class="section-head">
+          <h2 id="start-heading">Find your starting point</h2>
+          <p class="section-aside">Your MeshCore radios work on their own. MeshContinuum is optional.</p>
+        </div>
+        <div class="benefit-grid start-grid">
+          <article class="benefit-card">
+            <h3>How radio messaging works</h3>
+            <p>Small radios pass text messages from one to the next, with no phone network in between.</p>
+            <p class="card-link"><a href="#meshcore-heading">MeshCore basics</a></p>
+          </article>
+          <article class="benefit-card">
+            <h3>What you can do in the Reader</h3>
+            <p>
+              In the hosted beta: read channels and direct messages in a browser, see how many
+              receivers heard each message, and send through a connected radio.
+            </p>
+            <p class="card-link"><a href="#preview-heading">See the Reader</a></p>
+          </article>
+          <article class="benefit-card">
+            <h3>How to build or run it</h3>
+            <p>
+              The radio firmware and the web Reader are open source, as pre-releases. A packaged way
+              to run your own is planned.
+            </p>
+            <p class="card-link"><a href="#entry-heading">Open projects</a></p>
+          </article>
+        </div>
+      </section>
+
       <section class="wide-section meshcore-section" aria-labelledby="meshcore-heading">
-        <h2 id="meshcore-heading">First, what is MeshCore?</h2>
+        <h2 id="meshcore-heading">How radio messaging works</h2>
         <p class="section-lede">
           <a href="https://github.com/meshcore-dev/MeshCore" target="_blank" rel="noopener noreferrer">MeshCore</a>
-          is a radio-based messaging system. Small, low-cost radios pass text messages from one to
-          the next, so a message can cross a town or a valley without cellular service or the
-          Internet. Two words you will meet:
+          is a radio messaging system. Small, low-cost radios pass text messages from one to the
+          next, so a message can cross a town or a valley without mobile service or the internet.
         </p>
+        <p class="section-lede">Two words you will meet:</p>
         <dl class="term-list">
           <dt>Companion</dt>
-          <dd>The radio connected to your phone or computer. You read and write messages through it.</dd>
+          <dd>The radio you carry. It connects to your phone or computer, and you read and write messages through it.</dd>
           <dt>Repeater</dt>
-          <dd>A radio, often in a high spot, that relays messages so they travel beyond the reach of a single radio.</dd>
+          <dd>A radio left in a high spot, such as a roof or a hill, that passes messages on so they reach further than one radio can.</dd>
         </dl>
         <p class="section-lede">
           The radios talk to each other directly, with no server in between. A message can still
-          be missed if a radio is out of range, asleep or disconnected.
+          be missed if a radio is out of range, switched off or disconnected.
           <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/MESHCORE.md" target="_blank" rel="noopener noreferrer">MeshCore in brief</a>
           explains the rest, and what you need to begin.
         </p>
@@ -152,6 +230,39 @@
               <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/DEPLOYMENT_MODES.md" target="_blank" rel="noopener noreferrer">Ways to run it</a>
             </p>
           </article>
+        </div>
+      </section>
+
+      <section class="wide-section preview-section" aria-labelledby="preview-heading">
+        <h2 id="preview-heading">A look at the Reader in the beta</h2>
+        <p class="section-lede">
+          <span class="demo-tag">Demo data</span>
+          Screenshots from the invitation-only beta, with made-up demo data: the devices, names,
+          places and messages are not real. They show the beta, not a public release.
+        </p>
+        <figure class="preview-item preview-phone">
+          <img src="{{ASSET}}/preview/reader-reception-phone.png" alt="A channel called #demo on a phone. Five short messages from Dev, Ana, Cleo and Ben, newest first, each marked with how many receivers heard it, from 1 to 3 obs. A notice says no connected gateway can reach this channel, so sending is unavailable." loading="lazy" width="780" height="1688" />
+          <figcaption>
+            <strong>A channel conversation on a phone.</strong> Messages in a shared channel, newest
+            first. “obs” is how many receivers heard each message. In this example no gateway (a
+            Companion the service can send through) is connected, so the Reader shows sending as
+            unavailable.
+          </figcaption>
+        </figure>
+        <h3 class="preview-subhead">Behind the scenes: receptions, devices and settings</h3>
+        <div class="preview-grid">
+          <figure class="preview-item">
+            <img src="{{ASSET}}/preview/devices-desktop.png" alt="The Devices list: two Companions and a Repeater, each with its connection, firmware version, battery, uptime, when it was last heard and how many packets it reported." loading="lazy" width="3360" height="1440" />
+            <figcaption><strong>See how the network performs.</strong> Connection and health for every device, from one list.</figcaption>
+          </figure>
+          <figure class="preview-item">
+            <img src="{{ASSET}}/preview/reader-reception-desktop.png" alt="The Packets view for one channel message: its route through two repeater hops, the decrypted text, and three receptions by different gateways with their offsets, RSSI and SNR." loading="lazy" width="2880" height="1800" />
+            <figcaption><strong>Make more of what the network hears.</strong> One message, kept once, with every reception that heard it.</figcaption>
+          </figure>
+          <figure class="preview-item">
+            <img src="{{ASSET}}/preview/device-configure-desktop.png" alt="A Companion's Configure page: name and location, and its radio settings matched to the EU/UK (Narrow) community preset, each field marked with the connection that writes it." loading="lazy" width="2880" height="1800" />
+            <figcaption><strong>Manage radios responsibly.</strong> Settings read from the device and written back over its connection. What you can change depends on the device and its firmware.</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -289,34 +400,8 @@
         </p>
       </section>
 
-      <section class="wide-section preview-section" aria-labelledby="preview-heading">
-        <h2 id="preview-heading">A look at the Reader in the beta</h2>
-        <p class="section-lede">
-          Screenshots from the invitation-only beta, with made-up demo data: the devices, names,
-          places and messages are not real. They show the beta, not a public release.
-        </p>
-        <div class="preview-grid">
-          <figure class="preview-item preview-wide">
-            <img src="{{ASSET}}/preview/reader-reception-desktop.png" alt="The Packets view for one channel message: its route through two repeater hops, the decrypted text, and three receptions by different gateways with their offsets, RSSI and SNR." loading="lazy" width="2880" height="1800" />
-            <figcaption><strong>Make more of what the network hears.</strong> One message, kept once, with every reception that heard it.</figcaption>
-          </figure>
-          <figure class="preview-item preview-wide">
-            <img src="{{ASSET}}/preview/devices-desktop.png" alt="The Devices list: two Companions and a Repeater, each with its connection, firmware version, battery, uptime, when it was last heard and how many packets it reported." loading="lazy" width="3360" height="1440" />
-            <figcaption><strong>See how the network performs.</strong> Connection and health for every device, from one list.</figcaption>
-          </figure>
-          <figure class="preview-item preview-wide">
-            <img src="{{ASSET}}/preview/device-configure-desktop.png" alt="A Companion's Configure page: name and location, and its radio settings matched to the EU/UK (Narrow) community preset, each field marked with the connection that writes it." loading="lazy" width="2880" height="1800" />
-            <figcaption><strong>Manage radios responsibly.</strong> Settings read from the device and written back over its connection. What you can change depends on the device and its firmware.</figcaption>
-          </figure>
-          <figure class="preview-item preview-phone">
-            <img src="{{ASSET}}/preview/reader-reception-phone.png" alt="A channel conversation on a phone, with how many receivers heard each message." loading="lazy" width="780" height="1688" />
-            <figcaption>The same Reader on a phone.</figcaption>
-          </figure>
-        </div>
-      </section>
-
       <section class="wide-section entry-section" aria-labelledby="entry-heading">
-        <h2 id="entry-heading">Choose your entry point</h2>
+        <h2 id="entry-heading">Documentation and open projects</h2>
         <div class="benefit-grid entry-grid">
           <article class="benefit-card">
             <h3>New to radio messaging?</h3>
@@ -336,7 +421,8 @@
               The open projects:
               <a href="https://github.com/hoejriis/mecon-firmware" target="_blank" rel="noopener noreferrer">mecon-firmware</a>
               and
-              <a href="https://github.com/hoejriis/mecon-backend" target="_blank" rel="noopener noreferrer">mecon-backend</a>
+              <a href="https://github.com/hoejriis/mecon-backend" target="_blank" rel="noopener noreferrer">mecon-backend</a>.
+              <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/DEPLOYMENT_MODES.md" target="_blank" rel="noopener noreferrer">Ways to run it</a>
             </p>
           </article>
           <article class="benefit-card">
@@ -346,11 +432,13 @@
               <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/CAPABILITIES.md" target="_blank" rel="noopener noreferrer">availability</a>
               and
               <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/GETTING_STARTED.md" target="_blank" rel="noopener noreferrer">getting started</a>.
-              Already have access? <a href="/sign-in" data-sign-in>Sign in</a>.
+              Invited to the beta? <a href="/sign-in" data-sign-in>Sign in</a>.
             </p>
           </article>
         </div>
       </section>
+
+      </main>
 
       <footer class="page-footer">
         <nav aria-label="Project links">

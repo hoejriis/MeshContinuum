@@ -8,17 +8,37 @@ Assume visitors have **never heard of MeshCore**. Be welcoming, plain-spoken and
 
 ## Proposed page structure and copy
 
+### Header
+
+The wordmark, three links (**Public map**, **How it works**, **Availability**) and a clearly visible **Sign in** that continues to the deployment's existing sign-in route; do not implement authentication in the site.
+
 ### Hero
 
-**A stronger mesh network, without giving up control.**
+**Text over radio. See your mesh online.**
 
-**MeshContinuum (MECON) helps people and communities connect, understand and manage decentralized radio messaging networks.** Use the radios you already have, keep communicating when the Internet is unavailable, and add shared observation, authorized history and device management when you choose.
+MeshCore radios can pass text messages without mobile service or internet. MeshContinuum adds an optional web app for reading messages, seeing what the network heard and managing supported radios.
 
-Primary action: **Explore how it works** (scroll to explainer). Secondary: **Explore the open projects** (public repositories). A discreet **Sign in** link continues to the deployment's existing sign-in route; do not implement authentication in the site.
+Primary action: **Explore the public map** (the map beside the hero; a build without the map offers **Find your starting point** instead). Secondary: **New to MeshCore?** (the in-page primer). Below them, the one availability notice: **Hosted beta by invitation.** with a **See what's available** link.
 
-### First, what is MeshCore?
+On a tablet or desktop the map sits beside the hero. On a phone the headline, the opening copy and both actions come first, then the map.
 
-MeshCore is a radio-based messaging system. A **Companion** is the radio connected to your phone or computer. **Repeaters** relay messages so they can travel beyond the reach of a single radio. Radios communicate without cellular service or the Internet. A message may still be missed if a radio is out of range, asleep or disconnected. Link to the upstream MeshCore project and [MeshCore primer](MESHCORE.md).
+### Public activity map
+
+The map has a legend, **How to read the map**, directly with it: beside it on wide screens, immediately below it on narrower ones. Each entry has a glyph and words, so nothing depends on colour alone:
+
+- **Public radio** (dot): a radio whose location is included on the public map.
+- **Recent activity** (pulse): a radio was heard, or a repeater passed a transmission on.
+- **Heard by / passed to** (line): a line to a radio that heard it, or to the next identified repeater, depending on the event. A line shows a reported link.
+
+Then: the map shows reports from participating sources, never message content; an empty area can still have radio activity; activity appears some seconds after it happens. The legend names the status badge's states (Live, Connecting or Reconnecting, Offline) and credits the activity sources and the map data.
+
+### Find your starting point
+
+Three cards answer the practical questions: **How radio messaging works** (to the primer), **What you can do in the Reader** (to the screenshots; qualified as the hosted beta), and **How to build or run it** (to the open projects; packaged self-hosting is planned). Beside the heading: your MeshCore radios work on their own; MeshContinuum is optional.
+
+### How radio messaging works
+
+MeshCore is a radio messaging system. A **Companion** is the radio you carry, connected to your phone or computer. A **Repeater** is a radio in a high spot that passes messages on so they reach further than one radio can. Radios communicate without mobile service or the internet. A message may still be missed if a radio is out of range, switched off or disconnected. Link to the upstream MeshCore project and [MeshCore primer](MESHCORE.md).
 
 ### What MECON adds
 
@@ -28,6 +48,10 @@ MeshCore is a radio-based messaging system. A **Companion** is the radio connect
 4. **Manage radios responsibly.** Fleet owners configure and maintain devices, but ownership never grants access to other users' private conversations.
 5. **Run it your way.** Self-host on a small machine, extend across sites, or choose a hosted service. MeshCore radios continue to work independently.
 
+### A look at the Reader in the beta
+
+Screenshots from the beta, labelled as made-up demo data. The phone conversation comes first, with a caption that says only what the screenshot shows and explains its labels. The technical views (devices, receptions, settings) follow under their own subheading. Planned Fleet Owner or Admin views are never shown as available.
+
 ### How it fits together
 
 Use a simple accessible diagram with **Radio network → Companions and Repeaters → optional MECON Backend → Reader and fleet tools**, plus a **direct Reader ↔ Companion Bluetooth** path. The optional broker and USB Connector belong in an expandable technical explanation, not the hero. Describe a Backend as a service that gathers authorized observations, stores permitted history and coordinates management; introduce the term only after explaining the benefit.
@@ -36,7 +60,7 @@ Use a simple accessible diagram with **Radio network → Companions and Repeater
 
 A short note that MECON is an independent, non-profit project, built to share what works openly, and not affiliated with the MeshCore project. The trust and privacy detail lives in [trust and privacy](TRUST_AND_PRIVACY.md), linked from the footer.
 
-### Choose your entry point
+### Documentation and open projects
 
 - **New to radio messaging?** Read [MeshCore in brief](MESHCORE.md).
 - **Want to understand MECON?** Read [what MECON adds](WHY_MESHCONTINUUM.md) and [architecture](ARCHITECTURE.md).
@@ -45,7 +69,7 @@ A short note that MECON is an independent, non-profit project, built to share wh
 
 ### Availability notice
 
-Keep **one short, visibly linked notice**: the hosted service is invitation-only beta; public firmware offers pre-release artifacts; the public application is being developed. Never present target diagrams, sample Reader screenshots or public map fixtures as proven live capability. Link to [availability](CAPABILITIES.md) for exact release and hardware evidence.
+Keep **one short, visibly linked notice**, in the hero: the hosted service is an invitation-only beta, and the public firmware and Reader are pre-releases. Never present target diagrams, sample Reader screenshots or public map fixtures as proven live capability. Link to [availability](CAPABILITIES.md) for exact release and hardware evidence.
 
 ## Public map presentation
 

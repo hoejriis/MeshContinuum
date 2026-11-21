@@ -52,11 +52,8 @@
           <p class="map-status" id="map-status" role="status" aria-live="polite">Connecting</p>
         </div>
         <p class="map-note">
-          A violet pulse shows a radio being heard, or a repeater passing a message on, and a
-          thin line runs to the radio that heard it or the next repeater on its path. What you
-          see is up to about half a minute old. <strong>Data sources:</strong> MECON's own receivers, and the receivers that
-          feed <a href="https://meshat.se/" target="_blank" rel="noopener noreferrer">Meshat.se</a>.
-          Only radios with a position approved for publication are shown.
+          Live view of nodes (green) broadcasting their locations and packets (violet) observed by
+          MECON fleets and <a href="https://meshat.se/" target="_blank" rel="noopener noreferrer">meshat.se</a> observers.
         </p>
       </section>
       <!-- MAP:END -->
@@ -284,20 +281,7 @@
         </details>
       </section>
 
-      <section class="wide-section trust-section" aria-labelledby="trust-heading">
-        <h2 id="trust-heading">Trust and independence</h2>
-        <p class="trust-claim">Observing a packet is not permission to read its message.</p>
-        <p>
-          Which messages you can read is decided by the identities and channels assigned to you.
-          Administrators see operational information, such as device health and reception, not a
-          private-message inbox.
-        </p>
-        <p>
-          The limits, plainly: a Backend you entrust with your keys can technically decrypt the
-          messages you are authorized to read. Application permissions stop administrator tools
-          from reading other people's content.
-          <a href="https://github.com/hoejriis/MeshContinuum/blob/main/docs/TRUST_AND_PRIVACY.md" target="_blank" rel="noopener noreferrer">Trust and privacy</a>
-        </p>
+      <section class="wide-section trust-section" aria-label="About MECON">
         <p>
           MECON is an independent, non-profit project with no revenue objective. It is built to
           share what works, openly, so that others can use it, run it and build on it. It is not

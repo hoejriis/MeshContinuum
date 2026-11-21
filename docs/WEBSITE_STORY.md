@@ -32,9 +32,9 @@ MeshCore is a radio-based messaging system. A **Companion** is the radio connect
 
 Use a simple accessible diagram with **Radio network → Companions and Repeaters → optional MECON Backend → Reader and fleet tools**, plus a **direct Reader ↔ Companion Bluetooth** path. The optional broker and USB Connector belong in an expandable technical explanation, not the hero. Describe a Backend as a service that gathers authorized observations, stores permitted history and coordinates management; introduce the term only after explaining the benefit.
 
-### Trust and independence
+### Independence
 
-**Observing a packet is not permission to read its message.** A user's assigned identities and channels govern message access. Administrators see operational information, not a privileged private-message inbox. Explain the limits honestly: a Backend entrusted with a user's keys can technically decrypt their authorized messages; application permissions prevent administrator APIs from reading other users' content. Link to [trust and privacy](TRUST_AND_PRIVACY.md).
+A short note that MECON is an independent, non-profit project, built to share what works openly, and not affiliated with the MeshCore project. The trust and privacy detail lives in [trust and privacy](TRUST_AND_PRIVACY.md), linked from the footer.
 
 ### Choose your entry point
 

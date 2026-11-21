@@ -515,12 +515,6 @@ html {
   margin: 0 0 0.8rem;
 }
 
-.trust-section .trust-claim {
-  color: var(--text);
-  font-size: 1.15rem;
-  font-weight: 600;
-}
-
 @media (min-width: 1000px) {
   .benefit-grid {
     grid-template-columns: repeat(3, 1fr);

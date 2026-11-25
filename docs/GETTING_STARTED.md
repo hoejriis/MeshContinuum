@@ -2,6 +2,8 @@
 
 This is the practical guide to the [hosted](DEPLOYMENT_MODES.md#hosted-one-companion-on-a-hosted-service) way of using MECON, on the mecon.cloud private beta. For the other ways, see [deployment choices](DEPLOYMENT_MODES.md).
 
+> **Two different Readers.** This guide describes the **hosted beta's own Reader**, with its **Devices** menu. A separate, new **five-tab Device User Reader** (Chats, Nodes, Map, Tools, Settings) is built from the public [mecon-backend](https://github.com/hoejriis/mecon-backend) source and runs at `reader.mecon.cloud`, restricted to existing mecon.cloud users. It is a different application with a different layout; the Devices menu below is not part of it. Fleet and admin functions are web-only. See [availability](CAPABILITIES.md) and [the Reader MVP](P5_READER_MVP.md).
+
 ## Before you are invited
 
 [mecon.cloud](https://mecon.cloud) is invitation only, and no opening date is announced.

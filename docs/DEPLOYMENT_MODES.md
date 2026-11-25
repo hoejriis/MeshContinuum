@@ -59,4 +59,8 @@ The details are in the [architecture](ARCHITECTURE.md#recommended-deployment-pro
 
 ## The offline boundary
 
-Ordinary MeshCore radio use never depends on MECON. A home site serves its own users while the Internet is down. The Reader always needs a reachable Backend. A Reader that works fully on its own, with no Backend, is not part of the design yet.
+Ordinary MeshCore radio use never depends on MECON. A home site serves its own users while the Internet is down. The Reader is a cached Reader, not a standalone one. The Backend stays the authority, and a user's first authorization is always online.
+
+**Design target.** A Device User who has signed in and unlocked the local cache can keep using a Companion attached over USB or Bluetooth while the Backend is unreachable, for as long as a time-bounded, Backend-signed offline lease is valid. The lease lasts at most 7 days and is renewed silently whenever the Reader is online, so a disabled or revoked user's offline sending ends at most 7 days after the last renewal. Once the lease expires, nothing is sent: private data is read-only and outbound actions stop. Local unlock is a passkey through the WebAuthn PRF extension, where the browser and platform support it; a browser without PRF gets no offline cache and works online only. On reconnect, drafts are kept and uncertain sends are not resent automatically.
+
+**What is tested.** The cache and leases are implemented and served in the restricted Reader deployment but are not yet accepted. They have been checked with a virtual authenticator only; a real passkey on a phone and physical Bluefy support are not verified. See [availability](CAPABILITIES.md). The decision is recorded in the public [architecture decisions](https://github.com/hoejriis/mecon-backend/blob/main/docs/ARCHITECTURE_DECISIONS.md).

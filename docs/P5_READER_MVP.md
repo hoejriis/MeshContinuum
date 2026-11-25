@@ -1,10 +1,10 @@
 # The MeshContinuum Reader — messaging across radio and network
 
-The Reader is designed to bring familiar MeshCore conversations together with authorized history and network connectivity. Its source is public in [mecon-backend](https://github.com/hoejriis/mecon-backend), and an early build runs in a deployment restricted to the existing mecon.cloud users; it is not a public release. For what can be used today, see [availability](CAPABILITIES.md).
+The Reader is designed to bring familiar MeshCore conversations together with authorized history and network connectivity. Its source is public in [mecon-backend](https://github.com/hoejriis/mecon-backend), and a build runs in a deployment restricted to the existing mecon.cloud users (currently serving v0.9.2); it is not a public release. For what can be used today, see [availability](CAPABILITIES.md).
 
 ## What is changing
 
-The Reader is a communication-first application for everyday MeshCore users. It will be a web app designed first for **Bluefy on iPhone and iPad**, using Web Bluetooth to communicate with an authorized Companion where supported. An authorized MECON Backend provides account/session authority, online messaging, history, MQTT and USB-agent services. The Reader and Backend communicate through a versioned application interface.
+The Reader is a communication-first application for everyday MeshCore users. It is a web app whose **target** is Bluefy on iPhone and iPad, using Web Bluetooth to communicate with an authorized Companion where supported. Physical Bluefy support is not yet verified; Bluetooth is tested in simulation only. The restricted deployment is Backend-connected, for existing mecon.cloud users. It is a different application from the hosted beta's own Reader. An authorized MECON Backend provides account/session authority, online messaging, history, MQTT and USB-agent services. The Reader and Backend communicate through a versioned application interface.
 
 The Reader should feel familiar to anyone using the stock MeshCore app: chats, channels, contacts, Companion connection, composing and honest delivery status. **Familiar layout and workflows, original MECON code and branding.** The Reader follows [MeshCore One](https://github.com/Avi0n/MeshCoreOne) as closely as practicable in layout, navigation and workflows. Do not copy its source, screenshots, graphics or logo.
 
@@ -12,7 +12,7 @@ Use the established [MECON visual identity](BRAND.md), including the original ma
 
 ## Messaging experience
 
-- Bluefy Web Bluetooth connection to a supported Companion, with real iPhone/iPad hardware acceptance.
+- Target: Bluefy Web Bluetooth connection to a supported Companion, pending real iPhone/iPad hardware acceptance.
 - Communication-first Reader with Chats (channels within Chats), Nodes, Map, Tools and Settings tabs, and the active Companion visible in the flow. Fleet management is a separate, web-only tool, deferred beyond this MVP.
 - Optional Backend account login for authorized history and online messaging.
 - Clearly distinguish Bluetooth connected, Backend connected, RF transmission and message acknowledgement.
@@ -27,7 +27,7 @@ A Fleet Owner may assign one user per device, including themselves; one user may
 ## What the first Reader is not
 
 - Not a replacement for the stock MeshCore app, and not a new firmware protocol.
-- Not a standalone, fully offline Reader. Direct Bluetooth may work while the Backend is unreachable, but offline authorization, secure local history and reconciliation with the Backend are later work.
+- Not a standalone Reader. The Backend stays the authority and first authorization is online. The design target is cached local USB/BLE operation while a time-bounded offline lease is valid (at most 7 days, renewed whenever online), with no outbound actions once it expires and WebAuthn PRF local unlock where supported. The cache and leases are implemented and served in the restricted deployment, but not yet accepted: checked with a virtual authenticator only, not with a real phone passkey or physical Bluefy. See [the offline boundary](DEPLOYMENT_MODES.md#the-offline-boundary).
 - No Fleet Owner or Admin management, observation explorer or firmware update manager. Management is a separate, later, web-only tool.
 - No access to private messages of identities assigned to other users, for anyone, including Fleet Owners and Admins.
 - No raw observation streams for Device Users, and no online MQTT credentials in the Reader.
@@ -35,7 +35,7 @@ A Fleet Owner may assign one user per device, including themselves; one user may
 
 ## Extended capabilities
 
-Fleet Owner and Admin management interfaces; richer diagnostics/observations; delegated identity completion; secure offline history and reconciliation; public Backend implementation and migration. These capabilities are part of the target architecture; see [availability](CAPABILITIES.md) for current status.
+Fleet Owner and Admin management interfaces; richer diagnostics/observations; delegated identity completion; acceptance of the offline cache, safe updates and USB access already implemented in the restricted deployment; a complete public Backend and any migration. These capabilities are part of the target architecture; see [availability](CAPABILITIES.md) for current status.
 
 ## Detailed software documentation
 
